@@ -411,7 +411,6 @@ Partial Class NewMessage
         Me.SearchGroupBtn.TabIndex = 11
         Me.SearchGroupBtn.Text = "..."
         Me.SearchGroupBtn.UseVisualStyleBackColor = True
-        Me.SearchGroupBtn.Visible = False
         '
         'SendTo_tb
         '
