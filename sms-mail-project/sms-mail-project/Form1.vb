@@ -19,9 +19,8 @@ Public Class Form1
         'if NewGroup button is clicked, AddEmailGroupForm appears(user can add a new emailgroup)
         AddEmailGroupForm.Show()
 
-    Private Sub ToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton1.Click
-
     End Sub
+
 
 
     Private Sub NewMessageToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NewMessageToolStripMenuItem.Click

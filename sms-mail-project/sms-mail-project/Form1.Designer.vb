@@ -38,8 +38,6 @@ Partial Class Form1
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton
         Me.ToolStrip2 = New System.Windows.Forms.ToolStrip
         Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton
-        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton
         Me.MenuStrip1.SuspendLayout()
         Me.ToolStripContainer1.ContentPanel.SuspendLayout()
         Me.ToolStripContainer1.SuspendLayout()
