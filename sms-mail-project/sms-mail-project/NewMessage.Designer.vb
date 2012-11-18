@@ -66,6 +66,8 @@ Partial Class NewMessage
         Me.Subject = New System.Windows.Forms.TextBox
         Me.MessageRichTextBox = New System.Windows.Forms.RichTextBox
         Me.SearchAccount_btn = New System.Windows.Forms.Button
+        Me.SearchGroupBtn = New System.Windows.Forms.Button
+        Me.SendTo_tb = New System.Windows.Forms.TextBox
         Me.MenuStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -84,7 +86,7 @@ Partial Class NewMessage
         Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.SaveToolStripMenuItem, Me.SendToolStripMenuItem, Me.AccountSetupToolStripMenuItem, Me.ToolStripSeparator1, Me.CloseToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.F), System.Windows.Forms.Keys)
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(35, 20)
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "File"
         '
         'NewToolStripMenuItem
@@ -92,7 +94,7 @@ Partial Class NewMessage
         Me.NewToolStripMenuItem.Image = CType(resources.GetObject("NewToolStripMenuItem.Image"), System.Drawing.Image)
         Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
         Me.NewToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.N), System.Windows.Forms.Keys)
-        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.NewToolStripMenuItem.Text = "New"
         '
         'SaveToolStripMenuItem
@@ -100,7 +102,7 @@ Partial Class NewMessage
         Me.SaveToolStripMenuItem.Image = CType(resources.GetObject("SaveToolStripMenuItem.Image"), System.Drawing.Image)
         Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
         Me.SaveToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
-        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.SaveToolStripMenuItem.Text = "Save"
         '
         'SendToolStripMenuItem
@@ -108,25 +110,25 @@ Partial Class NewMessage
         Me.SendToolStripMenuItem.Image = CType(resources.GetObject("SendToolStripMenuItem.Image"), System.Drawing.Image)
         Me.SendToolStripMenuItem.Name = "SendToolStripMenuItem"
         Me.SendToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5
-        Me.SendToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.SendToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.SendToolStripMenuItem.Text = "Send"
         '
         'AccountSetupToolStripMenuItem
         '
         Me.AccountSetupToolStripMenuItem.Name = "AccountSetupToolStripMenuItem"
-        Me.AccountSetupToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.AccountSetupToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.AccountSetupToolStripMenuItem.Text = "Account Setup"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(152, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(149, 6)
         '
         'CloseToolStripMenuItem
         '
         Me.CloseToolStripMenuItem.Name = "CloseToolStripMenuItem"
         Me.CloseToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.F4), System.Windows.Forms.Keys)
-        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.CloseToolStripMenuItem.Text = "Close"
         '
         'EditToolStripMenuItem
@@ -134,7 +136,7 @@ Partial Class NewMessage
         Me.EditToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UndoToolStripMenuItem, Me.RedoToolStripMenuItem, Me.ToolStripSeparator2, Me.CutToolStripMenuItem, Me.CopyToolStripMenuItem, Me.PasteToolStripMenuItem, Me.ToolStripSeparator3, Me.SelectAllToolStripMenuItem})
         Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
         Me.EditToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.E), System.Windows.Forms.Keys)
-        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
+        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(39, 20)
         Me.EditToolStripMenuItem.Text = "Edit"
         '
         'UndoToolStripMenuItem
@@ -142,7 +144,7 @@ Partial Class NewMessage
         Me.UndoToolStripMenuItem.Image = CType(resources.GetObject("UndoToolStripMenuItem.Image"), System.Drawing.Image)
         Me.UndoToolStripMenuItem.Name = "UndoToolStripMenuItem"
         Me.UndoToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Z), System.Windows.Forms.Keys)
-        Me.UndoToolStripMenuItem.Size = New System.Drawing.Size(167, 22)
+        Me.UndoToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
         Me.UndoToolStripMenuItem.Text = "Undo"
         '
         'RedoToolStripMenuItem
@@ -150,20 +152,20 @@ Partial Class NewMessage
         Me.RedoToolStripMenuItem.Image = CType(resources.GetObject("RedoToolStripMenuItem.Image"), System.Drawing.Image)
         Me.RedoToolStripMenuItem.Name = "RedoToolStripMenuItem"
         Me.RedoToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Y), System.Windows.Forms.Keys)
-        Me.RedoToolStripMenuItem.Size = New System.Drawing.Size(167, 22)
+        Me.RedoToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
         Me.RedoToolStripMenuItem.Text = "Redo"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(164, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(161, 6)
         '
         'CutToolStripMenuItem
         '
         Me.CutToolStripMenuItem.Image = CType(resources.GetObject("CutToolStripMenuItem.Image"), System.Drawing.Image)
         Me.CutToolStripMenuItem.Name = "CutToolStripMenuItem"
         Me.CutToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.X), System.Windows.Forms.Keys)
-        Me.CutToolStripMenuItem.Size = New System.Drawing.Size(167, 22)
+        Me.CutToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
         Me.CutToolStripMenuItem.Text = "Cut"
         '
         'CopyToolStripMenuItem
@@ -171,7 +173,7 @@ Partial Class NewMessage
         Me.CopyToolStripMenuItem.Image = CType(resources.GetObject("CopyToolStripMenuItem.Image"), System.Drawing.Image)
         Me.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem"
         Me.CopyToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
-        Me.CopyToolStripMenuItem.Size = New System.Drawing.Size(167, 22)
+        Me.CopyToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
         Me.CopyToolStripMenuItem.Text = "Copy"
         '
         'PasteToolStripMenuItem
@@ -179,19 +181,19 @@ Partial Class NewMessage
         Me.PasteToolStripMenuItem.Image = CType(resources.GetObject("PasteToolStripMenuItem.Image"), System.Drawing.Image)
         Me.PasteToolStripMenuItem.Name = "PasteToolStripMenuItem"
         Me.PasteToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.P), System.Windows.Forms.Keys)
-        Me.PasteToolStripMenuItem.Size = New System.Drawing.Size(167, 22)
+        Me.PasteToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
         Me.PasteToolStripMenuItem.Text = "Paste"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(164, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(161, 6)
         '
         'SelectAllToolStripMenuItem
         '
         Me.SelectAllToolStripMenuItem.Name = "SelectAllToolStripMenuItem"
         Me.SelectAllToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
-        Me.SelectAllToolStripMenuItem.Size = New System.Drawing.Size(167, 22)
+        Me.SelectAllToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
         Me.SelectAllToolStripMenuItem.Text = "Select All"
         '
         'InsertToolStripMenuItem
@@ -206,7 +208,7 @@ Partial Class NewMessage
         '
         Me.GroupToolStripMenuItem.Image = CType(resources.GetObject("GroupToolStripMenuItem.Image"), System.Drawing.Image)
         Me.GroupToolStripMenuItem.Name = "GroupToolStripMenuItem"
-        Me.GroupToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.GroupToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
         Me.GroupToolStripMenuItem.Text = "Groups"
         '
         'ToolsToolStripMenuItem
@@ -214,7 +216,7 @@ Partial Class NewMessage
         Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AccountManagerToolStripMenuItem})
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
         Me.ToolsToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.T), System.Windows.Forms.Keys)
-        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
+        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(48, 20)
         Me.ToolsToolStripMenuItem.Text = "Tools"
         '
         'AccountManagerToolStripMenuItem
@@ -228,25 +230,25 @@ Partial Class NewMessage
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HelpFormToolStripMenuItem, Me.ToolStripSeparator4, Me.AboutToolStripMenuItem})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
         Me.HelpToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.H), System.Windows.Forms.Keys)
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(40, 20)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
         Me.HelpToolStripMenuItem.Text = "Help"
         '
         'HelpFormToolStripMenuItem
         '
         Me.HelpFormToolStripMenuItem.Name = "HelpFormToolStripMenuItem"
         Me.HelpFormToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1
-        Me.HelpFormToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.HelpFormToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
         Me.HelpFormToolStripMenuItem.Text = "Help Form"
         '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(149, 6)
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(146, 6)
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'ToolStrip1
@@ -263,7 +265,7 @@ Partial Class NewMessage
         Me.SendStripButton1.Image = CType(resources.GetObject("SendStripButton1.Image"), System.Drawing.Image)
         Me.SendStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.SendStripButton1.Name = "SendStripButton1"
-        Me.SendStripButton1.Size = New System.Drawing.Size(51, 22)
+        Me.SendStripButton1.Size = New System.Drawing.Size(53, 22)
         Me.SendStripButton1.Text = "Send"
         '
         'ToolStripSeparator5
@@ -366,6 +368,7 @@ Partial Class NewMessage
         '
         'From_tb
         '
+        Me.From_tb.Enabled = False
         Me.From_tb.Location = New System.Drawing.Point(86, 95)
         Me.From_tb.Multiline = True
         Me.From_tb.Name = "From_tb"
@@ -392,7 +395,7 @@ Partial Class NewMessage
         '
         'SearchAccount_btn
         '
-        Me.SearchAccount_btn.Location = New System.Drawing.Point(530, 95)
+        Me.SearchAccount_btn.Location = New System.Drawing.Point(530, 97)
         Me.SearchAccount_btn.Name = "SearchAccount_btn"
         Me.SearchAccount_btn.Size = New System.Drawing.Size(25, 20)
         Me.SearchAccount_btn.TabIndex = 10
@@ -400,15 +403,35 @@ Partial Class NewMessage
         Me.SearchAccount_btn.UseVisualStyleBackColor = True
         Me.SearchAccount_btn.Visible = False
         '
+        'SearchGroupBtn
+        '
+        Me.SearchGroupBtn.Location = New System.Drawing.Point(530, 69)
+        Me.SearchGroupBtn.Name = "SearchGroupBtn"
+        Me.SearchGroupBtn.Size = New System.Drawing.Size(25, 20)
+        Me.SearchGroupBtn.TabIndex = 11
+        Me.SearchGroupBtn.Text = "..."
+        Me.SearchGroupBtn.UseVisualStyleBackColor = True
+        Me.SearchGroupBtn.Visible = False
+        '
+        'SendTo_tb
+        '
+        Me.SendTo_tb.Location = New System.Drawing.Point(86, 70)
+        Me.SendTo_tb.Multiline = True
+        Me.SendTo_tb.Name = "SendTo_tb"
+        Me.SendTo_tb.Size = New System.Drawing.Size(423, 20)
+        Me.SendTo_tb.TabIndex = 6
+        '
         'NewMessage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(567, 496)
+        Me.Controls.Add(Me.SearchGroupBtn)
         Me.Controls.Add(Me.SearchAccount_btn)
         Me.Controls.Add(Me.MessageRichTextBox)
         Me.Controls.Add(Me.Subject)
         Me.Controls.Add(Me.From_tb)
+        Me.Controls.Add(Me.SendTo_tb)
         Me.Controls.Add(Me.SendTo)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
@@ -470,4 +493,6 @@ Partial Class NewMessage
     Friend WithEvents ToolStripSeparator6 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ToolStripSeparator7 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ToolStripButton6 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents SearchGroupBtn As System.Windows.Forms.Button
+    Friend WithEvents SendTo_tb As System.Windows.Forms.TextBox
 End Class

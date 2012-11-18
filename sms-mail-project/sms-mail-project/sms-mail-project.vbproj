@@ -213,6 +213,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\messages.jpg" />
+    <None Include="Resources\groups.jpg" />
     <Content Include="test.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

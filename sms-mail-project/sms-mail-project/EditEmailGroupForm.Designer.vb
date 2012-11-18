@@ -26,13 +26,14 @@ Partial Class EditEmailGroupForm
         Me.Label1 = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
-        Me.EmailTextBox = New System.Windows.Forms.Label
+        Me.Label4 = New System.Windows.Forms.Label
         Me.FirstNameTextBox = New System.Windows.Forms.TextBox
         Me.LastNameTextBox = New System.Windows.Forms.TextBox
-        Me.TextBox3 = New System.Windows.Forms.TextBox
+        Me.EmailTextBox = New System.Windows.Forms.TextBox
         Me.AddContactBtn = New System.Windows.Forms.Button
-        Me.Label5 = New System.Windows.Forms.Label
+        Me.Alertlabel = New System.Windows.Forms.Label
         Me.DeleteContactBtn = New System.Windows.Forms.Button
+        Me.AlertEmail = New System.Windows.Forms.Label
         CType(Me.ContactsGrid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -74,14 +75,14 @@ Partial Class EditEmailGroupForm
         Me.Label3.TabIndex = 3
         Me.Label3.Text = "LastName"
         '
-        'EmailTextBox
+        'Label4
         '
-        Me.EmailTextBox.AutoSize = True
-        Me.EmailTextBox.Location = New System.Drawing.Point(42, 384)
-        Me.EmailTextBox.Name = "EmailTextBox"
-        Me.EmailTextBox.Size = New System.Drawing.Size(32, 13)
-        Me.EmailTextBox.TabIndex = 4
-        Me.EmailTextBox.Text = "Email"
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(42, 384)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(32, 13)
+        Me.Label4.TabIndex = 4
+        Me.Label4.Text = "Email"
         '
         'FirstNameTextBox
         '
@@ -97,12 +98,12 @@ Partial Class EditEmailGroupForm
         Me.LastNameTextBox.Size = New System.Drawing.Size(201, 20)
         Me.LastNameTextBox.TabIndex = 6
         '
-        'TextBox3
+        'EmailTextBox
         '
-        Me.TextBox3.Location = New System.Drawing.Point(129, 377)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(201, 20)
-        Me.TextBox3.TabIndex = 7
+        Me.EmailTextBox.Location = New System.Drawing.Point(129, 377)
+        Me.EmailTextBox.Name = "EmailTextBox"
+        Me.EmailTextBox.Size = New System.Drawing.Size(201, 20)
+        Me.EmailTextBox.TabIndex = 7
         '
         'AddContactBtn
         '
@@ -113,16 +114,16 @@ Partial Class EditEmailGroupForm
         Me.AddContactBtn.Text = "Add contact"
         Me.AddContactBtn.UseVisualStyleBackColor = True
         '
-        'Label5
+        'Alertlabel
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.ForeColor = System.Drawing.Color.Red
-        Me.Label5.Location = New System.Drawing.Point(148, 446)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(123, 13)
-        Me.Label5.TabIndex = 9
-        Me.Label5.Text = "Please complete all texts"
-        Me.Label5.Visible = False
+        Me.Alertlabel.AutoSize = True
+        Me.Alertlabel.ForeColor = System.Drawing.Color.Red
+        Me.Alertlabel.Location = New System.Drawing.Point(148, 446)
+        Me.Alertlabel.Name = "Alertlabel"
+        Me.Alertlabel.Size = New System.Drawing.Size(123, 13)
+        Me.Alertlabel.TabIndex = 9
+        Me.Alertlabel.Text = "Please complete all texts"
+        Me.Alertlabel.Visible = False
         '
         'DeleteContactBtn
         '
@@ -133,18 +134,30 @@ Partial Class EditEmailGroupForm
         Me.DeleteContactBtn.Text = "Delete contact"
         Me.DeleteContactBtn.UseVisualStyleBackColor = True
         '
+        'AlertEmail
+        '
+        Me.AlertEmail.AutoSize = True
+        Me.AlertEmail.ForeColor = System.Drawing.Color.Red
+        Me.AlertEmail.Location = New System.Drawing.Point(360, 384)
+        Me.AlertEmail.Name = "AlertEmail"
+        Me.AlertEmail.Size = New System.Drawing.Size(102, 13)
+        Me.AlertEmail.TabIndex = 11
+        Me.AlertEmail.Text = "Wrong Email Format"
+        Me.AlertEmail.Visible = False
+        '
         'EditEmailGroupForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(584, 562)
+        Me.Controls.Add(Me.AlertEmail)
         Me.Controls.Add(Me.DeleteContactBtn)
-        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.Alertlabel)
         Me.Controls.Add(Me.AddContactBtn)
-        Me.Controls.Add(Me.TextBox3)
+        Me.Controls.Add(Me.EmailTextBox)
         Me.Controls.Add(Me.LastNameTextBox)
         Me.Controls.Add(Me.FirstNameTextBox)
-        Me.Controls.Add(Me.EmailTextBox)
+        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -160,11 +173,12 @@ Partial Class EditEmailGroupForm
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents EmailTextBox As System.Windows.Forms.Label
+    Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents FirstNameTextBox As System.Windows.Forms.TextBox
     Friend WithEvents LastNameTextBox As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
+    Friend WithEvents EmailTextBox As System.Windows.Forms.TextBox
     Friend WithEvents AddContactBtn As System.Windows.Forms.Button
-    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents Alertlabel As System.Windows.Forms.Label
     Friend WithEvents DeleteContactBtn As System.Windows.Forms.Button
+    Friend WithEvents AlertEmail As System.Windows.Forms.Label
 End Class

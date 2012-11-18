@@ -18,18 +18,18 @@ Public Class NewMessage
     'ανοιγμα φορμας διαχειρισης Account και οι καταλληλες ρυθμισεις πανω σε αυτο σε σχεση με components
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SearchAccount_btn.Click
 
-        'Dim manager As Account_Manager
-        'manager = New Account_Manager
-        'manager.StartPosition = FormStartPosition.CenterParent
-        'manager.ShowDialog()
-        'manager = Nothing
-        'If (My.Settings.email <> "" And My.Settings.name <> "" And My.Settings.password <> "" And _
-        'My.Settings.port <> "" And My.Settings.server <> "" And My.Settings.security <> "") Then
-        'From_tb.Text = My.Settings.email
-        'From_tb.ReadOnly = True
-        'SearchAccount_btn.Visible = False
-        'From_tb.ReadOnly = True
-        'End If
+        Dim manager As Account_Manager
+        manager = New Account_Manager
+        manager.StartPosition = FormStartPosition.CenterParent
+        manager.ShowDialog()
+        manager = Nothing
+        If (My.Settings.email <> "" And My.Settings.name <> "" And My.Settings.password <> "" And _
+        My.Settings.port <> "" And My.Settings.server <> "" And My.Settings.security <> "") Then
+            From_tb.Text = My.Settings.email
+            From_tb.ReadOnly = True
+            SearchAccount_btn.Visible = False
+            From_tb.ReadOnly = True
+        End If
     End Sub
 
     'Μενου tools Που εχει να κανει απευθειας με το manageraccount του ευθυμη
@@ -58,39 +58,36 @@ Public Class NewMessage
 
     'Κουμπί αποστολης(send) μηνυματος απο το μενου file (f5)
     Private Sub SendToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SendToolStripMenuItem.Click
-        'If (My.Settings.email <> "" And My.Settings.name <> "" And My.Settings.password <> "" And _
-        'My.Settings.port <> "" And My.Settings.server <> "" And My.Settings.security <> "") Then
+        If (My.Settings.email <> "" And My.Settings.name <> "" And My.Settings.password <> "" And _
+        My.Settings.port <> "" And My.Settings.server <> "" And My.Settings.security <> "") Then
 
-        Dim Mail As New MailMessage 'φτιαχνω μια μεταβλητη-αντικειμενο τυπου Mailmessage ωστε να μας διευκολυνει για τα mail
-        Mail.Subject = Subject.Text 'παιρνω απο το textbox που εγραψε ο χρηστης το θεμα και το βαζω στο mail.subject
-        Mail.To.Add(SendTo.Text)    'βαζω εδω τον παραληπτη του μηνυματος το οποιο πληκτρολογει ο χρηστης στο SendTo textbox
-        Mail.From = New MailAddress(From_tb.Text)  'εδω φτιαχνω τον αποστολεα το μηνυματος και το παιρνω απο το From textbox οπου πληκτρολογει ο χρηστης 
-        Mail.Body = MessageRichTextBox.Text    'εδω ειναι το μηνυμα του χρηστη
-        ' εδω ακολουθει η συνδεση με τον SMTP Server Του Gmail ωστε να στελνει με λογαριασμο gmail
-        'Dim SMTP As New SmtpClient(My.Settings.server)
-        'If (My.Settings.port = "25") Then
-        'SMTP.EnableSsl = False
-        'Else
-        'SMTP.EnableSsl = True
-        'End If
+            Dim Mail As New MailMessage 'φτιαχνω μια μεταβλητη-αντικειμενο τυπου Mailmessage ωστε να μας διευκολυνει για τα mail
+            Mail.Subject = Subject.Text 'παιρνω απο το textbox που εγραψε ο χρηστης το θεμα και το βαζω στο mail.subject
+            Mail.To.Add(SendTo_tb.Text)    'βαζω εδω τον παραληπτη του μηνυματος το οποιο πληκτρολογει ο χρηστης στο SendTo textbox
+            Mail.From = New MailAddress(From_tb.Text, My.Settings.name)  'εδω φτιαχνω τον αποστολεα το μηνυματος και το παιρνω απο το From textbox οπου πληκτρολογει ο χρηστης 
+            Mail.Body = MessageRichTextBox.Text    'εδω ειναι το μηνυμα του χρηστη
+            ' εδω ακολουθει η συνδεση με τον SMTP Server Του Gmail ωστε να στελνει με λογαριασμο gmail
+            Dim SMTP As New SmtpClient(My.Settings.server)
+            If (My.Settings.port = "25") Then
+                SMTP.EnableSsl = False
+            Else
+                SMTP.EnableSsl = True
+            End If
 
-        ' SMTP.Credentials = New System.Net.NetworkCredential(My.Settings.email, My.Settings.password)
-        'SMTP.Port = My.Settings.port
-        'Εδω βαζουμε try catch εντολες ετσι ωστε να προλαβουμε το λαθος για να μην το δει ο χρηστης
-        Try
-            ' SMTP.Send(Mail)
-            close_flag = True ' εδω βαζουμε μια μεταβλητη σημαια καταλληλη για να κλεινει η φορμα χωρις να μας βγαζει το μηνυμα για το αν ειμαστε σιγουροι να κλεισουμε το παραθυρο η οχι
-            Me.Close()
-            MsgBox("Message Sent!!!")
-        Catch ex As SmtpException
-            MsgBox("Message Sent Failed!!!")
-        Catch ex1 As Exception
-            MsgBox("Message Sent Failed!!!")
-        End Try
-        'Else
-
-
-        'End If
+            SMTP.Credentials = New System.Net.NetworkCredential(My.Settings.email, My.Settings.password)
+            SMTP.Port = My.Settings.port
+            'Εδω βαζουμε try catch εντολες ετσι ωστε να προλαβουμε το λαθος για να μην το δει ο χρηστης
+            Try
+                SMTP.Send(Mail)
+                close_flag = True ' εδω βαζουμε μια μεταβλητη σημαια καταλληλη για να κλεινει η φορμα χωρις να μας βγαζει το μηνυμα για το αν ειμαστε σιγουροι να κλεισουμε το παραθυρο η οχι
+                Me.Close()
+                MsgBox("Message Sent!!!")
+            Catch ex As SmtpException
+                MsgBox("Message Sent Failed!!!")
+            Catch ex1 As Exception
+                MsgBox("Message Sent Failed!!!")
+            End Try
+        End If
     End Sub
 
     'μενου Edit που περιλαμβανει τα παρακατω
@@ -125,13 +122,13 @@ Public Class NewMessage
 
     'μπαινουν οι ρυθμισεις του λογαριασμου του χρηστη στο textbox from,και αναλογως γινεται readonly το textfield ή ενεργοποιειται το κουμπακι(...) γιατο ανοιγμα της φορμας λογαριασμων
     Private Sub NewMessage_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        'If (My.Settings.email <> "" And My.Settings.name <> "" And My.Settings.password <> "" And _
-        'My.Settings.port <> "" And My.Settings.server <> "" And My.Settings.security <> "") Then
-        'From_tb.Text = My.Settings.email
-        From_tb.ReadOnly = True
-        'Else
-        SearchAccount_btn.Visible = True
-        'End If
+        If (My.Settings.email <> "" And My.Settings.name <> "" And My.Settings.password <> "" And _
+        My.Settings.port <> "" And My.Settings.server <> "" And My.Settings.security <> "") Then
+            From_tb.Text = My.Settings.email
+            From_tb.ReadOnly = True
+        Else
+            SearchAccount_btn.Visible = True
+        End If
     End Sub
 
     'Ακολουθουν οι μεθοδοι για την μπαρα των toolstripbutton μενου...ειναι οι ιδιες λειτουργιες με απο τα μενου file και edit απλως σε κουμπακι toolstripbutton
