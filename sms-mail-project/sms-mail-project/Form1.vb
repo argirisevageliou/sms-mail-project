@@ -11,6 +11,7 @@ Public Class Form1
         If answer = vbYes Then
             Application.Exit()
         End If
+    End Sub
     Private Sub ToolStripButton2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton2.Click
         'if groups is clicked, ShowEmailGroupsForm appears(contains user's emailgroups)
         ShowEmailGroupsForm.Show()
@@ -40,7 +41,5 @@ Public Class Form1
 
     End Sub
 
-    Private Sub ManagerAccountToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ManagerAccountToolStripMenuItem.Click
 
-    End Sub
 End Class

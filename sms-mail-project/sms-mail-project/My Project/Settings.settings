@@ -2,8 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
   <Profiles />
   <Settings>
-    <Setting Name="password" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    
     <Setting Name="OleDbConnectionString" Type="System.String" Scope="User">
       <Value Profile="(Default)">Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Αργύρης\Documents\Visual Studio 2008\Projects\ΑΔΟΠΣΕ\sms-mail-project\sms-mail-project\test.accdb</Value>
     </Setting>
@@ -15,7 +14,9 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\test.accdb</Value>
     </Setting>
-  </Settings>
+	<Setting Name="password" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+	</Setting>
     <Setting Name="server" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
