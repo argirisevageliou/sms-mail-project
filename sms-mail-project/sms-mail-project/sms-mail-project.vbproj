@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{577AE984-C5A1-4C51-B9DC-4C7ADE85D2FB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -17,6 +17,21 @@
     <OptionCompare>Binary</OptionCompare>
     <OptionStrict>Off</OptionStrict>
     <OptionInfer>On</OptionInfer>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,6 +52,10 @@
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Desktop\HtmlAgilityPack.1.4.6\Net20\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -68,10 +87,15 @@
   <ItemGroup>
     <Compile Include="EditEmailGroupForm.Designer.vb">
       <DependentUpon>EditEmailGroupForm.vb</DependentUpon>
+    <Compile Include="confirm_box.Designer.vb">
+      <DependentUpon>confirm_box.vb</DependentUpon>
     </Compile>
     <Compile Include="EditEmailGroupForm.vb">
+    <Compile Include="confirm_box.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CueBanner.vb">
+      <SubType>Component</SubType>
     <Compile Include="ShowEmailGroupsForm.Designer.vb">
       <DependentUpon>ShowEmailGroupsForm.vb</DependentUpon>
     </Compile>
@@ -87,8 +111,11 @@
     </Compile>
     <Compile Include="AddEmailGroupForm.Designer.vb">
       <DependentUpon>AddEmailGroupForm.vb</DependentUpon>
+    <Compile Include="Account_Manager.Designer.vb">
+      <DependentUpon>Account_Manager.vb</DependentUpon>
     </Compile>
     <Compile Include="AddEmailGroupForm.vb">
+    <Compile Include="Account_Manager.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -121,11 +148,16 @@
   <ItemGroup>
     <EmbeddedResource Include="EditEmailGroupForm.resx">
       <DependentUpon>EditEmailGroupForm.vb</DependentUpon>
+    <EmbeddedResource Include="Account_Manager.resx">
+      <DependentUpon>Account_Manager.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowEmailGroupsForm.resx">
       <DependentUpon>ShowEmailGroupsForm.vb</DependentUpon>
       <SubType>Designer</SubType>
+    <EmbeddedResource Include="confirm_box.resx">
+      <DependentUpon>confirm_box.vb</DependentUpon>
+    </EmbeddedResource>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
@@ -174,6 +206,44 @@
     <Content Include="test.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\help_img.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wheel1.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

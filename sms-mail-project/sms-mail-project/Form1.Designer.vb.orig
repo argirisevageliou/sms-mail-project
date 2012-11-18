@@ -90,12 +90,11 @@ Partial Class Form1
         Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ManagerAccountToolStripMenuItem})
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
 <<<<<<< HEAD
-        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(48, 20)
-        Me.ToolsToolStripMenuItem.Text = "&Tools"
-=======
         Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
-        Me.ToolsToolStripMenuItem.Text = "Tools"
->>>>>>> origin/First_commit_NewMessage_Branch
+=======
+        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(48, 20)
+>>>>>>> origin/Account_Manager
+        Me.ToolsToolStripMenuItem.Text = "&Tools"
         '
         'ManagerAccountToolStripMenuItem
         '
@@ -107,8 +106,13 @@ Partial Class Form1
         '
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
+<<<<<<< HEAD
         Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(40, 20)
         Me.HelpToolStripMenuItem.Text = "Help"
+=======
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
+        Me.HelpToolStripMenuItem.Text = "&Help"
+>>>>>>> origin/Account_Manager
         '
         'AboutToolStripMenuItem
         '
@@ -155,10 +159,10 @@ Partial Class Form1
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 25)
         Me.ToolStrip1.Name = "ToolStrip1"
 <<<<<<< HEAD
-        Me.ToolStrip1.Size = New System.Drawing.Size(90, 25)
-=======
         Me.ToolStrip1.Size = New System.Drawing.Size(86, 25)
->>>>>>> origin/First_commit_NewMessage_Branch
+=======
+        Me.ToolStrip1.Size = New System.Drawing.Size(90, 25)
+>>>>>>> origin/Account_Manager
         Me.ToolStrip1.TabIndex = 0
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -168,10 +172,10 @@ Partial Class Form1
         Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton1.Name = "ToolStripButton1"
 <<<<<<< HEAD
-        Me.ToolStripButton1.Size = New System.Drawing.Size(78, 22)
-=======
         Me.ToolStripButton1.Size = New System.Drawing.Size(74, 22)
->>>>>>> origin/First_commit_NewMessage_Branch
+=======
+        Me.ToolStripButton1.Size = New System.Drawing.Size(78, 22)
+>>>>>>> origin/Account_Manager
         Me.ToolStripButton1.Text = "Messages"
         '
         'Form1
