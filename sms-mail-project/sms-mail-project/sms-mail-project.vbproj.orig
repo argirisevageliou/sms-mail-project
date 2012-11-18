@@ -106,16 +106,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="testDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>testDataSet.xsd</DependentUpon>
-    </Compile>
+=======
     <Compile Include="NewMessage.Designer.vb">
       <DependentUpon>NewMessage.vb</DependentUpon>
     </Compile>
     <Compile Include="NewMessage.vb">
       <SubType>Form</SubType>
+>>>>>>> origin/First_commit_NewMessage_Branch
     </Compile>
   </ItemGroup>
   <ItemGroup>

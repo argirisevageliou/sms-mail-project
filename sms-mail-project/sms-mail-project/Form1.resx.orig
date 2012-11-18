@@ -125,15 +125,17 @@
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="ToolStripButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+<<<<<<< HEAD
+=======
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFYSURBVDhPxZJLS0JBGIbnR7WKogKDQAyipAtoR5BII8mK
-        SogKyqCLFuoBI1CTIrUy8li20BQx0W6aFhURRWBLd63fnIGkIjlgixYPw7zf93zDDEOKxXdUC6lWpN4/
-        ynfnBcSELGKBa0QPsqKc7GeQOnpBxHsLIrhTWJrjcRl5RS7xJko69IxhhQUzGgfI3noCguMKRr0Lcf8T
-        m1oJWh/jbFge9YFrHQfx2GIIujLYsZyhTz6N8NY9G/ITmlNxc/EU/FQA3S06KkeZHPU+wGNOsYbjjXxp
-        /1jm0Jlnuc+aRshx87tMpxu0ZtYYLAl0wKdIc1qvKM8b7KxheyWJCc4Kv/2ifCLNaf2b7DaFscunMTm4
-        CmEtV8ZpjEPepAddv+Y65Sx73I7mfhB6+U7JEHt6g5oXZaTXBFmDEtJ6BUg+WYCmbQHtjQOQ1alFkdaq
-        IKnpgqpH+7e//QFrwsiv9EiyiwAAAABJRU5ErkJggg==
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAzVJREFUOE8dk11Q
+        1FUYh4/kNNM0OV500aXj5E13EdYo1KRjYKXWRvuPZWP5WIGxND42ZHeRlo/RcFd02DZFxlYEGgqBRJQP
+        FTHbBURBdAFRPswKSURYEJDFZZ8OXbzzzpwzz5nznvP8Vvim4MWXhVgKEqL9RpeoPntOTEx6xSsvrRah
+        oetFlCpCBJYmRNCKabFy5QsiEEAEBb0q11YLwSI8ebTAbc8AVruDe6Nj/Dv3nKs3BsgtsGM0m0hPjSdl
+        98fEaEPwPumGpUlZIPDDzMwihx12LrhbGffNMwvUXXRT6HASHR0NgSnmvD1UOM3kmnX4ph/CMwk/nfUt
+        82j0Wm6N9NLc6aKysQFjno2CQz+i1UTT232F+/2NNFQfRK8OZXzIAwsSXgbnJb7voIW9BWZKan/GWnKM
+        FHMOKuVLLFlmWs//SsMvNqpKjCRHbmSspwPkWwmfhOUhDD5+gC49Cc03iah2JvDeVhWKJo5t4eEcs2WT
         l67iQPp2HOZYCf4DcxKefBbA+xyuD/WTdsDCug3vsDbkbda8EUKqYR9ZhjQ2B6/lgzdXodn8Gl5PHYz3
         S3gBIefGc/8xKn0i738eybufqYmIiiNulxFFSSDq0x3oPgkjM34jWfq3SP5oDb+X7ZfwBGJkFGK/ykFJ
         MmC02ck7eopdpgJSMq3szcgnO8PAHt2HFBrllbMjcJi2kJ8UxlhHPaKssh0lxsR+ezktN4dp7fmTotJ6
@@ -145,6 +147,7 @@
 </value>
   </data>
   <data name="ToolStripButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+>>>>>>> origin/First_commit_NewMessage_Branch
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAV1JREFUOE+lkltL
