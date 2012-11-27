@@ -13,7 +13,7 @@ Option Explicit On
 
 
 Namespace My
-
+    
     <Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "9.0.0.0"),  _
      Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
@@ -52,19 +52,6 @@ Namespace My
 #End If
                 Return defaultInstance
             End Get
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Αργύρης\Documents\Visual S"& _ 
-            "tudio 2008\Projects\ΑΔΟΠΣΕ\sms-mail-project\sms-mail-project\test.accdb")>  _
-        Public Property OleDbConnectionString() As String
-            Get
-                Return CType(Me("OleDbConnectionString"),String)
-            End Get
-            Set
-                Me("OleDbConnectionString") = value
-            End Set
         End Property
         
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
@@ -146,6 +133,19 @@ Namespace My
             End Get
             Set
                 Me("security") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Αργύρης\Documents\Visual S"& _ 
+            "tudio 2008\Projects\ΑΔΟΠΣΕ\sms-mail-project\sms-mail-project\test.accdb")>  _
+        Public Property OleDbConnectionString() As String
+            Get
+                Return CType(Me("OleDbConnectionString"),String)
+            End Get
+            Set
+                Me("OleDbConnectionString") = value
             End Set
         End Property
     End Class

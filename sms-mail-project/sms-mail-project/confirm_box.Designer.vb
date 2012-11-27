@@ -50,7 +50,7 @@ Partial Class confirm_box
         '
         'yes_btn
         '
-        Me.yes_btn.Location = New System.Drawing.Point(59, 78)
+        Me.yes_btn.Location = New System.Drawing.Point(62, 78)
         Me.yes_btn.Name = "yes_btn"
         Me.yes_btn.Size = New System.Drawing.Size(75, 23)
         Me.yes_btn.TabIndex = 2

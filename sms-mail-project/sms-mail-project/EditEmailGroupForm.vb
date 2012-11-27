@@ -16,7 +16,7 @@ Public Class EditEmailGroupForm
         'at the ShowGroupForm and then a datagridview is filled with them using dataSet
         Dim selectquery As String = "SELECT * FROM " & Form1.selectemailgroup & ";"
         Try
-            Dim connection = New OleDbConnection(My.Settings.OleDbConnectionString)
+            Dim connection = New OleDbConnection(My.Settings.testConnectionString)
             Dim command = New OleDbDataAdapter(selectquery, connection)
             Dim ds As Data.DataSet = New Data.DataSet
             command.Fill(ds)
@@ -39,7 +39,7 @@ Public Class EditEmailGroupForm
             "','" & FirstNameTextBox.Text & "','" & LastNameTextBox.Text & "');"
 
             Try
-                con = New OleDbConnection(My.Settings.OleDbConnectionString)
+                con = New OleDbConnection(My.Settings.testConnectionString)
                 com = New OleDbCommand(strSQL, con)
                 con.Open()
                 com.ExecuteNonQuery()
@@ -65,7 +65,7 @@ Public Class EditEmailGroupForm
 
         Try
 
-            con = New OleDbConnection(My.Settings.OleDbConnectionString)
+            con = New OleDbConnection(My.Settings.testConnectionString)
             com = New OleDbCommand(strSQL, con)
             con.Open()
             com.ExecuteNonQuery()

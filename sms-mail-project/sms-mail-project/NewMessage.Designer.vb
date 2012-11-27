@@ -49,7 +49,7 @@ Partial Class NewMessage
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip
-        Me.SendStripButton1 = New System.Windows.Forms.ToolStripButton
+        Me.SendTool_btn = New System.Windows.Forms.ToolStripButton
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator
         Me.SaveStripButton2 = New System.Windows.Forms.ToolStripButton
         Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator
@@ -61,15 +61,17 @@ Partial Class NewMessage
         Me.Label1 = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
-        Me.SendTo = New System.Windows.Forms.TextBox
         Me.From_tb = New System.Windows.Forms.TextBox
         Me.Subject = New System.Windows.Forms.TextBox
         Me.MessageRichTextBox = New System.Windows.Forms.RichTextBox
         Me.SearchAccount_btn = New System.Windows.Forms.Button
         Me.SearchGroupBtn = New System.Windows.Forms.Button
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip
+        Me.status_pb = New System.Windows.Forms.ToolStripProgressBar
         Me.SendTo_tb = New System.Windows.Forms.TextBox
         Me.MenuStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
+        Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -78,7 +80,7 @@ Partial Class NewMessage
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(567, 24)
-        Me.MenuStrip1.TabIndex = 1
+        Me.MenuStrip1.TabIndex = 4
         Me.MenuStrip1.Text = "MenuStrip1"
         '
         'FileToolStripMenuItem
@@ -253,20 +255,20 @@ Partial Class NewMessage
         '
         'ToolStrip1
         '
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SendStripButton1, Me.ToolStripSeparator5, Me.SaveStripButton2, Me.ToolStripSeparator6, Me.CutStripButton3, Me.CopyStripButton4, Me.PasteStripButton5, Me.ToolStripSeparator7, Me.ToolStripButton6})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SendTool_btn, Me.ToolStripSeparator5, Me.SaveStripButton2, Me.ToolStripSeparator6, Me.CutStripButton3, Me.CopyStripButton4, Me.PasteStripButton5, Me.ToolStripSeparator7, Me.ToolStripButton6})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 24)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(567, 25)
-        Me.ToolStrip1.TabIndex = 2
+        Me.ToolStrip1.TabIndex = 5
         Me.ToolStrip1.Text = "ToolStrip1"
         '
-        'SendStripButton1
+        'SendTool_btn
         '
-        Me.SendStripButton1.Image = CType(resources.GetObject("SendStripButton1.Image"), System.Drawing.Image)
-        Me.SendStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.SendStripButton1.Name = "SendStripButton1"
-        Me.SendStripButton1.Size = New System.Drawing.Size(53, 22)
-        Me.SendStripButton1.Text = "Send"
+        Me.SendTool_btn.Image = CType(resources.GetObject("SendTool_btn.Image"), System.Drawing.Image)
+        Me.SendTool_btn.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.SendTool_btn.Name = "SendTool_btn"
+        Me.SendTool_btn.Size = New System.Drawing.Size(53, 22)
+        Me.SendTool_btn.Text = "Send"
         '
         'ToolStripSeparator5
         '
@@ -337,7 +339,7 @@ Partial Class NewMessage
         Me.Label1.Location = New System.Drawing.Point(16, 68)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(51, 13)
-        Me.Label1.TabIndex = 3
+        Me.Label1.TabIndex = 9
         Me.Label1.Text = "Send To:"
         '
         'Label2
@@ -346,7 +348,7 @@ Partial Class NewMessage
         Me.Label2.Location = New System.Drawing.Point(16, 98)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(33, 13)
-        Me.Label2.TabIndex = 4
+        Me.Label2.TabIndex = 10
         Me.Label2.Text = "From:"
         '
         'Label3
@@ -355,19 +357,13 @@ Partial Class NewMessage
         Me.Label3.Location = New System.Drawing.Point(16, 125)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(46, 13)
-        Me.Label3.TabIndex = 5
+        Me.Label3.TabIndex = 11
         Me.Label3.Text = "Subject:"
-        '
-        'SendTo
-        '
-        Me.SendTo.Location = New System.Drawing.Point(86, 68)
-        Me.SendTo.Multiline = True
-        Me.SendTo.Name = "SendTo"
-        Me.SendTo.Size = New System.Drawing.Size(423, 20)
-        Me.SendTo.TabIndex = 6
         '
         'From_tb
         '
+        Me.From_tb.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.From_tb.Enabled = False
         Me.From_tb.Location = New System.Drawing.Point(86, 95)
         Me.From_tb.Multiline = True
@@ -377,62 +373,83 @@ Partial Class NewMessage
         '
         'Subject
         '
+        Me.Subject.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Subject.Location = New System.Drawing.Point(86, 122)
         Me.Subject.Multiline = True
         Me.Subject.Name = "Subject"
         Me.Subject.Size = New System.Drawing.Size(423, 20)
-        Me.Subject.TabIndex = 8
+        Me.Subject.TabIndex = 2
         '
         'MessageRichTextBox
         '
+        Me.MessageRichTextBox.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.MessageRichTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MessageRichTextBox.Location = New System.Drawing.Point(35, 167)
         Me.MessageRichTextBox.Name = "MessageRichTextBox"
         Me.MessageRichTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth
         Me.MessageRichTextBox.Size = New System.Drawing.Size(502, 273)
-        Me.MessageRichTextBox.TabIndex = 9
+        Me.MessageRichTextBox.TabIndex = 3
         Me.MessageRichTextBox.Text = ""
         '
         'SearchAccount_btn
         '
-        Me.SearchAccount_btn.Location = New System.Drawing.Point(530, 97)
+        Me.SearchAccount_btn.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.SearchAccount_btn.Location = New System.Drawing.Point(526, 95)
         Me.SearchAccount_btn.Name = "SearchAccount_btn"
         Me.SearchAccount_btn.Size = New System.Drawing.Size(25, 20)
-        Me.SearchAccount_btn.TabIndex = 10
+        Me.SearchAccount_btn.TabIndex = 8
         Me.SearchAccount_btn.Text = "..."
         Me.SearchAccount_btn.UseVisualStyleBackColor = True
         Me.SearchAccount_btn.Visible = False
         '
         'SearchGroupBtn
         '
-        Me.SearchGroupBtn.Location = New System.Drawing.Point(530, 69)
+        Me.SearchGroupBtn.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.SearchGroupBtn.Location = New System.Drawing.Point(526, 66)
         Me.SearchGroupBtn.Name = "SearchGroupBtn"
         Me.SearchGroupBtn.Size = New System.Drawing.Size(25, 20)
-        Me.SearchGroupBtn.TabIndex = 11
+        Me.SearchGroupBtn.TabIndex = 7
         Me.SearchGroupBtn.Text = "..."
         Me.SearchGroupBtn.UseVisualStyleBackColor = True
-        Me.SearchGroupBtn.Visible = False
+        '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.status_pb})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 474)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(567, 22)
+        Me.StatusStrip1.SizingGrip = False
+        Me.StatusStrip1.TabIndex = 6
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'status_pb
+        '
+        Me.status_pb.Name = "status_pb"
+        Me.status_pb.Size = New System.Drawing.Size(150, 16)
         '
         'SendTo_tb
         '
-        Me.SendTo_tb.Location = New System.Drawing.Point(86, 70)
-        Me.SendTo_tb.Multiline = True
+        Me.SendTo_tb.Enabled = False
+        Me.SendTo_tb.Location = New System.Drawing.Point(86, 66)
         Me.SendTo_tb.Name = "SendTo_tb"
         Me.SendTo_tb.Size = New System.Drawing.Size(423, 20)
-        Me.SendTo_tb.TabIndex = 6
+        Me.SendTo_tb.TabIndex = 12
         '
         'NewMessage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(567, 496)
+        Me.Controls.Add(Me.SendTo_tb)
+        Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.SearchGroupBtn)
         Me.Controls.Add(Me.SearchAccount_btn)
         Me.Controls.Add(Me.MessageRichTextBox)
         Me.Controls.Add(Me.Subject)
         Me.Controls.Add(Me.From_tb)
-        Me.Controls.Add(Me.SendTo_tb)
-        Me.Controls.Add(Me.SendTo)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -446,6 +463,8 @@ Partial Class NewMessage
         Me.MenuStrip1.PerformLayout()
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
+        Me.StatusStrip1.ResumeLayout(False)
+        Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -458,11 +477,10 @@ Partial Class NewMessage
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents CloseToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
-    Friend WithEvents SendStripButton1 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents SendTool_btn As System.Windows.Forms.ToolStripButton
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents SendTo As System.Windows.Forms.TextBox
     Friend WithEvents From_tb As System.Windows.Forms.TextBox
     Friend WithEvents Subject As System.Windows.Forms.TextBox
     Friend WithEvents MessageRichTextBox As System.Windows.Forms.RichTextBox
@@ -494,5 +512,7 @@ Partial Class NewMessage
     Friend WithEvents ToolStripSeparator7 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ToolStripButton6 As System.Windows.Forms.ToolStripButton
     Friend WithEvents SearchGroupBtn As System.Windows.Forms.Button
+    Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
+    Friend WithEvents status_pb As System.Windows.Forms.ToolStripProgressBar
     Friend WithEvents SendTo_tb As System.Windows.Forms.TextBox
 End Class

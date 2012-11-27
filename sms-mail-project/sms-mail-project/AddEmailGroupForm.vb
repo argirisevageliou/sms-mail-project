@@ -21,7 +21,7 @@ Public Class AddEmailGroupForm
             & "(Email char(30) PRIMARY KEY,FirstName char(30), LastName char(30));"
 
             Try
-                connection = New OleDbConnection(My.Settings.OleDbConnectionString)
+                connection = New OleDbConnection(My.Settings.testConnectionString)
                 command = New OleDbCommand(createquery, connection)
                 connection.Open()
                 command.ExecuteNonQuery()

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{577AE984-C5A1-4C51-B9DC-4C7ADE85D2FB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -51,6 +51,25 @@
     <DocumentationFile>sms-mail-project.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DocumentationFile>sms-mail-project.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DocumentationFile>sms-mail-project.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -85,6 +104,12 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChooseReceivers_Form.Designer.vb">
+      <DependentUpon>ChooseReceivers_Form.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ChooseReceivers_Form.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="EditEmailGroupForm.Designer.vb">
       <DependentUpon>EditEmailGroupForm.vb</DependentUpon>
     </Compile>
@@ -99,6 +124,12 @@
     </Compile>
     <Compile Include="CueBanner.vb">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ResultsForm.Designer.vb">
+      <DependentUpon>ResultsForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ResultsForm.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="ShowEmailGroupsForm.Designer.vb">
       <DependentUpon>ShowEmailGroupsForm.vb</DependentUpon>
@@ -153,6 +184,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ChooseReceivers_Form.resx">
+      <DependentUpon>ChooseReceivers_Form.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditEmailGroupForm.resx">
       <DependentUpon>EditEmailGroupForm.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -160,6 +194,9 @@
     <EmbeddedResource Include="Account_Manager.resx">
       <DependentUpon>Account_Manager.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResultsForm.resx">
+      <DependentUpon>ResultsForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowEmailGroupsForm.resx">
       <DependentUpon>ShowEmailGroupsForm.vb</DependentUpon>

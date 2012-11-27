@@ -11,24 +11,24 @@ Public Class Account_Manager
     Public Shared ssl As String = ""
     Public Shared authedication As String = ""
 
-    Dim pressed As String = "" ' Help variable in order to determine the background worker action
-    Dim sent_flag As Boolean = False ' (finish button) if email sent show dialog for saving account settings
+    Dim pressed As String = "" ' βοηθητική μεταβλητή για να καθορίζω τι θα εκτελεί ο background worker.
+    Dim sent_flag As Boolean = False ' (finish button) flag για το αν αποστάλθηκε το email ελέγχου.
 
-    'Store values from three textboxes in order to have access from confirm_box form
+    'αποθήκευση της τιμής των 3 tb για να έχω πρόσβαση από την confirm_box φόρμα.
     Public Shared email_tb_value As String = ""
     Public Shared name_tb_value As String = ""
     Public Shared pass_tb_value As String = ""
 
-    ' internet connection check
+    ' έλεγχος σύνδεσης στο internet (δήλωση).
     Private Declare Function InternetGetConnectedState Lib "wininet" _
   (ByRef conn As Long, ByVal val As Long) As Boolean
 
-    ' Check if the email text box is empty OR if the email format is wrong
+    ' έλεγχος περιεχομένου του tb.
     Private Sub email_tb_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles email_tb.Leave
 
-        ' check with regular expression if email format is correct
+        ' έλεγχος αν το περιεχόμενο έχει τη σωστή μορφή (email)
         Dim correct_mail_Format As Boolean = Regex.IsMatch(email_tb.Text, "^([0-9a-zA-Z]([-\.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$")
-        If (email_tb.Text = "") Then ' visible = true for warning label
+        If (email_tb.Text = "") Then '
             checkMail_lb.Visible = True
             checkMail_lb.Text = "The E-mail Address field must not be empty!!"
         ElseIf (correct_mail_Format = False) Then
@@ -40,7 +40,7 @@ Public Class Account_Manager
 
     End Sub
 
-    ' Check if the password text box is empty
+    ' έλεγχος περιεχομένου του tb.
     Private Sub pass_tb_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pass_tb.Leave
 
         If (pass_tb.Text = "") Then
@@ -51,7 +51,7 @@ Public Class Account_Manager
 
     End Sub
 
-    ' Check if the name text box is empty
+    ' έλεγχος περιεχομένου του tb.
     Private Sub name_tb_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles name_tb.Leave
 
         If (name_tb.Text = "") Then
@@ -66,14 +66,14 @@ Public Class Account_Manager
 
     End Sub
 
-    ' Exit from manager account form
+    ' έξοδος από τη φόρμα με πάτημα του cancel.
     Private Sub cancel_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cancel_btn.Click
 
         Me.Close()
 
     End Sub
 
-    ' on load check if there are stored settings. If there are display details about the account. if not create new account
+    ' κατά τη φόρτωση της φόρμας έλεγχος για το αν υπάρχει ήση ρυθμισμένος λογαριασμός.
     Private Sub Account_Manager_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         If (My.Settings.email <> "" And My.Settings.name <> "" And My.Settings.password <> "" And _
@@ -112,24 +112,26 @@ Public Class Account_Manager
 
     End Sub
 
-    ' next button pressed, check for default settings
+    ' κουμπί next ή finish.
     Private Sub next_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles next_btn.Click
 
         If (next_btn.Text = "Next") Then
 
-            ' next button pressed, if all fields have correct values i search for default setting
+            ' αν όλα τα text boxes έχουν σωστές τιμές ψάχνω για default ρυθμίσεις του λογαριασμού.
             If (checkMail_lb.Visible = False And checkPass_lb.Visible = False And name_tb.Text <> "") Then
 
                 email_tb.ReadOnly = True
                 pass_tb.ReadOnly = True
                 name_tb.ReadOnly = True
                 Dim url As String = "https://autoconfig-live.mozillamessaging.com/autoconfig/v1.1/"
-                ' concat url with domain name of account e.g url/gmail.com
+
+                ' βάζω πίσω από το url το domain name του λογαριασμού.
                 Dim tmp_name_address As String = email_tb.Text
                 Dim index As Integer = tmp_name_address.IndexOf("@")
                 Dim domain As String = tmp_name_address.Substring(index + 1)
                 url = String.Concat(url, domain)
 
+                'αναζήτηση default ρυθμίσεων, αλλαγή του κουμπιού σε finish.
                 parseMozillaISPDB(url, domain)
                 next_btn.Text = "Finish"
 
@@ -137,24 +139,24 @@ Public Class Account_Manager
 
         ElseIf (next_btn.Text = "Finish") Then
 
-            ' start background worker with an argument
+            ' εκκίνηση του background worker με ένα argument
             next_btn.Enabled = False
             testAccount_btn.Enabled = False
 
             pressed = "finishPressed"
-            nextFinish_pictbox.Visible = True ' picture box with loading gif graphic
+            nextFinish_pictbox.Visible = True ' εμφάνηση του picture box με το loading gif graphic
             Worker.RunWorkerAsync(pressed)
 
         End If
 
     End Sub
 
-    ' parse htlm file for taking info about default settings
+    ' μέθοδος για parse του htlm για εξαγωγή των default ρυθμίσεων του λογαρισμού.
     Private Sub parseMozillaISPDB(ByVal url As String, ByVal domain As String)
 
         next_btn.Enabled = False
 
-        ' Check if an internet connection exists
+        ' ελέγχω αν υπάρχει σύνδεση στο internet.
         Dim Out As Integer
         If InternetGetConnectedState(Out, 0) = True Then
             status_lb.Text = "status: OK"
@@ -162,18 +164,18 @@ Public Class Account_Manager
             Try
                 Dim result As String = webClient.DownloadString(url)
 
-                ' using HtmlAgilityPack library for parsing the html (xml).
+                ' χρήση του HtmlAgilityPack για να κάνω parse το html(xml).
                 Dim htmldoc As New HtmlAgilityPack.HtmlDocument
 
                 htmldoc.LoadHtml(result)
 
-                ' looking for a node with attribute 'type = smtp' in order to locate outgoing server
+                ' αναζήτηση για τον κόμβο με attribute 'type = smtp' για να εντοπίσω τον outgoing server
                 Dim nodes As HtmlNodeCollection = htmldoc.DocumentNode.SelectNodes("//*[@type='smtp']")
 
-                ' iterate all returning nodes. Normally should return on node.
+                ' ελέγχω όλους τους κόμβους που μου επιστράφησαν. Κανινικά γίνεται επιστροφή ενός κόμβου.
                 For Each node As HtmlNode In nodes
 
-                    'if the name of node is outgoingserver, i iterate the sub-nodes in order to get details like hostname,port etc
+                    'αν το όνομα του κόμβου είναι outgoingserver, ελέγχω τους 'υποκόμβους' του για να πάρω τις ρυθμίσεις που χρειάζομαι.
                     If (node.Name = "outgoingserver") Then
                         Dim nodes_in_outgoing As HtmlNodeCollection = node.ChildNodes
                         For Each tmpnode As HtmlNode In nodes_in_outgoing
@@ -182,7 +184,8 @@ Public Class Account_Manager
                             ElseIf (tmpnode.Name = "port") Then
                                 port = tmpnode.InnerHtml
                                 If (port = "465") Then
-                                    port = "587" ' System.Net.Mail only supports “Explicit SSL” (587) not Implicit SSL (SMTPS - 465) :-(
+                                    port = "587" ' Αν η πόρτα είναι η 465 την αλλάζω σε 587 επέιδή το System.Net.Mail υποστιρίζει μόνο 
+                                    '“Explicit SSL” (587) και όχι Implicit SSL (SMTPS - 465) :-(
                                 End If
                             ElseIf (tmpnode.Name = "sockettype") Then
                                 ssl = tmpnode.InnerHtml
@@ -195,10 +198,9 @@ Public Class Account_Manager
 
             Catch e2 As WebException
 
-                ' if server returns error 404 i activate manual settings
+                ' Αν ο server επιστρέψει error 404 τότε ενεργοποιώ αυτόματα τα manual settings.
                 If (e2.Message = "The remote server returned an error: (404) Not Found.") Then
 
-                    'MsgBox("server Not Found")
                     settings_info_lb.Text = "The program could not find default settings for your account:"
                     manualConf_btn.Visible = True
                     testAccount_btn.Visible = True
@@ -215,7 +217,7 @@ Public Class Account_Manager
 
                 End If
 
-                ' Here i catch the general exception and update status label
+                ' κάνω catch οποιοδήποτε exception δεν έχει πιαστεί παραπάνω.
             Catch e1 As Exception
 
                 status_lb.Text = "status: There is a problem with this action :" & e1.Message
@@ -224,7 +226,7 @@ Public Class Account_Manager
 
             If (server <> "" And port <> "" And ssl <> "" And authedication <> "") Then
 
-                ' successfull parsing with manual settings enabled (Test Again is pressed)
+                ' αν πάρω τις ρυθμίσεις και είμαι σε manual mode (Test Again button)
                 If (manualConf_btn.Enabled = False) Then
 
                     serverConf_tb.Visible = True
@@ -237,7 +239,7 @@ Public Class Account_Manager
                     testAccount_btn.Visible = True
                     server_info_lb.Text = "  Outgoing Server:   SMTP"
 
-                    '  successfull parsing, display details
+                    ' εμφανίζω τις λεπτομέριες του λογαριασμού.
                 Else
 
                     settings_Panel.Visible = True
@@ -257,7 +259,7 @@ Public Class Account_Manager
 
     End Sub
 
-    ' Manual settings for account
+    ' manual ρυθμίσεις για το λογαριασμό
     Private Sub manualConf_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles manualConf_btn.Click
 
         manualConf_btn.Enabled = False
@@ -271,7 +273,7 @@ Public Class Account_Manager
 
     End Sub
 
-    ' test again button, testing for default settings again
+    ' test again button, έλεγχος για ρυθμίσεις ξανά.
     Private Sub panelTest_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles panelTest_btn.Click
 
         panelTest_btn.Enabled = False
@@ -285,34 +287,28 @@ Public Class Account_Manager
 
     End Sub
 
-    ' Test account with sending an email.
+    ' κουμπί test account
     Private Sub testAccount_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles testAccount_btn.Click
 
-        ' start background worker for senting test mail
+        ' εκκίνηση background worker για αποστολή του μηνύματος
         next_btn.Enabled = False
         testAccount_btn.Enabled = False
         pressed = "testAccount"
-        sent_pictbox.Visible = True ' picture box with loading gif graphic
+        sent_pictbox.Visible = True ' picture box με το loading gif graphic
         Worker.RunWorkerAsync(pressed)
 
     End Sub
 
-    ' sent mail if manual settings are not in use
+    ' έλεγχος λογαριασμού μέσω αποστολής email (normal mode).
     Private Function testAccount(ByVal server As String, ByVal port As String) As Boolean
 
-        ' Check if an internet connection exists
+        ' ελέγχω αν υπάρχει σύνδεση στο internet.
         Dim Out As Integer
         If InternetGetConnectedState(Out, 0) = True Then
 
             status_lb.Text = "status: OK"
 
-            Dim MyMailMessage As New MailMessage()
-            MyMailMessage.From = New MailAddress(email_tb.Text, name_tb.Text)
-            MyMailMessage.To.Add(email_tb.Text)
-
-            MyMailMessage.Subject = "Test"
-            MyMailMessage.Body = "This is the test text email"
-
+            'δημιουργία smtp client
             Dim SMTPServer As New SmtpClient(server)
             SMTPServer.Port = port
             SMTPServer.Credentials = New System.Net.NetworkCredential(email_tb.Text, pass_tb.Text)
@@ -322,17 +318,28 @@ Public Class Account_Manager
                 SMTPServer.EnableSsl = True
             End If
 
-            Try
-                SMTPServer.Send(MyMailMessage)
-                status_lb.Text = "status: Email Sent (The test succeeded)"
-                Return True
-            Catch ex As SmtpException
-                status_lb.Text = "status: Email sent failed (" & ex.StatusCode.ToString & ")"
-                Return False
-            Catch ex1 As Exception
-                status_lb.Text = "status: Email sent failed"
-                Return False
-            End Try
+            ' δημιουργία μηνύματος
+
+            Using Mail As New MailMessage
+                Mail.Subject = "Test"
+                Mail.To.Add(email_tb.Text)
+                Mail.From = New MailAddress(email_tb.Text, name_tb.Text)
+                Mail.Body = "This is the test text email"
+                SMTPServer.ServicePoint.MaxIdleTime = 1 ' η σύνδεση στο server κλείνει μετά από 1 sec idle. 
+
+                Try
+                    SMTPServer.Send(Mail)
+                    status_lb.Text = "status: Email Sent (The test succeeded)"
+                    Return True
+                Catch ex As SmtpException
+                    status_lb.Text = "status: Email sent failed (" & ex.StatusCode.ToString & ")"
+                    Return False
+                Catch ex1 As Exception
+                    status_lb.Text = "status: Email sent failed"
+                    Return False
+                End Try
+            End Using
+
         Else
             status_lb.Text = "status: There is a problem with nerwork, email sent failed"
             Return False
@@ -340,7 +347,7 @@ Public Class Account_Manager
 
     End Function
 
-    ' sent mail if manual settings are in use
+    ' έλεγχος λογαριασμού μέσω αποστολής email (manual mode).
     Private Function testAccount() As Boolean
 
         ' Check if an internet connection exists
@@ -349,37 +356,45 @@ Public Class Account_Manager
 
             status_lb.Text = "status: OK"
 
-            Dim MyMailMessage As New MailMessage()
-            MyMailMessage.From = New MailAddress(email_tb.Text, name_tb.Text)
-            MyMailMessage.To.Add(email_tb.Text)
-
-            MyMailMessage.Subject = "Test"
-            MyMailMessage.Body = "This is the test text email"
-
+            'δημιουργία smtp client
             Dim SMTPServer As New SmtpClient(serverConf_tb.Text)
+
             If (portConf_tb.Text = "465") Then
-                SMTPServer.Port = CInt("587") ' System.Net.Mail only supports “Explicit SSL” (587) not Implicit SSL (SMTPS - 465) :-(
+                SMTPServer.Port = CInt("587") 'Αν η πόρτα είναι η 465 την αλλάζω σε 587 επέιδή το System.Net.Mail υποστιρίζει μόνο 
+                '“Explicit SSL” (587) και όχι Implicit SSL (SMTPS - 465) :-(
             Else
                 SMTPServer.Port = CInt(portConf_tb.Text)
             End If
+
             SMTPServer.Credentials = New System.Net.NetworkCredential(email_tb.Text, pass_tb.Text)
-            If (CInt(portConf_tb.Text) = 25) Then
+            If (port = "25") Then
                 SMTPServer.EnableSsl = False
             Else
                 SMTPServer.EnableSsl = True
             End If
 
-            Try
-                SMTPServer.Send(MyMailMessage)
-                status_lb.Text = "status: Email Sent (The test succeeded)"
-                Return True
-            Catch ex As SmtpException
-                status_lb.Text = "status: Email sent failed (" & ex.StatusCode.ToString & ")"
-                Return False
-            Catch ex1 As Exception
-                status_lb.Text = "status: Email sent failed"
-                Return False
-            End Try
+            ' δημιουργία μηνύματος
+
+            Using Mail As New MailMessage
+                Mail.Subject = "Test"
+                Mail.To.Add(email_tb.Text)
+                Mail.From = New MailAddress(email_tb.Text, name_tb.Text)
+                Mail.Body = "This is the test text email"
+                SMTPServer.ServicePoint.MaxIdleTime = 1 ' η σύνδεση στο server κλείνει μετά από 1 sec idle. 
+
+                Try
+                    SMTPServer.Send(Mail)
+                    status_lb.Text = "status: Email Sent (The test succeeded)"
+                    Return True
+                Catch ex As SmtpException
+                    status_lb.Text = "status: Email sent failed (" & ex.StatusCode.ToString & ")"
+                    Return False
+                Catch ex1 As Exception
+                    status_lb.Text = "status: Email sent failed"
+                    Return False
+                End Try
+            End Using
+
         Else
             status_lb.Text = "status: There is a problem with nerwork, email sent failed"
             Return False
@@ -387,7 +402,7 @@ Public Class Account_Manager
 
     End Function
 
-    ' delete the current account
+    ' διαγραφή λογαριασμού
     Private Sub deleleAc_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles deleleAc_btn.Click
 
         My.Settings.email = ""
@@ -422,12 +437,12 @@ Public Class Account_Manager
 
     End Sub
 
-    ' if pressed finish button - try to send a sample mail, and ability to save(create) one account
+    ' αν πατηθεί το finish button - προσπάθεια αποστολής email - δυνατότητα δημιουργίας λογαριασμού
     Private Sub finishBtn()
 
-        ' check if manual settigs are in use
+        ' ελέγχω αν οι manual ρυθμίσεις χρησιμοποιούνται.
         If (manualConf_btn.Enabled = True) Then
-            Dim flag As Boolean = testAccount(server, port) ' sent sample email
+            Dim flag As Boolean = testAccount(server, port) ' αποστολή εμαιλ
             If (flag) Then
                 status_lb.Text = "status: OK"
 
@@ -435,14 +450,14 @@ Public Class Account_Manager
                 pass_tb_value = pass_tb.Text
                 name_tb_value = name_tb.Text
 
-                sent_flag = True ' the mail sent successfully (it used in on Worker_RunWorkerCompleted)
+                sent_flag = True ' το mail στάλθηκε με επιτυχία (χρησιμοποιείτε στο Worker_RunWorkerCompleted)
 
             Else
                 status_lb.Text = "status: Your account seems has problem, please check the settings"
             End If
 
         Else
-            ' check if there are empty fields or fields with illegal values
+            ' ελέγχω αν τα πεδία περιέχουν λάθος τιμές ή είναι άδεια
             If (serverConf_tb.Text <> "" And portConf_tb.Text <> "") Then
                 status_lb.Text = "status: OK"
                 If (IsNumeric(portConf_tb.Text) = False) Then
@@ -450,7 +465,7 @@ Public Class Account_Manager
                     status_lb.Text = "status: Only numbers are permitted in 'port' field"
                 Else
                     status_lb.Text = "status: OK"
-                    Dim flag As Boolean = testAccount() ' sent sample email
+                    Dim flag As Boolean = testAccount() ' αποστολή εμαιλ
                     If (flag) Then
                         status_lb.Text = "status: OK"
 
@@ -458,7 +473,7 @@ Public Class Account_Manager
                         pass_tb_value = pass_tb.Text
                         name_tb_value = name_tb.Text
 
-                        sent_flag = True ' the mail sent successfully (it used in on Worker_RunWorkerCompleted)
+                        sent_flag = True ' το mail στάλθηκε με επιτυχία (χρησιμοποιείτε στο Worker_RunWorkerCompleted))
 
                     Else
                         status_lb.Text = "status: Your account seems has problem, please check the settings"
@@ -471,19 +486,19 @@ Public Class Account_Manager
 
     End Sub
 
-    ' backgroundworker's DoWork method.
+    ' η DoWork μέθοδος του background worker.
     Private Sub Worker_DoWork(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles Worker.DoWork
 
-        ' take the argument and check the value
+        ' παίρνω το argument και ελέγχω τη τιμή
         If (DirectCast(e.Argument(), String) = "testAccount") Then
-            ' check when account is already configured
+            ' ελέγχω αν ο λογαριασμός έχει ήση ρυθμιστεί.
             If (manualConf_btn.Visible = False) Then
                 testAccount(server, port)
-                ' check manual settigs are used
+                ' ελέγχω αν χρησιμοποιούνται οι default ρυθμίσεις
             ElseIf (manualConf_btn.Enabled = True) Then
                 testAccount(server, port)
             Else
-                ' check if there are emty fields or fields with illegal values
+                ' ελέγχω αν τα πεδία περιέχουν λάθος τιμές ή είναι άδεια
                 If (serverConf_tb.Text <> "" And portConf_tb.Text <> "") Then
                     status_lb.Text = "status: OK"
                     If (IsNumeric(portConf_tb.Text) = False) Then
@@ -507,7 +522,7 @@ Public Class Account_Manager
 
     End Sub
 
-    ' backgroundworker's RunWorkerCompleted method.
+    ' η RunWorkerCompleted μέθοδος του background worker.
     Private Sub Worker_RunWorkerCompleted(ByVal sender As System.Object, ByVal e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles Worker.RunWorkerCompleted
 
         ' pictures boxes visible = false
@@ -517,7 +532,7 @@ Public Class Account_Manager
         next_btn.Enabled = True
         testAccount_btn.Enabled = True
 
-        ' check flag. If true, sample mail sent successfully. I display dialog for saving the settings
+        ' έλεγχος του flag. αν είναι true, το sample mail στάλθηκε επιτυχώς. Εμφανίζω το dialog για την αποθήκευση του λογαριασμού.
         If (sent_flag) Then
 
             next_btn.Enabled = True

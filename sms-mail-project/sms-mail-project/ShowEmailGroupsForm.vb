@@ -15,7 +15,7 @@ Public Class ShowEmailGroupsForm
         Dim selectquery As String = "SELECT * FROM emailgroups"
         Try
             Using adapter As New OleDbDataAdapter(selectquery, _
-              My.Settings.OleDbConnectionString)
+              My.Settings.testConnectionString)
                 Dim ds As New DataSet
                 adapter.Fill(ds, "name")
                 EmailGroupsGrid.DataSource = ds.Tables("name")
@@ -52,7 +52,7 @@ Public Class ShowEmailGroupsForm
         Dim deletequery As String = "DELETE * FROM emailgroups where name='" & Form1.selectemailgroup & "';"
         Dim droptablequery As String = "DROP TABLE " & Form1.selectemailgroup & ";"
         Try
-            connection = New OleDbConnection(My.Settings.OleDbConnectionString)
+            connection = New OleDbConnection(My.Settings.testConnectionString)
             command = New OleDbCommand(deletequery, connection)
             connection.Open()
             command.ExecuteNonQuery()
