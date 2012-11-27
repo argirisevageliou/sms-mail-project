@@ -22,6 +22,12 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
+        Dim TreeNode11 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Sent Messages")
+        Dim TreeNode12 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Drafts")
+        Dim TreeNode13 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Messages", New System.Windows.Forms.TreeNode() {TreeNode11, TreeNode12})
+        Dim TreeNode14 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("View Groups")
+        Dim TreeNode15 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Groups", New System.Windows.Forms.TreeNode() {TreeNode14})
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.GerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
@@ -32,154 +38,201 @@ Partial Class Form1
         Me.ManagerAccountToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.ToolStripContainer1 = New System.Windows.Forms.ToolStripContainer
-        Me.ToolStrip2 = New System.Windows.Forms.ToolStrip
-        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton
-        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton
+        Me.Button1 = New System.Windows.Forms.Button
+        Me.Button2 = New System.Windows.Forms.Button
+        Me.Button3 = New System.Windows.Forms.Button
+        Me.Button4 = New System.Windows.Forms.Button
+        Me.TreeView1 = New System.Windows.Forms.TreeView
+        Me.Label1 = New System.Windows.Forms.Label
         Me.MenuStrip1.SuspendLayout()
-        Me.ToolStripContainer1.ContentPanel.SuspendLayout()
-        Me.ToolStripContainer1.SuspendLayout()
-        Me.ToolStrip2.SuspendLayout()
-        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
         '
+        Me.MenuStrip1.BackColor = System.Drawing.Color.DarkViolet
+        Me.MenuStrip1.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(784, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(881, 24)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
         'FileToolStripMenuItem
         '
         Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GerToolStripMenuItem, Me.NewMessageToolStripMenuItem, Me.ToolStripSeparator1, Me.ExitToolStripMenuItem})
+        Me.FileToolStripMenuItem.ForeColor = System.Drawing.Color.Black
+        Me.FileToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(38, 20)
         Me.FileToolStripMenuItem.Text = "&File"
         '
         'GerToolStripMenuItem
         '
         Me.GerToolStripMenuItem.Name = "GerToolStripMenuItem"
-        Me.GerToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
+        Me.GerToolStripMenuItem.Size = New System.Drawing.Size(189, 22)
         Me.GerToolStripMenuItem.Text = "New Group"
         '
         'NewMessageToolStripMenuItem
         '
         Me.NewMessageToolStripMenuItem.Name = "NewMessageToolStripMenuItem"
         Me.NewMessageToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2
-        Me.NewMessageToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
+        Me.NewMessageToolStripMenuItem.Size = New System.Drawing.Size(189, 22)
         Me.NewMessageToolStripMenuItem.Text = "New Message"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(163, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(186, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(189, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'ToolsToolStripMenuItem
         '
         Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ManagerAccountToolStripMenuItem})
+        Me.ToolsToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
-        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(48, 20)
+        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(51, 20)
         Me.ToolsToolStripMenuItem.Text = "&Tools"
         '
         'ManagerAccountToolStripMenuItem
         '
         Me.ManagerAccountToolStripMenuItem.Name = "ManagerAccountToolStripMenuItem"
-        Me.ManagerAccountToolStripMenuItem.Size = New System.Drawing.Size(169, 22)
+        Me.ManagerAccountToolStripMenuItem.Size = New System.Drawing.Size(194, 22)
         Me.ManagerAccountToolStripMenuItem.Text = "Manager Account"
         '
         'HelpToolStripMenuItem
         '
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
+        Me.HelpToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(46, 20)
         Me.HelpToolStripMenuItem.Text = "&Help"
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.AboutToolStripMenuItem.Text = "About"
         '
-        'ToolStripContainer1
+        'Button1
         '
+        Me.Button1.BackColor = System.Drawing.Color.Lavender
+        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
+        Me.Button1.Location = New System.Drawing.Point(12, 27)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(54, 67)
+        Me.Button1.TabIndex = 1
+        Me.Button1.Text = "Home"
+        Me.Button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.Button1.UseVisualStyleBackColor = False
         '
-        'ToolStripContainer1.ContentPanel
+        'Button2
         '
-        Me.ToolStripContainer1.ContentPanel.Controls.Add(Me.ToolStrip2)
-        Me.ToolStripContainer1.ContentPanel.Controls.Add(Me.ToolStrip1)
-        Me.ToolStripContainer1.ContentPanel.Size = New System.Drawing.Size(150, 150)
-        Me.ToolStripContainer1.Location = New System.Drawing.Point(0, 78)
-        Me.ToolStripContainer1.Name = "ToolStripContainer1"
-        Me.ToolStripContainer1.Size = New System.Drawing.Size(150, 175)
-        Me.ToolStripContainer1.TabIndex = 1
-        Me.ToolStripContainer1.Text = "ToolStripContainer1"
+        Me.Button2.BackgroundImage = CType(resources.GetObject("Button2.BackgroundImage"), System.Drawing.Image)
+        Me.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.Button2.Location = New System.Drawing.Point(72, 27)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(63, 67)
+        Me.Button2.TabIndex = 2
+        Me.Button2.Text = "Messages"
+        Me.Button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.Button2.UseVisualStyleBackColor = True
         '
-        'ToolStrip2
+        'Button3
         '
-        Me.ToolStrip2.Dock = System.Windows.Forms.DockStyle.None
-        Me.ToolStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton2})
-        Me.ToolStrip2.Location = New System.Drawing.Point(1, 54)
-        Me.ToolStrip2.Name = "ToolStrip2"
-        Me.ToolStrip2.Size = New System.Drawing.Size(89, 25)
-        Me.ToolStrip2.TabIndex = 1
-        Me.ToolStrip2.Text = "ToolStrip2"
+        Me.Button3.BackgroundImage = CType(resources.GetObject("Button3.BackgroundImage"), System.Drawing.Image)
+        Me.Button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.Button3.Location = New System.Drawing.Point(141, 27)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(52, 67)
+        Me.Button3.TabIndex = 3
+        Me.Button3.Text = "Groups"
+        Me.Button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.Button3.UseVisualStyleBackColor = True
         '
-        'ToolStripButton2
+        'Button4
         '
-        Me.ToolStripButton2.Image = Global.sms_mail_project.My.Resources.Resources.groups
-        Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton2.Name = "ToolStripButton2"
-        Me.ToolStripButton2.Size = New System.Drawing.Size(77, 22)
-        Me.ToolStripButton2.Text = "    Groups"
+        Me.Button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Button4.Image = CType(resources.GetObject("Button4.Image"), System.Drawing.Image)
+        Me.Button4.Location = New System.Drawing.Point(199, 27)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(61, 67)
+        Me.Button4.TabIndex = 4
+        Me.Button4.Text = "Accounts"
+        Me.Button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.Button4.UseVisualStyleBackColor = True
         '
-        'ToolStrip1
+        'TreeView1
         '
-        Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.None
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 25)
-        Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(90, 25)
-        Me.ToolStrip1.TabIndex = 0
-        Me.ToolStrip1.Text = "ToolStrip1"
+        Me.TreeView1.BackColor = System.Drawing.Color.DodgerBlue
+        Me.TreeView1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TreeView1.ItemHeight = 25
+        Me.TreeView1.LineColor = System.Drawing.Color.DeepSkyBlue
+        Me.TreeView1.Location = New System.Drawing.Point(0, 150)
+        Me.TreeView1.Name = "TreeView1"
+        TreeNode11.BackColor = System.Drawing.Color.Chartreuse
+        TreeNode11.Name = "Node1"
+        TreeNode11.Text = "Sent Messages"
+        TreeNode12.BackColor = System.Drawing.Color.Chartreuse
+        TreeNode12.Name = "Node2"
+        TreeNode12.Text = "Drafts"
+        TreeNode13.BackColor = System.Drawing.Color.BlueViolet
+        TreeNode13.Name = "Node0"
+        TreeNode13.NodeFont = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        TreeNode13.Text = "Messages"
+        TreeNode14.BackColor = System.Drawing.Color.Chartreuse
+        TreeNode14.Name = "Node4"
+        TreeNode14.Text = "View Groups"
+        TreeNode15.BackColor = System.Drawing.Color.BlueViolet
+        TreeNode15.Name = "Node3"
+        TreeNode15.NodeFont = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        TreeNode15.Text = "Groups"
+        Me.TreeView1.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode13, TreeNode15})
+        Me.TreeView1.Scrollable = False
+        Me.TreeView1.Size = New System.Drawing.Size(135, 223)
+        Me.TreeView1.TabIndex = 5
         '
-        'ToolStripButton1
+        'Label1
         '
-        Me.ToolStripButton1.Image = Global.sms_mail_project.My.Resources.Resources.messages
-        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(78, 22)
-        Me.ToolStripButton1.Text = "Messages"
+        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.DarkViolet
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(-3, 132)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(45, 15)
+        Me.Label1.TabIndex = 6
+        Me.Label1.Text = "Home"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(784, 562)
-        Me.Controls.Add(Me.ToolStripContainer1)
+        Me.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.ClientSize = New System.Drawing.Size(881, 562)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.TreeView1)
+        Me.Controls.Add(Me.Button4)
+        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.MenuStrip1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Form1"
-        Me.Text = "Form1"
+        Me.Text = "Sms & Email Application Center -  Free Edition"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
-        Me.ToolStripContainer1.ContentPanel.ResumeLayout(False)
-        Me.ToolStripContainer1.ContentPanel.PerformLayout()
-        Me.ToolStripContainer1.ResumeLayout(False)
-        Me.ToolStripContainer1.PerformLayout()
-        Me.ToolStrip2.ResumeLayout(False)
-        Me.ToolStrip2.PerformLayout()
-        Me.ToolStrip1.ResumeLayout(False)
-        Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -194,10 +247,11 @@ Partial Class Form1
     Friend WithEvents ExitToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ManagerAccountToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AboutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripContainer1 As System.Windows.Forms.ToolStripContainer
-    Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
-    Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStrip2 As System.Windows.Forms.ToolStrip
-    Friend WithEvents ToolStripButton2 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents Button4 As System.Windows.Forms.Button
+    Friend WithEvents TreeView1 As System.Windows.Forms.TreeView
+    Friend WithEvents Label1 As System.Windows.Forms.Label
 
 End Class
