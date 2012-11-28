@@ -54,7 +54,7 @@
   <ItemGroup>
     <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Desktop\HtmlAgilityPack.dll</HintPath>
+      <HintPath>..\..\..\sms-mail-project\sms-mail-project\sms-mail-project\bin\Debug\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

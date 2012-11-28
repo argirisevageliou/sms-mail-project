@@ -1,4 +1,5 @@
 ﻿Imports System.Net.Mail
+Imports System.Data.OleDb
 
 Public Class NewMessage
 
@@ -79,6 +80,25 @@ Public Class NewMessage
             'Εδω βαζουμε try catch εντολες ετσι ωστε να προλαβουμε το λαθος για να μην το δει ο χρηστης
             Try
                 SMTP.Send(Mail)
+                '''''''''''''''''''''''''''''''''''''''''''''''''''''
+                Dim connection As OleDbConnection
+                Dim command As OleDbCommand
+                Dim timeStamp As DateTime = DateTime.Now
+                Dim insertquery As String = "INSERT INTO sentemails(subject,senders,mail,hmer_wra) VALUES('" & Subject.Text & _
+                    "','" & SendTo_tb.Text & "','" & MessageRichTextBox.Text & "','" & timeStamp & "');"
+
+                Try
+                    connection = New OleDbConnection(My.Settings.testConnectionString)
+                    command = New OleDbCommand(insertquery, connection)
+                    connection.Open()
+                    command.ExecuteNonQuery()
+                    MsgBox("Email saved to sentemails")
+                    connection.Close()
+
+                Catch ex As Exception
+                    MessageBox.Show(ex.Message)
+                End Try
+                ''''''''''''''''''''''''''''''''''''''''
                 close_flag = True ' εδω βαζουμε μια μεταβλητη σημαια καταλληλη για να κλεινει η φορμα χωρις να μας βγαζει το μηνυμα για το αν ειμαστε σιγουροι να κλεισουμε το παραθυρο η οχι
                 Me.Close()
                 MsgBox("Message Sent!!!")
@@ -184,5 +204,25 @@ Public Class NewMessage
         MessageRichTextBox.Paste()
     End Sub
 
-    
+
+    Private Sub SaveStripButton2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveStripButton2.Click
+        Dim connection As OleDbConnection
+        Dim command As OleDbCommand
+        Dim timeStamp As DateTime = DateTime.Now
+        Dim insertquery As String = "INSERT INTO draftemails(subject,senders,mail,hmer_wra) VALUES('" & Subject.Text & _
+            "','" & SendTo_tb.Text & "','" & MessageRichTextBox.Text & "','" & timeStamp & "');"
+
+        Try
+            connection = New OleDbConnection(My.Settings.testConnectionString)
+            command = New OleDbCommand(insertquery, connection)
+            connection.Open()
+            command.ExecuteNonQuery()
+            MsgBox("Email saved to draftemails")
+            connection.Close()
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        Me.Close()
+    End Sub
 End Class
