@@ -34,6 +34,7 @@ Partial Class EditEmailGroupForm
         Me.Alertlabel = New System.Windows.Forms.Label
         Me.DeleteContactBtn = New System.Windows.Forms.Button
         Me.AlertEmail = New System.Windows.Forms.Label
+        Me.ModifyContactBtn = New System.Windows.Forms.Button
         CType(Me.ContactsGrid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -145,11 +146,21 @@ Partial Class EditEmailGroupForm
         Me.AlertEmail.Text = "Wrong Email Format"
         Me.AlertEmail.Visible = False
         '
+        'ModifyContactBtn
+        '
+        Me.ModifyContactBtn.Location = New System.Drawing.Point(448, 122)
+        Me.ModifyContactBtn.Name = "ModifyContactBtn"
+        Me.ModifyContactBtn.Size = New System.Drawing.Size(104, 23)
+        Me.ModifyContactBtn.TabIndex = 12
+        Me.ModifyContactBtn.Text = "Modify contact"
+        Me.ModifyContactBtn.UseVisualStyleBackColor = True
+        '
         'EditEmailGroupForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(584, 562)
+        Me.Controls.Add(Me.ModifyContactBtn)
         Me.Controls.Add(Me.AlertEmail)
         Me.Controls.Add(Me.DeleteContactBtn)
         Me.Controls.Add(Me.Alertlabel)
@@ -181,4 +192,5 @@ Partial Class EditEmailGroupForm
     Friend WithEvents Alertlabel As System.Windows.Forms.Label
     Friend WithEvents DeleteContactBtn As System.Windows.Forms.Button
     Friend WithEvents AlertEmail As System.Windows.Forms.Label
+    Friend WithEvents ModifyContactBtn As System.Windows.Forms.Button
 End Class
