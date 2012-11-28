@@ -5,14 +5,11 @@
             <section name="sms_mail_project.My.MySettings" type="System.Configuration.ClientSettingsSection, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false" />
         </sectionGroup>
     </configSections>
-<<<<<<< HEAD
     <connectionStrings>
         <add name="sms_mail_project.My.MySettings.testConnectionString"
             connectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\test.accdb"
             providerName="System.Data.OleDb" />
     </connectionStrings>
-=======
->>>>>>> origin/Account_Manager
     <system.diagnostics>
         <sources>
             <!-- This section defines the logging configuration for My.Application.Log -->
@@ -37,10 +34,6 @@
     </system.diagnostics>
     <userSettings>
         <sms_mail_project.My.MySettings>
-<<<<<<< HEAD
-            <setting name="OleDbConnectionString" serializeAs="String">
-                <value>Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Αργύρης\Documents\Visual Studio 2008\Projects\ΑΔΟΠΣΕ\sms-mail-project\sms-mail-project\test.accdb</value>
-=======
             <setting name="password" serializeAs="String">
                 <value />
             </setting>
@@ -58,8 +51,16 @@
             </setting>
             <setting name="security" serializeAs="String">
                 <value />
->>>>>>> origin/Account_Manager
+<<<<<<< HEAD
+=======
+            </setting>
+            <setting name="OleDbConnectionString" serializeAs="String">
+                <value>Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Αργύρης\Documents\Visual Studio 2008\Projects\ΑΔΟΠΣΕ\sms-mail-project\sms-mail-project\test.accdb</value>
+>>>>>>> origin/Sent_Group_Mails
             </setting>
         </sms_mail_project.My.MySettings>
     </userSettings>
 </configuration>
+
+
+

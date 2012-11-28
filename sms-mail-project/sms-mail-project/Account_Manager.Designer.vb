@@ -175,6 +175,7 @@ Partial Class Account_Manager
         Me.settings_Panel.Controls.Add(Me.portConf_tb)
         Me.settings_Panel.Controls.Add(Me.serverConf_tb)
         Me.settings_Panel.Controls.Add(Me.server_info_lb)
+        Me.settings_Panel.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.settings_Panel.Location = New System.Drawing.Point(35, 167)
         Me.settings_Panel.Name = "settings_Panel"
         Me.settings_Panel.Size = New System.Drawing.Size(488, 111)

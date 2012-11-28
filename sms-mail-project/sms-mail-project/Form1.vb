@@ -1,5 +1,6 @@
 ﻿Imports System.Net.Mail
 
+
 Public Class Form1
     ''' <summary>
     ''' An object that converts RTF to HTML
@@ -193,7 +194,13 @@ Public Class Form1
 
 
     Private Sub NewMessageToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NewMessageToolStripMenuItem.Click
-        NewMessage.Show()
+
+        Dim newmsg As NewMessage
+        newmsg = New NewMessage()
+        newmsg.Show()
+        newmsg.Location = New Point(Me.Left + (Me.Width / 2 - newmsg.Width / 2), Me.Top + (Me.Height / 2 - newmsg.Height / 2))
+
+
     End Sub
 
     Private Sub ManagerAccountToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ManagerAccountToolStripMenuItem.Click

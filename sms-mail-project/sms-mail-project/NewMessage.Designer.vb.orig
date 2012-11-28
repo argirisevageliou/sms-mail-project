@@ -414,6 +414,8 @@ Partial Class NewMessage
         Me.SearchGroupBtn.TabIndex = 7
         Me.SearchGroupBtn.Text = "..."
         Me.SearchGroupBtn.UseVisualStyleBackColor = True
+<<<<<<< HEAD
+=======
         '
         'StatusStrip1
         '
@@ -429,6 +431,7 @@ Partial Class NewMessage
         '
         Me.status_pb.Name = "status_pb"
         Me.status_pb.Size = New System.Drawing.Size(150, 16)
+>>>>>>> origin/Sent_Group_Mails
         '
         'SendTo_tb
         '
