@@ -22,6 +22,7 @@ Partial Class Account_Manager
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Account_Manager))
         Me.Label1 = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
@@ -115,11 +116,11 @@ Partial Class Account_Manager
         'checkName_lb
         '
         Me.checkName_lb.AutoSize = True
-        Me.checkName_lb.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
-        Me.checkName_lb.ForeColor = System.Drawing.SystemColors.GrayText
+        Me.checkName_lb.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.checkName_lb.ForeColor = System.Drawing.SystemColors.ControlText
         Me.checkName_lb.Location = New System.Drawing.Point(294, 103)
         Me.checkName_lb.Name = "checkName_lb"
-        Me.checkName_lb.Size = New System.Drawing.Size(182, 15)
+        Me.checkName_lb.Size = New System.Drawing.Size(198, 16)
         Me.checkName_lb.TabIndex = 6
         Me.checkName_lb.Text = "It will be visible from the receiver"
         '
@@ -167,7 +168,7 @@ Partial Class Account_Manager
         '
         'settings_Panel
         '
-        Me.settings_Panel.BackColor = System.Drawing.SystemColors.Control
+        Me.settings_Panel.BackColor = System.Drawing.Color.GreenYellow
         Me.settings_Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.settings_Panel.Controls.Add(Me.panelTest_btn)
         Me.settings_Panel.Controls.Add(Me.portConf_lb)
@@ -194,10 +195,12 @@ Partial Class Account_Manager
         'portConf_lb
         '
         Me.portConf_lb.AutoSize = True
-        Me.portConf_lb.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.portConf_lb.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.portConf_lb.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.portConf_lb.ForeColor = System.Drawing.SystemColors.ControlText
         Me.portConf_lb.Location = New System.Drawing.Point(415, 14)
         Me.portConf_lb.Name = "portConf_lb"
-        Me.portConf_lb.Size = New System.Drawing.Size(28, 13)
+        Me.portConf_lb.Size = New System.Drawing.Size(33, 13)
         Me.portConf_lb.TabIndex = 4
         Me.portConf_lb.Text = " port"
         Me.portConf_lb.Visible = False
@@ -205,10 +208,12 @@ Partial Class Account_Manager
         'serverConf_lb
         '
         Me.serverConf_lb.AutoSize = True
-        Me.serverConf_lb.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.serverConf_lb.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.serverConf_lb.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.serverConf_lb.ForeColor = System.Drawing.SystemColors.ControlText
         Me.serverConf_lb.Location = New System.Drawing.Point(228, 14)
         Me.serverConf_lb.Name = "serverConf_lb"
-        Me.serverConf_lb.Size = New System.Drawing.Size(116, 13)
+        Me.serverConf_lb.Size = New System.Drawing.Size(137, 13)
         Me.serverConf_lb.TabIndex = 3
         Me.serverConf_lb.Text = "Domain name of server"
         Me.serverConf_lb.Visible = False
@@ -243,7 +248,7 @@ Partial Class Account_Manager
         '
         Me.settings_info_lb.AutoSize = True
         Me.settings_info_lb.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(161, Byte))
-        Me.settings_info_lb.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.settings_info_lb.ForeColor = System.Drawing.SystemColors.ControlText
         Me.settings_info_lb.Location = New System.Drawing.Point(32, 137)
         Me.settings_info_lb.Name = "settings_info_lb"
         Me.settings_info_lb.Size = New System.Drawing.Size(0, 16)
@@ -294,7 +299,7 @@ Partial Class Account_Manager
         '
         Me.status_lb.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.status_lb.Name = "status_lb"
-        Me.status_lb.Size = New System.Drawing.Size(60, 17)
+        Me.status_lb.Size = New System.Drawing.Size(58, 17)
         Me.status_lb.Text = "status: OK"
         '
         'Worker
@@ -327,6 +332,9 @@ Partial Class Account_Manager
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.DodgerBlue
+        Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(563, 360)
         Me.Controls.Add(Me.sent_pictbox)
         Me.Controls.Add(Me.nextFinish_pictbox)
@@ -347,7 +355,9 @@ Partial Class Account_Manager
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
+        Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "Account_Manager"

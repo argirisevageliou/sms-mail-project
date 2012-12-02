@@ -22,6 +22,7 @@ Partial Class EditEmailGroupForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EditEmailGroupForm))
         Me.ContactsGrid = New System.Windows.Forms.DataGridView
         Me.Label1 = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
@@ -42,6 +43,7 @@ Partial Class EditEmailGroupForm
         '
         Me.ContactsGrid.AllowUserToAddRows = False
         Me.ContactsGrid.AllowUserToDeleteRows = False
+        Me.ContactsGrid.BackgroundColor = System.Drawing.Color.GreenYellow
         Me.ContactsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.ContactsGrid.Location = New System.Drawing.Point(28, 52)
         Me.ContactsGrid.Name = "ContactsGrid"
@@ -52,36 +54,42 @@ Partial Class EditEmailGroupForm
         'Label1
         '
         Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.DodgerBlue
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.SystemColors.ControlLight
         Me.Label1.Location = New System.Drawing.Point(39, 259)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(305, 13)
+        Me.Label1.Size = New System.Drawing.Size(410, 15)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Complete all texts and press add to add a new contact to group"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(42, 306)
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(42, 301)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(54, 13)
+        Me.Label2.Size = New System.Drawing.Size(63, 13)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "FirstName"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(42, 345)
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(42, 340)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(55, 13)
+        Me.Label3.Size = New System.Drawing.Size(63, 13)
         Me.Label3.TabIndex = 3
         Me.Label3.Text = "LastName"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(42, 384)
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(42, 380)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(32, 13)
+        Me.Label4.Size = New System.Drawing.Size(37, 13)
         Me.Label4.TabIndex = 4
         Me.Label4.Text = "Email"
         '
@@ -108,18 +116,21 @@ Partial Class EditEmailGroupForm
         '
         'AddContactBtn
         '
+        Me.AddContactBtn.Image = CType(resources.GetObject("AddContactBtn.Image"), System.Drawing.Image)
+        Me.AddContactBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.AddContactBtn.Location = New System.Drawing.Point(42, 441)
         Me.AddContactBtn.Name = "AddContactBtn"
-        Me.AddContactBtn.Size = New System.Drawing.Size(75, 23)
+        Me.AddContactBtn.Size = New System.Drawing.Size(83, 71)
         Me.AddContactBtn.TabIndex = 8
         Me.AddContactBtn.Text = "Add contact"
+        Me.AddContactBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.AddContactBtn.UseVisualStyleBackColor = True
         '
         'Alertlabel
         '
         Me.Alertlabel.AutoSize = True
         Me.Alertlabel.ForeColor = System.Drawing.Color.Red
-        Me.Alertlabel.Location = New System.Drawing.Point(148, 446)
+        Me.Alertlabel.Location = New System.Drawing.Point(176, 441)
         Me.Alertlabel.Name = "Alertlabel"
         Me.Alertlabel.Size = New System.Drawing.Size(123, 13)
         Me.Alertlabel.TabIndex = 9
@@ -128,11 +139,14 @@ Partial Class EditEmailGroupForm
         '
         'DeleteContactBtn
         '
-        Me.DeleteContactBtn.Location = New System.Drawing.Point(448, 80)
+        Me.DeleteContactBtn.Image = CType(resources.GetObject("DeleteContactBtn.Image"), System.Drawing.Image)
+        Me.DeleteContactBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.DeleteContactBtn.Location = New System.Drawing.Point(448, 52)
         Me.DeleteContactBtn.Name = "DeleteContactBtn"
-        Me.DeleteContactBtn.Size = New System.Drawing.Size(104, 23)
+        Me.DeleteContactBtn.Size = New System.Drawing.Size(104, 70)
         Me.DeleteContactBtn.TabIndex = 10
         Me.DeleteContactBtn.Text = "Delete contact"
+        Me.DeleteContactBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.DeleteContactBtn.UseVisualStyleBackColor = True
         '
         'AlertEmail
@@ -148,18 +162,22 @@ Partial Class EditEmailGroupForm
         '
         'ModifyContactBtn
         '
-        Me.ModifyContactBtn.Location = New System.Drawing.Point(448, 122)
+        Me.ModifyContactBtn.Image = CType(resources.GetObject("ModifyContactBtn.Image"), System.Drawing.Image)
+        Me.ModifyContactBtn.Location = New System.Drawing.Point(448, 128)
         Me.ModifyContactBtn.Name = "ModifyContactBtn"
-        Me.ModifyContactBtn.Size = New System.Drawing.Size(104, 23)
+        Me.ModifyContactBtn.Size = New System.Drawing.Size(104, 74)
         Me.ModifyContactBtn.TabIndex = 12
         Me.ModifyContactBtn.Text = "Modify contact"
+        Me.ModifyContactBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.ModifyContactBtn.UseVisualStyleBackColor = True
         '
         'EditEmailGroupForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(584, 562)
+        Me.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.ClientSize = New System.Drawing.Size(617, 562)
         Me.Controls.Add(Me.ModifyContactBtn)
         Me.Controls.Add(Me.AlertEmail)
         Me.Controls.Add(Me.DeleteContactBtn)
@@ -173,6 +191,7 @@ Partial Class EditEmailGroupForm
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ContactsGrid)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "EditEmailGroupForm"
         Me.Text = "Edit Email Group"
         CType(Me.ContactsGrid, System.ComponentModel.ISupportInitialize).EndInit()
