@@ -175,7 +175,7 @@ Partial Class EditEmailGroupForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+        Me.BackColor = System.Drawing.Color.DodgerBlue
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.ClientSize = New System.Drawing.Size(617, 562)
         Me.Controls.Add(Me.ModifyContactBtn)

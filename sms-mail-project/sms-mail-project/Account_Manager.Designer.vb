@@ -116,6 +116,7 @@ Partial Class Account_Manager
         'checkName_lb
         '
         Me.checkName_lb.AutoSize = True
+        Me.checkName_lb.BackColor = System.Drawing.Color.LightSkyBlue
         Me.checkName_lb.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
         Me.checkName_lb.ForeColor = System.Drawing.SystemColors.ControlText
         Me.checkName_lb.Location = New System.Drawing.Point(294, 103)
@@ -299,7 +300,7 @@ Partial Class Account_Manager
         '
         Me.status_lb.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.status_lb.Name = "status_lb"
-        Me.status_lb.Size = New System.Drawing.Size(58, 17)
+        Me.status_lb.Size = New System.Drawing.Size(60, 17)
         Me.status_lb.Text = "status: OK"
         '
         'Worker
@@ -361,7 +362,6 @@ Partial Class Account_Manager
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "Account_Manager"
-        Me.ShowIcon = False
         Me.ShowInTaskbar = False
         Me.Text = "Account Manager"
         Me.settings_Panel.ResumeLayout(False)
