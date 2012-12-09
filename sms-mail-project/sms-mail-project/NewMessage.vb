@@ -14,6 +14,11 @@ Public Class NewMessage
     Public Shared success As Integer 'πόσα στάλθηκαν με επιτυχία
     Public Shared fail As Integer 'πόσα απέτυχαν
 
+    Public Shared isScheduled As Boolean 'αν η αποστολή έχει γίνει τώρα ή έχει προγραμματιστεί για αργότερα.
+    Public Shared sendto_content As String 'μεταφορά του περιεχομένου του sendTo tb στη φόρμα schedule_sendingform
+    Public Shared subject_content As String 'μεταφορά του περιεχομένου του subject tb στη φόρμα schedule_sendingform
+    Public Shared body_content As String ''μεταφορά του περιεχομένου του body tb στη φόρμα schedule_sendingform
+
     Public Shared contacts As String 'χρησιμοποιείτε από την ChooseReceivers_Form για ενημέρωση του SendTo tb.
 
 
@@ -182,17 +187,33 @@ Public Class NewMessage
         contacts = ""
         choose = Nothing
 
+
     End Sub
 
     'SendTool_btn_Click (Από το toolbar)
     Private Sub SendTool_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SendTool_btn.Click
 
-        Dim check As Boolean = PreSendingCheck()
+        Dim sch As New Schedule_SendingForm()
+        sch.StartPosition = FormStartPosition.CenterParent
 
-        If (check) Then
-            startSending()
-            SendTool_btn.Enabled = False
-            SendToolStripMenuItem.Enabled = False
+        sendto_content = SendTo_tb.Text
+        subject_content = Subject.Text
+        body_content = MessageRichTextBox.Text
+
+        sch.ShowDialog()
+        sch = Nothing
+        If (isScheduled) Then
+            Me.Close()
+        Else
+
+            Dim check As Boolean = PreSendingCheck()
+
+            If (check) Then
+                startSending()
+                SendTool_btn.Enabled = False
+                SendToolStripMenuItem.Enabled = False
+            End If
+
         End If
 
     End Sub
@@ -200,12 +221,27 @@ Public Class NewMessage
     'SendToolStripMenuItem_Click (από το menu file)
     Private Sub SendToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SendToolStripMenuItem.Click
 
-        Dim check As Boolean = PreSendingCheck()
+        Dim sch As New Schedule_SendingForm()
+        sch.StartPosition = FormStartPosition.CenterParent
 
-        If (check) Then
-            startSending()
-            SendTool_btn.Enabled = False
-            SendToolStripMenuItem.Enabled = False
+        sendto_content = SendTo_tb.Text
+        subject_content = Subject.Text
+        body_content = MessageRichTextBox.Text
+
+        sch.ShowDialog()
+        sch = Nothing
+        If (isScheduled) Then
+            Me.Close()
+        Else
+
+            Dim check As Boolean = PreSendingCheck()
+
+            If (check) Then
+                startSending()
+                SendTool_btn.Enabled = False
+                SendToolStripMenuItem.Enabled = False
+            End If
+
         End If
 
     End Sub
@@ -219,18 +255,14 @@ Public Class NewMessage
 
             If (SendTo_tb.Text <> "") Then
 
-                Dim tmp_send_to_text As String = SendTo_tb.Text
-
-                Dim start_index As Integer = 0
-                Dim end_index As Integer = 0
                 addresses.Clear()
 
-                For i As Integer = 0 To tmp_send_to_text.Length - 1
-                    If (tmp_send_to_text.Chars(i) = ";") Then
-                        end_index = i
-                        addresses.Add(tmp_send_to_text.Substring(start_index, end_index - start_index))
-                        start_index = end_index + 1
-                    End If
+                Dim splitString As String()
+                'χωρίζω το string με delimeter character το ; και βάζω τις διευθύνσεις στο πίνακα.
+                splitString = SendTo_tb.Text.Split(";")
+
+                For i As Integer = 0 To splitString.Length - 1
+                    addresses.Add(splitString(i))
                 Next
                 Return True ' return true αν το sendTo textbox δεν είναι άδειο.
             End If
@@ -250,9 +282,9 @@ Public Class NewMessage
         Dim Out As Integer
         If InternetGetConnectedState(Out, 0) = True Then
 
-            'Δημιουργία threadpool με 300 frames. 50 περιμένουν για νέα requests.
-            ThreadPool.SetMaxThreads(300, 300)
-            ThreadPool.SetMinThreads(50, 50)
+            'Δημιουργία threadpool με 300 threads. 50 περιμένουν για νέα requests.
+            'ThreadPool.SetMaxThreads(300, 300)
+            'ThreadPool.SetMinThreads(50, 50)
 
             status_lst.Clear()
             success = 0
@@ -284,7 +316,8 @@ Public Class NewMessage
         ' δημιουργία και αρχικοποίηση smtp client.
         Dim client As SmtpClient = New SmtpClient()
         'client.Host = My.Settings.servert
-        client.Host = "smtp.gmail.com"
+        client.Host = My.Settings.server
+        client.Port = My.Settings.port
         If (My.Settings.port = "25") Then
             client.EnableSsl = False
         Else
