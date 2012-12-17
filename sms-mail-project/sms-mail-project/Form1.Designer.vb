@@ -23,11 +23,11 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Dim TreeNode1 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Sent Messages")
-        Dim TreeNode2 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Drafts")
-        Dim TreeNode3 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Messages", New System.Windows.Forms.TreeNode() {TreeNode1, TreeNode2})
-        Dim TreeNode4 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("View Groups")
-        Dim TreeNode5 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Groups", New System.Windows.Forms.TreeNode() {TreeNode4})
+        Dim TreeNode6 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Sent Messages")
+        Dim TreeNode7 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Drafts")
+        Dim TreeNode8 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Messages", New System.Windows.Forms.TreeNode() {TreeNode6, TreeNode7})
+        Dim TreeNode9 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("View Groups")
+        Dim TreeNode10 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Groups", New System.Windows.Forms.TreeNode() {TreeNode9})
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.GerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
@@ -37,6 +37,7 @@ Partial Class Form1
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.ManagerAccountToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.HelpContentsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.Button1 = New System.Windows.Forms.Button
         Me.Button2 = New System.Windows.Forms.Button
@@ -107,16 +108,24 @@ Partial Class Form1
         '
         'HelpToolStripMenuItem
         '
-        Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
+        Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HelpContentsToolStripMenuItem, Me.AboutToolStripMenuItem})
         Me.HelpToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
         Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(46, 20)
         Me.HelpToolStripMenuItem.Text = "&Help"
         '
+        'HelpContentsToolStripMenuItem
+        '
+        Me.HelpContentsToolStripMenuItem.Image = CType(resources.GetObject("HelpContentsToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.HelpContentsToolStripMenuItem.Name = "HelpContentsToolStripMenuItem"
+        Me.HelpContentsToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1
+        Me.HelpContentsToolStripMenuItem.Size = New System.Drawing.Size(195, 22)
+        Me.HelpContentsToolStripMenuItem.Text = "Help Contents"
+        '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(125, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(195, 22)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'Button1
@@ -178,24 +187,24 @@ Partial Class Form1
         Me.TreeView1.LineColor = System.Drawing.Color.DeepSkyBlue
         Me.TreeView1.Location = New System.Drawing.Point(0, 150)
         Me.TreeView1.Name = "TreeView1"
-        TreeNode1.BackColor = System.Drawing.Color.Chartreuse
-        TreeNode1.Name = "Node1"
-        TreeNode1.Text = "Sent Messages"
-        TreeNode2.BackColor = System.Drawing.Color.Chartreuse
-        TreeNode2.Name = "Node2"
-        TreeNode2.Text = "Drafts"
-        TreeNode3.BackColor = System.Drawing.Color.BlueViolet
-        TreeNode3.Name = "Node0"
-        TreeNode3.NodeFont = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        TreeNode3.Text = "Messages"
-        TreeNode4.BackColor = System.Drawing.Color.Chartreuse
-        TreeNode4.Name = "Node4"
-        TreeNode4.Text = "View Groups"
-        TreeNode5.BackColor = System.Drawing.Color.BlueViolet
-        TreeNode5.Name = "Node3"
-        TreeNode5.NodeFont = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        TreeNode5.Text = "Groups"
-        Me.TreeView1.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode3, TreeNode5})
+        TreeNode6.BackColor = System.Drawing.Color.Chartreuse
+        TreeNode6.Name = "Node1"
+        TreeNode6.Text = "Sent Messages"
+        TreeNode7.BackColor = System.Drawing.Color.Chartreuse
+        TreeNode7.Name = "Node2"
+        TreeNode7.Text = "Drafts"
+        TreeNode8.BackColor = System.Drawing.Color.BlueViolet
+        TreeNode8.Name = "Node0"
+        TreeNode8.NodeFont = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        TreeNode8.Text = "Messages"
+        TreeNode9.BackColor = System.Drawing.Color.Chartreuse
+        TreeNode9.Name = "Node4"
+        TreeNode9.Text = "View Groups"
+        TreeNode10.BackColor = System.Drawing.Color.BlueViolet
+        TreeNode10.Name = "Node3"
+        TreeNode10.NodeFont = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        TreeNode10.Text = "Groups"
+        Me.TreeView1.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode8, TreeNode10})
         Me.TreeView1.Scrollable = False
         Me.TreeView1.Size = New System.Drawing.Size(135, 223)
         Me.TreeView1.TabIndex = 5
@@ -246,12 +255,13 @@ Partial Class Form1
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ExitToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ManagerAccountToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents AboutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents Button4 As System.Windows.Forms.Button
     Friend WithEvents TreeView1 As System.Windows.Forms.TreeView
     Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents HelpContentsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents AboutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

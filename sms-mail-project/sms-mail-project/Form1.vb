@@ -43,4 +43,26 @@ Public Class Form1
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
     End Sub
+
+    Private Sub HelpContentsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles HelpContentsToolStripMenuItem.Click
+        System.Windows.Forms.Help.ShowHelp(Me, "MyHelpContents.chm", HelpNavigator.AssociateIndex, ParentForm)
+    End Sub
+
+    Private Sub GerToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GerToolStripMenuItem.Click
+        AddEmailGroupForm.Show()
+    End Sub
+
+    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+        Account_Manager.Show()
+    End Sub
+
+    Private Sub TreeView1_AfterSelect(ByVal sender As System.Object, ByVal e As System.Windows.Forms.TreeViewEventArgs) Handles TreeView1.AfterSelect
+        If (TreeView1.SelectedNode.Text = "View Groups") Then
+            ShowEmailGroupsForm.Show()
+        End If
+    End Sub
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        Me.Show()
+    End Sub
 End Class
