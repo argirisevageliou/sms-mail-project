@@ -27,6 +27,7 @@ Partial Class NewMessage
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.LoadToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.SendToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.AccountSetupToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator
@@ -52,6 +53,7 @@ Partial Class NewMessage
         Me.SendTool_btn = New System.Windows.Forms.ToolStripButton
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator
         Me.SaveStripButton2 = New System.Windows.Forms.ToolStripButton
+        Me.LoadStripButton = New System.Windows.Forms.ToolStripButton
         Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator
         Me.CutStripButton3 = New System.Windows.Forms.ToolStripButton
         Me.CopyStripButton4 = New System.Windows.Forms.ToolStripButton
@@ -85,7 +87,7 @@ Partial Class NewMessage
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.SaveToolStripMenuItem, Me.SendToolStripMenuItem, Me.AccountSetupToolStripMenuItem, Me.ToolStripSeparator1, Me.CloseToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.SaveToolStripMenuItem, Me.LoadToolStripMenuItem, Me.SendToolStripMenuItem, Me.AccountSetupToolStripMenuItem, Me.ToolStripSeparator1, Me.CloseToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.F), System.Windows.Forms.Keys)
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
@@ -106,6 +108,14 @@ Partial Class NewMessage
         Me.SaveToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
         Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.SaveToolStripMenuItem.Text = "Save"
+        '
+        'LoadToolStripMenuItem
+        '
+        Me.LoadToolStripMenuItem.Image = Global.sms_mail_project.My.Resources.Resources.add_button
+        Me.LoadToolStripMenuItem.Name = "LoadToolStripMenuItem"
+        Me.LoadToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.L), System.Windows.Forms.Keys)
+        Me.LoadToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.LoadToolStripMenuItem.Text = "Drafts"
         '
         'SendToolStripMenuItem
         '
@@ -255,7 +265,7 @@ Partial Class NewMessage
         '
         'ToolStrip1
         '
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SendTool_btn, Me.ToolStripSeparator5, Me.SaveStripButton2, Me.ToolStripSeparator6, Me.CutStripButton3, Me.CopyStripButton4, Me.PasteStripButton5, Me.ToolStripSeparator7, Me.ToolStripButton6})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SendTool_btn, Me.ToolStripSeparator5, Me.SaveStripButton2, Me.LoadStripButton, Me.ToolStripSeparator6, Me.CutStripButton3, Me.CopyStripButton4, Me.PasteStripButton5, Me.ToolStripSeparator7, Me.ToolStripButton6})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 24)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(567, 25)
@@ -282,6 +292,14 @@ Partial Class NewMessage
         Me.SaveStripButton2.Name = "SaveStripButton2"
         Me.SaveStripButton2.Size = New System.Drawing.Size(51, 22)
         Me.SaveStripButton2.Text = "Save"
+        '
+        'LoadStripButton
+        '
+        Me.LoadStripButton.Image = Global.sms_mail_project.My.Resources.Resources.add_button
+        Me.LoadStripButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.LoadStripButton.Name = "LoadStripButton"
+        Me.LoadStripButton.Size = New System.Drawing.Size(58, 22)
+        Me.LoadStripButton.Text = "Drafts"
         '
         'ToolStripSeparator6
         '
@@ -515,4 +533,6 @@ Partial Class NewMessage
     Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
     Friend WithEvents status_pb As System.Windows.Forms.ToolStripProgressBar
     Friend WithEvents SendTo_tb As System.Windows.Forms.TextBox
+    Friend WithEvents LoadToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents LoadStripButton As System.Windows.Forms.ToolStripButton
 End Class

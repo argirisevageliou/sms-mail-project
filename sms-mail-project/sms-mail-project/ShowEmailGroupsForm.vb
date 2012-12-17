@@ -4,14 +4,14 @@ Imports System.Data.OleDb
 Imports System.Data.Common
 Public Class ShowEmailGroupsForm
 
-    Private Sub ShowGroups_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        'when this form loads, DataSetFromOleDb function is called
-        DataSetFromOleDb()
+    Private Sub ShowEmailGroups_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        'Όταν φορτώνει αυτή η φόρμα καλείται η μέθοδος DataSetFromOleDb
+        DataSetFromOleDb1()
     End Sub
 
-    Private Sub DataSetFromOleDb()
-        'this function uses a select query to find user's emailgroups and then 
-        'a datagridview is filled with them using dataSet
+    Private Sub DataSetFromOleDb1()
+        'Σε αυτή τη μέθοδο υποβάλλουμε ένα query στη βάση δεδομένων για να βρούμε τα emailgroups
+        'και τα αποτελέσματα γεμίζουν ένα datagridview με χρήση dataSet
         Dim selectquery As String = "SELECT * FROM emailgroups"
         Try
             Using adapter As New OleDbDataAdapter(selectquery, _
@@ -21,33 +21,36 @@ Public Class ShowEmailGroupsForm
                 EmailGroupsGrid.DataSource = ds.Tables("name")
             End Using
         Catch ex As Exception
-            'if a problem occurs, an exception is throwed and appears what the problem is
-            'for example the table already exists
+            'Εμφανίζει το πρόβλημα που προέκυψε
             MessageBox.Show(ex.Message)
         End Try
     End Sub
 
     Private Sub CreateGroupBtn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CreateGroupBtn.Click
-        'if CreateGroupBtn is clicked, AddEmailGroupForm appears(user can add a new emailgroup)
+        'H μέθοδος αυτή καλείται όταν πατήσουμε το createGroup button 
+        'η οποία μας μεταφέρει στην AddEmailGroupForm(ο χρήστης μπορεί να προσθέσει νέο γκρουπ)
         AddEmailGroupForm.Show()
-        'this form closes after
+        'Μετά αυτή η φόρμα κλείνει
         Me.Close()
     End Sub
 
     Private Sub EditGroupBtn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EditGroupBtn.Click
-        'this public variable stores the current cell of the datagridview(we will need this at EditEmailGroupForm)
+        'Σε αυτή την public μεταβλητή που έχουμε ορίσει στην Form1 αποθηκεύουμε ποιο γκρουπ έχουμε
+        'επιλέξει να επεξεργαστούμε από το datagridview(θα το χρειαστούμε στην EditEmailGroupForm)
         Form1.selectemailgroup = EmailGroupsGrid.CurrentRow.Cells("name").Value
-        'EditEmailGroupForm appears and this form is closed
+        'Εμφανίζεται η EditEmailGroupForm και αυτή η φόρμα κλέινει
         EditEmailGroupForm.Show()
         Me.Close()
     End Sub
 
     Private Sub DeleteGroupBtn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DeleteGroupBtn.Click
-        'in this function the emailgroup we have selected from the datagridview is deleted from emailgroups table
-        'and the corresponding table that contains the contacts, is dropped
+        'Αυτή η μέθοδος καλείται όταν πατήσουμε το delete button και διαγράφει το γκρουπ 
+        'αφενός την εγγραφή που υπάρχει στον πίνακα emailgroups
+        'και αφετέρου τον αντίστοιχο πίνακα με τις εγγραφές
         Dim connection As OleDbConnection
         Dim command As OleDbCommand
-        'this public variable stores the current cell of the datagridview
+        'Αυτή η public μεταβλητή που έχουμε ορίσει στην Form1 αποθηκεύει το γκρουπ που 
+        'έχουμε επιλέξει από το datagridview το οποίο θα την χρειαστούμε στο query
         Form1.selectemailgroup = EmailGroupsGrid.CurrentRow.Cells("name").Value
         Dim deletequery As String = "DELETE * FROM emailgroups where name='" & Form1.selectemailgroup & "';"
         Dim droptablequery As String = "DROP TABLE " & Form1.selectemailgroup & ";"
@@ -67,7 +70,7 @@ Public Class ShowEmailGroupsForm
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-        'after that the form refreshes with the updated datagridview 
-        ShowGroups_Load(Me, New System.EventArgs)
+        'Μόλις γίνει η διαγραφή ξαναφορτώνει την φόρμα ενημερωμένη
+        ShowEmailGroups_Load(Me, New System.EventArgs)
     End Sub
 End Class

@@ -5,6 +5,7 @@ Imports System.Threading
 Imports System.ComponentModel
 
 Public Class NewMessage
+    
 
     Dim close_flag As Boolean 'φλαγκ μεταβλητη για την εμφανιση η οχι του μηνυματος dialog box στο κλεισιμο της φορμας
 
@@ -16,6 +17,13 @@ Public Class NewMessage
 
     Public Shared contacts As String 'χρησιμοποιείτε από την ChooseReceivers_Form για ενημέρωση του SendTo tb.
 
+    'Τις χρησιμοποιούμε για να κάνουμε load ένα draft και τα στοιχεία του να φορτωθούν στα πεδία του
+    'NewMessage
+    Public Shared send As String
+    Public Shared subj As String
+    Public Shared mail As String
+
+    Dim isSent As Boolean = False
 
     'Δημιουργια νεας φορμας NewMesage
     Private Sub NewToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NewToolStripMenuItem.Click
@@ -66,24 +74,7 @@ Public Class NewMessage
     End Sub
 
     Private Sub SaveToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveToolStripMenuItem.Click
-        Dim connection As OleDbConnection
-        Dim command As OleDbCommand
-        Dim timeStamp As DateTime = DateTime.Now
-        Dim insertquery As String = "INSERT INTO draftemails(subject,senders,mail,hmer_wra) VALUES('" & Subject.Text & _
-            "','" & SendTo_tb.Text & "','" & MessageRichTextBox.Text & "','" & timeStamp & "');"
-
-        Try
-            connection = New OleDbConnection(My.Settings.testConnectionString)
-            command = New OleDbCommand(insertquery, connection)
-            connection.Open()
-            command.ExecuteNonQuery()
-            MsgBox("Email saved to draftemails")
-            connection.Close()
-
-        Catch ex As Exception
-            MessageBox.Show(ex.Message)
-        End Try
-        Me.Close()
+        SaveDraftEmail()
     End Sub
 
     'μενου Edit που περιλαμβανει τα παρακατω
@@ -108,12 +99,20 @@ Public Class NewMessage
 
     'dialog box με καταλληλο μηνυμα στο κλεισιμο της φορμας
     Private Sub NewMessage_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+
         If close_flag = False Then ' Μονο αν ειναι false θα εμφανιστει το παρακατω μηνυμα,αλλιως αν ειναι true δεν θα εμφανιστει και αυτο γινεται στην περιπτωση που σταλθει το μηνυμα μας και δεν θελουμε να εμφανιστει αυτο το μηνυμα
             If MessageBox.Show("Are you sure you want to close this message form ?", "Close Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+
+                'Αν κάποιο από τα πεδία δεν είναι κενό τότε αποθηκεύεται στα drafts
+                If SendTo_tb.Text <> "" Or Subject.Text <> "" Or MessageRichTextBox.Text <> "" Then
+                    SaveDraftEmail()
+                End If
+                
             Else
                 e.Cancel = True
             End If
         End If
+
     End Sub
 
     'μπαινουν οι ρυθμισεις του λογαριασμου του χρηστη στο textbox from,και αναλογως γινεται readonly το textfield ή ενεργοποιειται το κουμπακι(...) γιατο ανοιγμα της φορμας λογαριασμων
@@ -144,32 +143,11 @@ Public Class NewMessage
         MessageRichTextBox.Paste()
     End Sub
 
-
-
-
-
     ' έλεγος για σύνδεση στο internet
     Private Declare Function InternetGetConnectedState Lib "wininet" _
-  (ByRef conn As Long, ByVal val As Long) As Boolean
+    (ByRef conn As Long, ByVal val As Long) As Boolean
     Private Sub SaveStripButton2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveStripButton2.Click
-        Dim connection As OleDbConnection
-        Dim command As OleDbCommand
-        Dim timeStamp As DateTime = DateTime.Now
-        Dim insertquery As String = "INSERT INTO draftemails(subject,senders,mail,hmer_wra) VALUES('" & Subject.Text & _
-            "','" & SendTo_tb.Text & "','" & MessageRichTextBox.Text & "','" & timeStamp & "');"
-
-        Try
-            connection = New OleDbConnection(My.Settings.testConnectionString)
-            command = New OleDbCommand(insertquery, connection)
-            connection.Open()
-            command.ExecuteNonQuery()
-            MsgBox("Email saved to draftemails")
-            connection.Close()
-
-        Catch ex As Exception
-            MessageBox.Show(ex.Message)
-        End Try
-        Me.Close()
+        SaveDraftEmail()
     End Sub
     ' SearchGroupBtn_Click (Εισαγωγή emails από τη φόρμα ChooseReceivers)
     Private Sub SearchGroupBtn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SearchGroupBtn.Click
@@ -306,11 +284,20 @@ Public Class NewMessage
                 Dim stutus_obj = New With {Key .address = mydata_obj.address, .time = Date.Now, .result = "Sent OK"} ' αποθήκευση αντικειμένου στη λίστα (χρησιμοποιείτε από τη results form).
                 status_lst.Add(stutus_obj)
                 success += 1
+
+                isSent = True
+                
+
+
             Catch ex As SmtpException
                 'MsgBox(ex.Message)
                 Dim stutus_obj = New With {Key .address = mydata_obj.address, .time = Date.Now, .result = "Sent Failed"}
                 status_lst.Add(stutus_obj)
                 fail += 1
+
+                isSent = False
+
+
             Finally
                 SendCompleted() ' μετά το τέλος καλείτε η SendCompleted
             End Try
@@ -329,6 +316,36 @@ Public Class NewMessage
         'ενημέρωση του progress bar.
         Me.status_pb.Value = Me.status_pb.Value + 1
 
+        If (isSent) Then
+
+            '''''''''''''''''''''''''''''''''''''''''''''''''''''
+            'Δεν μπορεί να αποθηκεύσει στα sent σε αυτό το σημείο
+            SaveSentEmail()
+
+            'Τα μηδενίζουμε για να μην αποθηκευτεί το mail στα drafts
+            SendTo_tb.Text = ""
+            From_tb.Text = ""
+            Subject.Text = ""
+            MessageRichTextBox.Text = ""
+            ''''''''''''''''''''''''''''''''''''''''
+
+        Else
+
+            ''''''''''''''''''''''''''''''''''''''''
+            'Δεν μπορεί να αποθηκεύσει στα drafts σε αυτό το σημείο
+            SaveDraftEmail()
+
+            'Τα μηδενίζουμε για να μην αποθηκευτεί ξανά το mail στα drafts
+            SendTo_tb.Text = ""
+            From_tb.Text = ""
+            Subject.Text = ""
+            MessageRichTextBox.Text = ""
+            ''''''''''''''''''''''''''''''''''''''''''
+
+        End If
+
+        isSent = False
+
         ' αν η progressbar έχει γεμίσει εμαφανίζω τη φόρμα results.
         If (Me.status_pb.Value = Me.status_pb.Maximum) Then
 
@@ -345,25 +362,6 @@ Public Class NewMessage
             addresses.Clear()
             status_lst.Clear()
 
-            '''''''''''''''''''''''''''''''''''''''''''''''''''''
-            Dim connection As OleDbConnection
-            Dim command As OleDbCommand
-            Dim timeStamp As DateTime = DateTime.Now
-            Dim insertquery As String = "INSERT INTO sentemails(subject,senders,mail,hmer_wra) VALUES('" & Subject.Text & _
-                "','" & SendTo_tb.Text & "','" & MessageRichTextBox.Text & "','" & timeStamp & "');"
-
-            Try
-                connection = New OleDbConnection(My.Settings.testConnectionString)
-                command = New OleDbCommand(insertquery, connection)
-                connection.Open()
-                command.ExecuteNonQuery()
-                MsgBox("Email saved to sentemails")
-                connection.Close()
-
-            Catch ex As Exception
-                MessageBox.Show(ex.Message)
-            End Try
-            ''''''''''''''''''''''''''''''''''''''''
 
             Me.Close()
 
@@ -373,5 +371,71 @@ Public Class NewMessage
 
 #End Region
 
+#Region "Save Drafts and Sent Emails Functions"
+    Private Sub SaveDraftEmail()
+        Dim connection As OleDbConnection
+        Dim command As OleDbCommand
+        Dim timeStamp As DateTime = DateTime.Now
+        Dim insertquery As String = "INSERT INTO draftemails(subject,senders,mail,hmer_wra) VALUES('" & Subject.Text & _
+            "','" & SendTo_tb.Text & "','" & MessageRichTextBox.Text & "','" & timeStamp & "');"
 
+        Try
+            connection = New OleDbConnection(My.Settings.testConnectionString)
+            command = New OleDbCommand(insertquery, connection)
+            connection.Open()
+            command.ExecuteNonQuery()
+            MsgBox("Email saved to draftemails")
+            SendTo_tb.Text = ""
+            Subject.Text = ""
+            MessageRichTextBox.Text = ""
+        Catch ex1 As Exception
+            MessageBox.Show(ex1.Message)
+        End Try
+    End Sub
+
+    Private Sub SaveSentEmail()
+        Dim connection As OleDbConnection
+        Dim command As OleDbCommand
+        Dim timeStamp As DateTime = DateTime.Now
+        Dim insertquery As String = "INSERT INTO sentemails(subject,senders,mail,hmer_wra) VALUES('" & Subject.Text & _
+            "','" & SendTo_tb.Text & "','" & MessageRichTextBox.Text & "','" & timeStamp & "');"
+
+        Try
+            connection = New OleDbConnection(My.Settings.testConnectionString)
+            command = New OleDbCommand(insertquery, connection)
+            connection.Open()
+            command.ExecuteNonQuery()
+            connection.Close()
+
+        Catch ex1 As Exception
+            MessageBox.Show(ex1.Message)
+        End Try
+    End Sub
+#End Region
+
+    'Όταν πατηθεί κάποιο από τα δύο load της φόρμας καλείται η συνάρτηση draft 
+    Private Sub LoadToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LoadToolStripMenuItem.Click
+        draft()
+    End Sub
+
+    Private Sub LoadStripButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LoadStripButton.Click
+        draft()
+    End Sub
+
+    'Τα πεδία του NewMessage γεμίζουν με τα στοιχεία του draft που επιλέξαμε στην φόρμα του ChooseDraftEmail
+    Private Sub draft()
+        Dim choose As New ChooseDraftEmail()
+        choose.StartPosition = FormStartPosition.CenterParent
+        subj = Subject.Text
+        send = SendTo_tb.Text
+        mail = MessageRichTextBox.Text
+        choose.ShowDialog()
+        SendTo_tb.Text = send
+        Subject.Text = subj
+        MessageRichTextBox.Text = mail
+        subj = ""
+        mail = ""
+        send = ""
+        choose = Nothing
+    End Sub
 End Class

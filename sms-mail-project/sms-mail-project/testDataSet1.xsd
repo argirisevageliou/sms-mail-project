@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="testDataSet1" targetNamespace="http://tempuri.org/testDataSet1.xsd" xmlns:mstns="http://tempuri.org/testDataSet1.xsd" xmlns="http://tempuri.org/testDataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="testConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="testConnectionString (MySettings)" PropertyReference="ApplicationSettings.sms_mail_project.My.MySettings.GlobalReference.Default.testConnectionString" Provider="System.Data.OleDb" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="draftemailsTableAdapter" GeneratorDataComponentClassName="draftemailsTableAdapter" Name="draftemails" UserDataComponentName="draftemailsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="testConnectionString (MySettings)" DbObjectName="draftemails" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT subject, senders, mail, hmer_wra FROM draftemails</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="subject" DataSetColumn="subject" />
+              <Mapping SourceColumn="senders" DataSetColumn="senders" />
+              <Mapping SourceColumn="mail" DataSetColumn="mail" />
+              <Mapping SourceColumn="hmer_wra" DataSetColumn="hmer_wra" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="testDataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="testDataSet1" msprop:Generator_UserDSName="testDataSet1" msprop:EnableTableAdapterManager="True">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="draftemails" msprop:Generator_UserTableName="draftemails" msprop:Generator_RowDeletedName="draftemailsRowDeleted" msprop:Generator_TableClassName="draftemailsDataTable" msprop:Generator_RowChangedName="draftemailsRowChanged" msprop:Generator_RowClassName="draftemailsRow" msprop:Generator_RowChangingName="draftemailsRowChanging" msprop:Generator_RowEvArgName="draftemailsRowChangeEvent" msprop:Generator_RowEvHandlerName="draftemailsRowChangeEventHandler" msprop:Generator_TablePropName="draftemails" msprop:Generator_TableVarName="tabledraftemails" msprop:Generator_RowDeletingName="draftemailsRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="subject" msprop:Generator_UserColumnName="subject" msprop:Generator_ColumnPropNameInRow="subject" msprop:Generator_ColumnVarNameInTable="columnsubject" msprop:Generator_ColumnPropNameInTable="subjectColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="536870910" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="senders" msprop:Generator_UserColumnName="senders" msprop:Generator_ColumnPropNameInRow="senders" msprop:Generator_ColumnVarNameInTable="columnsenders" msprop:Generator_ColumnPropNameInTable="sendersColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="536870910" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mail" msprop:Generator_UserColumnName="mail" msprop:Generator_ColumnPropNameInRow="mail" msprop:Generator_ColumnVarNameInTable="columnmail" msprop:Generator_ColumnPropNameInTable="mailColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="536870910" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="hmer_wra" msprop:Generator_UserColumnName="hmer_wra" msprop:Generator_ColumnPropNameInRow="hmer_wra" msprop:Generator_ColumnVarNameInTable="columnhmer_wra" msprop:Generator_ColumnPropNameInTable="hmer_wraColumn" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

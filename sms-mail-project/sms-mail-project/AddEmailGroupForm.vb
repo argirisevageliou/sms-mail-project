@@ -4,17 +4,19 @@ Imports System.Data.OleDb
 Imports System.Data.Common
 Public Class AddEmailGroupForm
 
+    'Σε αυτή τη μέθοδο προσθέτουμε ένα νέο γκρουπ με email διευθύνσεις
+    'Αφενός προστίθεται σαν εγγραφή στον πίνακα emailgroups και 
+    'Αφετέρου δημιουργείται ο αντίστοιχος πίνακας με τις επαφέ(όνομα, επώνυμο, email)
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        'in case GroupNameTextBox is null alert label appears
+        'Σε περίπτωση που το GroupNameTextBox είναι κενό, θα εμφανίζεται μια προειδοποίηση 
         If GroupNameTextBox.Text = "" Then
             Alertlabel.Visible = True
-            'else, these are below executed
+            'Αν δεν είναι κενό ,εκτελούνται τα παρακάτω
         Else
             Alertlabel.Visible = False
             Dim connection As OleDbConnection
             Dim command As OleDbCommand
-            'in this function is added an emailgroup (named from the textbox), to the emailgroups table
-            'and the corresponding table that contains the contacts, is created
+            
 
             Dim insertquery As String = "INSERT INTO emailgroups(name) VALUES('" & GroupNameTextBox.Text & "');"
             Dim createquery As String = "CREATE TABLE " & GroupNameTextBox.Text _
@@ -34,10 +36,12 @@ Public Class AddEmailGroupForm
                 connection.Close()
 
             Catch ex As Exception
+                'Εμφανίζει το πρόβλημα που προέκυψε
                 MessageBox.Show(ex.Message)
             End Try
             Me.Close()
-            'after that ShowEmailGroupsForm appears(contains user's emailgroups)
+            'Μόλις προστεθεί με επιτυχία το νέο γκρουπ, τότε εμφανίζεται η φόρμα ShowEmailGroupsForm
+            'που περιέχει όλα μας τα γκρουπ
             ShowEmailGroupsForm.Show()
         End If
     End Sub

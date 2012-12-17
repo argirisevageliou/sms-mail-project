@@ -42,12 +42,14 @@ Partial Class EditEmailGroupForm
         '
         Me.ContactsGrid.AllowUserToAddRows = False
         Me.ContactsGrid.AllowUserToDeleteRows = False
+        Me.ContactsGrid.AllowUserToResizeRows = False
         Me.ContactsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.ContactsGrid.Location = New System.Drawing.Point(28, 52)
+        Me.ContactsGrid.MultiSelect = False
         Me.ContactsGrid.Name = "ContactsGrid"
         Me.ContactsGrid.ReadOnly = True
         Me.ContactsGrid.Size = New System.Drawing.Size(394, 150)
-        Me.ContactsGrid.TabIndex = 0
+        Me.ContactsGrid.TabIndex = 2
         '
         'Label1
         '
