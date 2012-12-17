@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{577AE984-C5A1-4C51-B9DC-4C7ADE85D2FB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -77,7 +77,7 @@
     </Reference>
     <Reference Include="Microsoft.Win32.TaskScheduler, Version=1.9.1.24371, Culture=neutral, PublicKeyToken=0d013ddd5178a2ae, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Desktop\TaskScheduler\Microsoft.Win32.TaskScheduler.dll</HintPath>
+      <HintPath>..\..\..\Microsoft.Win32.TaskScheduler.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -249,6 +249,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Schedule_SendingForm.resx">
       <DependentUpon>Schedule_SendingForm.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowEmailGroupsForm.resx">
       <DependentUpon>ShowEmailGroupsForm.vb</DependentUpon>
@@ -278,6 +279,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SMS_Account_Manager.resx">
       <DependentUpon>SMS_Account_Manager.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -365,6 +367,7 @@
     </None>
     <None Include="testDataSet1.xss">
       <DependentUpon>testDataSet1.xsd</DependentUpon>
+    </None>
     <None Include="Service References\SMS_Service\sms.wsdl" />
     <None Include="Service References\SMS_Service\sms_mail_project.SMS_Service.recipientStatus.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -375,7 +378,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\SMS_Service\" />
-    </None>
     <None Include="testDataSet2.xsc">
       <DependentUpon>testDataSet2.xsd</DependentUpon>
     </None>
