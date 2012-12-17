@@ -16,7 +16,7 @@ Public Class EditEmailGroupForm
         'επιλέξαμε στην ShowEmailGroupsForm και γεμίζει ένα datagridview με αυτές
         'Η Form1.selectemailgroup είναι μια public μεταβλητή που την ορίσαμε στην Form1
         'και πήρε τιμή στην ShowEmailGroupsForm
-        Dim selectquery As String = "SELECT * FROM " & Form1.selectemailgroup & ";"
+        Dim selectquery As String = "SELECT * FROM " & MainForm.selectemailgroup & ";"
         Try
             Dim connection = New OleDbConnection(My.Settings.testConnectionString)
             Dim command = New OleDbDataAdapter(selectquery, connection)
@@ -42,7 +42,7 @@ Public Class EditEmailGroupForm
             'Αλλιώς εκτελεί το query και προστίθεται η επαφή
             Dim con As OleDbConnection
             Dim com As OleDbCommand
-            Dim strSQL As String = "INSERT INTO " & Form1.selectemailgroup & "(Email,FirstName,LastName) VALUES('" & EmailTextBox.Text & _
+            Dim strSQL As String = "INSERT INTO " & MainForm.selectemailgroup & "(Email,FirstName,LastName) VALUES('" & EmailTextBox.Text & _
             "','" & FirstNameTextBox.Text & "','" & LastNameTextBox.Text & "');"
 
             Try
@@ -75,9 +75,9 @@ Public Class EditEmailGroupForm
         'Σε αυτήν την public μεταβλητή που έχουμε ορίσει στην Form1 αποθηκεύουμε 
         'την επαφή που έχουμε επιλέξει από το datagridview την οποία θα την χρειαστούμε στο query
 
-        Form1.selectemail = ContactsGrid.CurrentRow.Cells("Email").Value
-        Dim strSQL As String = "DELETE * FROM " & Form1.selectemailgroup _
-        & "where Email='" & Form1.selectemail & "';"
+        MainForm.selectemail = ContactsGrid.CurrentRow.Cells("Email").Value
+        Dim strSQL As String = "DELETE * FROM " & MainForm.selectemailgroup _
+        & "where Email='" & MainForm.selectemail & "';"
 
         Try
 

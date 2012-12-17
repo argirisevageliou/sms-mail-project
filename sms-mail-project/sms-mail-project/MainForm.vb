@@ -8,7 +8,7 @@ Imports System.Text.RegularExpressions
 
 
 
-Public Class Form1
+Public Class MainForm
     'Χρησιμοποιούμε αυτές τις δύο public μεταβλητές για να κρατήσουμε μόνιμα αποθηκευμένα δεδομένα
     'που θα χειριστούμε σε κάποιες φόρμες όπως η EditEmailGroupForm, η AddEmailGroupForm κτλ
     Public selectemailgroup As String
