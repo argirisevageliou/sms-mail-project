@@ -60,7 +60,7 @@ Public Class Account_Manager
             checkName_lb.Font = New Font(checkName_lb.Font, FontStyle.Bold)
         Else
             checkName_lb.Text = "It will be visible from the receiver"
-            checkName_lb.ForeColor = Color.Gray
+            checkName_lb.ForeColor = Color.Black
             checkName_lb.Font = New Font(checkName_lb.Font, FontStyle.Italic)
         End If
 
@@ -549,5 +549,4 @@ Public Class Account_Manager
 
 
     End Sub
-
 End Class
