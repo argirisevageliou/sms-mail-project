@@ -215,6 +215,22 @@ Public Class Account_Manager
                     portConf_tb.Text = "25"
                     server_info_lb.Text = "  Outgoing Server:   SMTP"
 
+                Else
+
+                    settings_info_lb.Text = "Error while searching for default settings!!"
+                    manualConf_btn.Visible = True
+                    testAccount_btn.Visible = True
+                    manualConf_btn.Enabled = False
+                    settings_info_lb.Visible = True
+                    settings_Panel.Visible = True
+                    serverConf_tb.Visible = True
+                    portConf_tb.Visible = True
+                    portConf_lb.Visible = True
+                    serverConf_lb.Visible = True
+                    serverConf_tb.Text = "smtp." & domain
+                    portConf_tb.Text = "25"
+                    server_info_lb.Text = "  Outgoing Server:   SMTP"
+
                 End If
 
                 ' κάνω catch οποιοδήποτε exception δεν έχει πιαστεί παραπάνω.

@@ -44,6 +44,7 @@ Partial Class Form1
         Me.Button4 = New System.Windows.Forms.Button
         Me.TreeView1 = New System.Windows.Forms.TreeView
         Me.Label1 = New System.Windows.Forms.Label
+        Me.SMSAccountManager_menu = New System.Windows.Forms.ToolStripMenuItem
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -70,30 +71,30 @@ Partial Class Form1
         'GerToolStripMenuItem
         '
         Me.GerToolStripMenuItem.Name = "GerToolStripMenuItem"
-        Me.GerToolStripMenuItem.Size = New System.Drawing.Size(189, 22)
+        Me.GerToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
         Me.GerToolStripMenuItem.Text = "New Group"
         '
         'NewMessageToolStripMenuItem
         '
         Me.NewMessageToolStripMenuItem.Name = "NewMessageToolStripMenuItem"
         Me.NewMessageToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2
-        Me.NewMessageToolStripMenuItem.Size = New System.Drawing.Size(189, 22)
+        Me.NewMessageToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
         Me.NewMessageToolStripMenuItem.Text = "New Message"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(186, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(174, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(189, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'ToolsToolStripMenuItem
         '
-        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ManagerAccountToolStripMenuItem})
+        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ManagerAccountToolStripMenuItem, Me.SMSAccountManager_menu})
         Me.ToolsToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
         Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(51, 20)
@@ -102,7 +103,7 @@ Partial Class Form1
         'ManagerAccountToolStripMenuItem
         '
         Me.ManagerAccountToolStripMenuItem.Name = "ManagerAccountToolStripMenuItem"
-        Me.ManagerAccountToolStripMenuItem.Size = New System.Drawing.Size(194, 22)
+        Me.ManagerAccountToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
         Me.ManagerAccountToolStripMenuItem.Text = "Manager Account"
         '
         'HelpToolStripMenuItem
@@ -116,7 +117,7 @@ Partial Class Form1
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(125, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(113, 22)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'Button1
@@ -212,6 +213,12 @@ Partial Class Form1
         Me.Label1.Text = "Home"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'SMSAccountManager_menu
+        '
+        Me.SMSAccountManager_menu.Name = "SMSAccountManager_menu"
+        Me.SMSAccountManager_menu.Size = New System.Drawing.Size(213, 22)
+        Me.SMSAccountManager_menu.Text = "SMS Account Manager"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -253,5 +260,6 @@ Partial Class Form1
     Friend WithEvents Button4 As System.Windows.Forms.Button
     Friend WithEvents TreeView1 As System.Windows.Forms.TreeView
     Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents SMSAccountManager_menu As System.Windows.Forms.ToolStripMenuItem
 
 End Class

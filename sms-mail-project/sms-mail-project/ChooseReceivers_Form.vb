@@ -69,7 +69,6 @@ Public Class ChooseReceivers_Form
         'ελέγχω με κανονική έκφραση το format του email.
         Dim correct_mail_Format As Boolean = Regex.IsMatch(new_mail_tb.Text, "^([0-9a-zA-Z]([-\.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$")
 
-        
         If (new_mail_tb.Text = "") Then
             error_provider.SetError(new_mail_tb, "")
         ElseIf (Not correct_mail_Format) Then

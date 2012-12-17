@@ -135,6 +135,42 @@ Namespace My
                 Me("security") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property SMSsenderID() As String
+            Get
+                Return CType(Me("SMSsenderID"),String)
+            End Get
+            Set
+                Me("SMSsenderID") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property SMSpassword() As String
+            Get
+                Return CType(Me("SMSpassword"),String)
+            End Get
+            Set
+                Me("SMSpassword") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property SMSusername() As String
+            Get
+                Return CType(Me("SMSusername"),String)
+            End Get
+            Set
+                Me("SMSusername") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

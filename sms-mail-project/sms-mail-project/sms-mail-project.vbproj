@@ -83,6 +83,12 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core">
@@ -141,6 +147,11 @@
     <Compile Include="Schedule_SendingForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Service References\SMS_Service\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="ShowEmailGroupsForm.Designer.vb">
       <DependentUpon>ShowEmailGroupsForm.vb</DependentUpon>
     </Compile>
@@ -180,6 +191,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="SMS_Account_Manager.Designer.vb">
+      <DependentUpon>SMS_Account_Manager.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SMS_Account_Manager.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="testDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -239,6 +256,9 @@
       <DependentUpon>NewMessage.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="SMS_Account_Manager.resx">
+      <DependentUpon>SMS_Account_Manager.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -267,6 +287,12 @@
   <ItemGroup>
     <None Include="Resources\messages.jpg" />
     <None Include="Resources\groups.jpg" />
+    <None Include="Service References\SMS_Service\configuration91.svcinfo" />
+    <None Include="Service References\SMS_Service\configuration.svcinfo" />
+    <None Include="Service References\SMS_Service\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
     <Content Include="test.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -308,6 +334,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\wheel1.gif" />
+    <None Include="Service References\SMS_Service\sms.wsdl" />
+    <None Include="Service References\SMS_Service\sms_mail_project.SMS_Service.recipientStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\SMS_Service\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
