@@ -11,17 +11,17 @@
         End Get
     End Property
 
-    ' onload show message on label
+    ' onload εμφάνση μηνύματος στο label.
     Private Sub Save_Settings_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         msg_lb.Text = "Your account seems to works fine, " & vbCrLf & "do you want to save the settings and exit?"
     End Sub
 
-    ' exit from dialog without save with click 'no'
+    ' έξοδος χωρίς save (click 'no').
     Private Sub no_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles no_btn.Click
         Me.Close()
     End Sub
 
-    ' Save settings with click 'yes'
+    ' αποθήκευση των ρυθμίσεων click 'yes'
     Private Sub yes_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles yes_btn.Click
 
         My.Settings.email = Account_Manager.email_tb_value
@@ -34,4 +34,5 @@
         Me.Close()
 
     End Sub
+
 End Class

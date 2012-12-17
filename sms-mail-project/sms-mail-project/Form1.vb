@@ -424,4 +424,14 @@ Public Class Form1
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
     End Sub
+
+    Private Sub SMSAccountManager_menu_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SMSAccountManager_menu.Click
+
+        Dim sms_account_manager As SMS_Account_Manager
+        sms_account_manager = New SMS_Account_Manager()
+        sms_account_manager.StartPosition = FormStartPosition.CenterParent
+        sms_account_manager.ShowDialog()
+        sms_account_manager = Nothing
+
+    End Sub
 End Class

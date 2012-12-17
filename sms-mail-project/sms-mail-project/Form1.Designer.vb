@@ -92,6 +92,7 @@ Partial Class Form1
         Me.DeleteContactBtn = New System.Windows.Forms.Button
         Me.Label7 = New System.Windows.Forms.Label
         Me.AddContactBtn = New System.Windows.Forms.Button
+        Me.SMSAccountManager_menu = New System.Windows.Forms.ToolStripMenuItem
         Me.EmailTextBox = New System.Windows.Forms.TextBox
         Me.LastNameTextBox = New System.Windows.Forms.TextBox
         Me.FirstNameTextBox = New System.Windows.Forms.TextBox
@@ -512,7 +513,7 @@ Partial Class Form1
         '
         'ToolsToolStripMenuItem
         '
-        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ManagerAccountToolStripMenuItem})
+        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ManagerAccountToolStripMenuItem, Me.SMSAccountManager_menu})
         Me.ToolsToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
         Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(51, 20)
@@ -691,7 +692,10 @@ Partial Class Form1
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(47, 237)
+        Me.Button1.BackColor = System.Drawing.Color.Lavender
+        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
+        Me.Button1.Location = New System.Drawing.Point(12, 27)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(147, 23)
         Me.Button1.TabIndex = 7
@@ -699,6 +703,7 @@ Partial Class Form1
         Me.Button1.UseVisualStyleBackColor = True
         '
         'EditEmailGroup_Panel
+        'Button2
         '
         Me.EditEmailGroup_Panel.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
@@ -723,6 +728,7 @@ Partial Class Form1
         Me.EditEmailGroup_Panel.Visible = False
         '
         'ModifyContactBtn
+        'Button3
         '
         Me.ModifyContactBtn.Location = New System.Drawing.Point(455, 93)
         Me.ModifyContactBtn.Name = "ModifyContactBtn"
@@ -841,6 +847,12 @@ Partial Class Form1
         Me.ContactsGrid.Size = New System.Drawing.Size(394, 150)
         Me.ContactsGrid.TabIndex = 15
         '
+        'SMSAccountManager_menu
+        '
+        Me.SMSAccountManager_menu.Name = "SMSAccountManager_menu"
+        Me.SMSAccountManager_menu.Size = New System.Drawing.Size(213, 22)
+        Me.SMSAccountManager_menu.Text = "SMS Account Manager"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -916,6 +928,8 @@ Partial Class Form1
     Friend WithEvents Sent_Label As System.Windows.Forms.Label
     Friend WithEvents SentListBox As System.Windows.Forms.ListBox
     Friend WithEvents FileToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents HelpToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents GerToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents NewMessageToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
@@ -950,6 +964,7 @@ Partial Class Form1
     Friend WithEvents AlertEmail As System.Windows.Forms.Label
     Friend WithEvents DeleteContactBtn As System.Windows.Forms.Button
     Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents SMSAccountManager_menu As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AddContactBtn As System.Windows.Forms.Button
     Friend WithEvents EmailTextBox As System.Windows.Forms.TextBox
     Friend WithEvents LastNameTextBox As System.Windows.Forms.TextBox

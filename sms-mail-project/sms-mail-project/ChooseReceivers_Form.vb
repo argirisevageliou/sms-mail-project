@@ -21,19 +21,20 @@ Public Class ChooseReceivers_Form
         contacts_gv.SelectionMode = DataGridViewSelectionMode.FullRowSelect
 
         ' παίρνω από τη NewMessage form το περιεχόμενο του SendTo textbox, εξάγω από το string τις τιμές (χωρισμένες με ';')
+
         Dim tmp_send_to_text As String = sms_mail_project.NewMessage.contacts
-        Dim end_index As Integer = 0
-        Dim start_index As Integer = 0
 
-        For i As Integer = 0 To sms_mail_project.NewMessage.contacts.Length - 1
+        If (tmp_send_to_text <> "") Then
 
-            If (tmp_send_to_text.Chars(i) = ";") Then
-                end_index = i
-                selections_lb.Items.Add(tmp_send_to_text.Substring(start_index, end_index - start_index)) ' εισαγωγή στο listbox.
-                start_index = end_index + 1
+            Dim splitString As String()
 
-            End If
-        Next
+            splitString = tmp_send_to_text.Split(";")
+
+            For i As Integer = 0 To splitString.Length - 1
+                selections_lb.Items.Add(splitString(i))
+            Next
+
+        End If
 
     End Sub
 
@@ -68,7 +69,6 @@ Public Class ChooseReceivers_Form
         'ελέγχω με κανονική έκφραση το format του email.
         Dim correct_mail_Format As Boolean = Regex.IsMatch(new_mail_tb.Text, "^([0-9a-zA-Z]([-\.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$")
 
-        
         If (new_mail_tb.Text = "") Then
             error_provider.SetError(new_mail_tb, "")
         ElseIf (Not correct_mail_Format) Then
@@ -207,8 +207,15 @@ Public Class ChooseReceivers_Form
 
         Next
 
+        If (tmp_contacts <> "") Then
+
+            tmp_contacts = tmp_contacts.Remove(tmp_contacts.Length - 1, 1)
+
+        End If
+
         sms_mail_project.NewMessage.contacts = tmp_contacts
         Me.Close()
+
 
     End Sub
 

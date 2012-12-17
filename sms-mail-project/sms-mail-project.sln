@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "sms-mail-project", "sms-mail-project\sms-mail-project.vbproj", "{577AE984-C5A1-4C51-B9DC-4C7ADE85D2FB}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "run-on-background-project", "run-on-background-project\run-on-background-project.vbproj", "{0341351C-23D6-44E3-BD4F-30FEF151419E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,12 @@ Global
 		{577AE984-C5A1-4C51-B9DC-4C7ADE85D2FB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{577AE984-C5A1-4C51-B9DC-4C7ADE85D2FB}.Release|x86.ActiveCfg = Release|x86
 		{577AE984-C5A1-4C51-B9DC-4C7ADE85D2FB}.Release|x86.Build.0 = Release|x86
+		{0341351C-23D6-44E3-BD4F-30FEF151419E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0341351C-23D6-44E3-BD4F-30FEF151419E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0341351C-23D6-44E3-BD4F-30FEF151419E}.Debug|x86.ActiveCfg = Debug|x86
+		{0341351C-23D6-44E3-BD4F-30FEF151419E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0341351C-23D6-44E3-BD4F-30FEF151419E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0341351C-23D6-44E3-BD4F-30FEF151419E}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

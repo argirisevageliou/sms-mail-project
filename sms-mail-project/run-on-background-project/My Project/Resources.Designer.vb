@@ -39,7 +39,7 @@ Namespace My.Resources
         Friend ReadOnly Property ResourceManager() As Global.System.Resources.ResourceManager
             Get
                 If Object.ReferenceEquals(resourceMan, Nothing) Then
-                    Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager("sms_mail_project.Resources", GetType(Resources).Assembly)
+                    Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager("run_on_background_project.Resources", GetType(Resources).Assembly)
                     resourceMan = temp
                 End If
                 Return resourceMan
@@ -58,41 +58,6 @@ Namespace My.Resources
             Set
                 resourceCulture = value
             End Set
-        End Property
-        
-        Friend ReadOnly Property add_button() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("add-button", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        Friend ReadOnly Property groups() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("groups", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        Friend ReadOnly Property help_img() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("help_img", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        Friend ReadOnly Property messages() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("messages", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        Friend ReadOnly Property wheel1() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("wheel1", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
         End Property
     End Module
 End Namespace

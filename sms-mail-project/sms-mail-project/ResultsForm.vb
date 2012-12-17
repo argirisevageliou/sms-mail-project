@@ -28,7 +28,7 @@
 
         Dim row As String()
 
-        ' for each object in status list, create a new line
+        ' για κάθε αντικείμενο στο status list, δημιουργία νέας γραμμής στο gridView.
         For Each obj As Object In sms_mail_project.NewMessage.status_lst
 
             row = New String() {obj.address, obj.time, obj.result}
