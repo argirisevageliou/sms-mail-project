@@ -73,11 +73,11 @@
   <ItemGroup>
     <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Desktop\teithe(12-13)\adopse\sms-email-project\sms-mail-project(17-12-12)\sms-mail-project\sms-mail-project\bin\x86\Debug\HtmlAgilityPack.dll</HintPath>
+      <HintPath>..\..\..\sms-mail-project\sms-mail-project\sms-mail-project\bin\Debug\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Win32.TaskScheduler, Version=1.9.1.24371, Culture=neutral, PublicKeyToken=0d013ddd5178a2ae, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Desktop\teithe(12-13)\adopse\sms-email-project\sms-mail-project(17-12-12)\sms-mail-project\sms-mail-project\bin\x86\Debug\Microsoft.Win32.TaskScheduler.dll</HintPath>
+      <HintPath>..\..\..\Microsoft.Win32.TaskScheduler.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -146,6 +146,12 @@
     </Compile>
     <Compile Include="CueBanner.vb">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewSmsMessage.Designer.vb">
+      <DependentUpon>NewSmsMessage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="NewSmsMessage.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="ResultsForm.Designer.vb">
       <DependentUpon>ResultsForm.vb</DependentUpon>
@@ -250,6 +256,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account_Manager.resx">
       <DependentUpon>Account_Manager.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewSmsMessage.resx">
+      <DependentUpon>NewSmsMessage.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ResultsForm.resx">

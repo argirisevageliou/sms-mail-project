@@ -421,10 +421,6 @@ Public Class MainForm
         End If
     End Sub
 
-    Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
-    End Sub
-
     Private Sub SMSAccountManager_menu_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SMSAccountManager_menu.Click
 
         Dim sms_account_manager As SMS_Account_Manager
@@ -433,5 +429,13 @@ Public Class MainForm
         sms_account_manager.ShowDialog()
         sms_account_manager = Nothing
 
+    End Sub
+
+    Private Sub NewSmsMessageToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NewSmsMessageToolStripMenuItem.Click
+        Dim SmsMessage As NewSmsMessage
+        SmsMessage = New NewSmsMessage()
+        SmsMessage.StartPosition = FormStartPosition.CenterParent
+        SmsMessage.ShowDialog()
+        SmsMessage = Nothing
     End Sub
 End Class
