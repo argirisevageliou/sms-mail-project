@@ -59,25 +59,6 @@ Public Class NewMessage
         End If
 
     End Sub
-
-    'Μενου tools Που εχει να κανει απευθειας με το manageraccount του ευθυμη
-    Private Sub AccountSetupToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AccountSetupToolStripMenuItem.Click
-        'ManagerAccount.Show()  Με το κουμπι διπλα απο το from == Εδώ μολις πατησει ο χρηστης αυτο το κουμπι καλώ την φόρμα του ευθύμη την ManagerAccount
-    End Sub
-
-    'Μενου insert σε συνεργασια με τον αργυρη
-    Private Sub GroupToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GroupToolStripMenuItem.Click
-        ' Εδω θα παιρνω τα γκρουπ απο τον αργυρη
-    End Sub
-
-    'Μενου Help Που περιλαμβανει τα παρακατω
-    Private Sub AboutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AboutToolStripMenuItem.Click
-        ' Εδω θα ανοιγω την φορμα που εφτιαξε η φανη για το about του προγραμματος μας
-    End Sub
-    Private Sub HelpFormToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles HelpFormToolStripMenuItem.Click
-        ' επισης Εδω θα ανοιγω την φορμα που εφτιαξε η φανη για το about του προγραμματος μας
-    End Sub
-
     Private Sub SaveToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveToolStripMenuItem.Click
         SaveDraftEmail()
     End Sub
