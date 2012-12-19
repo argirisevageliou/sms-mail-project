@@ -20,7 +20,7 @@ Public Class ChooseSMSReceivers_Form
 
         ' παίρνω από τη NewSMSMessage form το περιεχόμενο του SendTo textbox, εξάγω από το string τις τιμές (χωρισμένες με ';')
 
-        Dim tmp_send_to_text As String = sms_mail_project.NewMessage.contacts
+        Dim tmp_send_to_text As String = sms_mail_project.NewSmsMessage.contacts
 
         If (tmp_send_to_text <> "") Then
 
@@ -65,7 +65,7 @@ Public Class ChooseSMSReceivers_Form
     Private Sub new_phone_tb_Validating(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles new_phone_tb.Validating
 
         'ελέγχω με κανονική έκφραση το format του phone number.
-        Dim correct_phone_Format As Boolean = Regex.IsMatch(new_phone_tb.Text, "^[6][9][0|3|4|5|7|8|9][0-9]{7}$")
+        Dim correct_phone_Format As Boolean = Regex.IsMatch(new_phone_tb.Text, "^[6][9][0|3|4|5|7|8|9]{1}[0-9]{7}$")
 
         If (new_phone_tb.Text = "") Then
             error_provider.SetError(new_phone_tb, "")
@@ -209,7 +209,7 @@ Public Class ChooseSMSReceivers_Form
 
         End If
 
-        sms_mail_project.NewMessage.contacts = tmp_contacts
+        sms_mail_project.NewSmsMessage.contacts = tmp_contacts
         Me.Close()
 
 

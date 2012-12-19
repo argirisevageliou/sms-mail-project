@@ -1,4 +1,7 @@
-﻿Public Class SMS_Account_Manager
+﻿Imports System.Web.HttpUtility
+Imports System.Text.RegularExpressions
+
+Public Class SMS_Account_Manager
 
     ' έλεγχος σύνδεσης στο internet (δήλωση).
     Private Declare Function InternetGetConnectedState Lib "wininet" _
@@ -7,7 +10,7 @@
     ' on load method.
     Private Sub SMS_Account_Manager_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-       
+
         If (My.Settings.SMSsenderID <> "" And My.Settings.SMSusername <> "" And My.Settings.SMSpassword <> "") Then
 
             senderID_tb.Text = My.Settings.SMSsenderID
@@ -39,10 +42,21 @@
             error_pr.SetError(senderID_tb, "This is a required field")
 
         Else
+            ' έλεγχος με regular expression.
+            Dim correct_sender_Format As Boolean = Regex.IsMatch(senderID_tb.Text, "^[a-zA-Z]{1,11}$|^[0-9]{1,16}$")
 
-            error_pr.SetError(senderID_tb, "")
+            If (Not correct_sender_Format) Then
+
+                error_pr.SetError(senderID_tb, "sender ID should contains up to 11 characters or up to 16 digits")
+
+            Else
+
+                error_pr.SetError(senderID_tb, "")
+
+            End If
 
         End If
+
 
     End Sub
 
@@ -114,7 +128,7 @@
 
                     ' κάνω μια αίτηση στο web service για να μου επιστρέψει το υπόλοιπο του λογαριασμού.
                     Try
-                        client.credits(user_tb.Text, pass_tb.Text)
+                        client.credits(UrlEncode(user_tb.Text), UrlEncode(pass_tb.Text))
                         test_btn.Text = "Save Settings!!"
 
                         ' αν η αίτηση απτύχει, γράφω το exception message στον error provider.
@@ -158,4 +172,5 @@
         delete_btn.Visible = False
 
     End Sub
+
 End Class

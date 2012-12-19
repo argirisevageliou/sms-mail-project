@@ -55,7 +55,13 @@ Partial Class NewSmsMessage
         Me.SmsSubjectLabel = New System.Windows.Forms.Label
         Me.SmsFromLabel = New System.Windows.Forms.Label
         Me.SmsSendToLabel = New System.Windows.Forms.Label
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip
+        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel
+        Me.charCount_lb = New System.Windows.Forms.ToolStripStatusLabel
+        Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel
+        Me.smsCount_lb = New System.Windows.Forms.ToolStripStatusLabel
         Me.MenuStrip1.SuspendLayout()
+        Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -71,7 +77,7 @@ Partial Class NewSmsMessage
         '
         Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.SaveToolStripMenuItem, Me.DraftsToolStripMenuItem, Me.SendToolStripMenuItem, Me.ToolStripSeparator4, Me.CloseToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(35, 20)
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "File"
         '
         'NewToolStripMenuItem
@@ -79,7 +85,7 @@ Partial Class NewSmsMessage
         Me.NewToolStripMenuItem.Image = CType(resources.GetObject("NewToolStripMenuItem.Image"), System.Drawing.Image)
         Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
         Me.NewToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.N), System.Windows.Forms.Keys)
-        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(145, 22)
         Me.NewToolStripMenuItem.Text = "New"
         '
         'SaveToolStripMenuItem
@@ -87,7 +93,7 @@ Partial Class NewSmsMessage
         Me.SaveToolStripMenuItem.Image = CType(resources.GetObject("SaveToolStripMenuItem.Image"), System.Drawing.Image)
         Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
         Me.SaveToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
-        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(145, 22)
         Me.SaveToolStripMenuItem.Text = "Save"
         '
         'DraftsToolStripMenuItem
@@ -95,7 +101,7 @@ Partial Class NewSmsMessage
         Me.DraftsToolStripMenuItem.Image = Global.sms_mail_project.My.Resources.Resources.add_button
         Me.DraftsToolStripMenuItem.Name = "DraftsToolStripMenuItem"
         Me.DraftsToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.L), System.Windows.Forms.Keys)
-        Me.DraftsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.DraftsToolStripMenuItem.Size = New System.Drawing.Size(145, 22)
         Me.DraftsToolStripMenuItem.Text = "Drafts"
         '
         'SendToolStripMenuItem
@@ -103,26 +109,26 @@ Partial Class NewSmsMessage
         Me.SendToolStripMenuItem.Image = CType(resources.GetObject("SendToolStripMenuItem.Image"), System.Drawing.Image)
         Me.SendToolStripMenuItem.Name = "SendToolStripMenuItem"
         Me.SendToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F6
-        Me.SendToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SendToolStripMenuItem.Size = New System.Drawing.Size(145, 22)
         Me.SendToolStripMenuItem.Text = "Send"
         '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(149, 6)
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(142, 6)
         '
         'CloseToolStripMenuItem
         '
         Me.CloseToolStripMenuItem.Name = "CloseToolStripMenuItem"
         Me.CloseToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.F4), System.Windows.Forms.Keys)
-        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(145, 22)
         Me.CloseToolStripMenuItem.Text = "Close"
         '
         'EditToolStripMenuItem
         '
         Me.EditToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UndoToolStripMenuItem, Me.RedoToolStripMenuItem, Me.ToolStripSeparator2, Me.CutToolStripMenuItem, Me.CopyToolStripMenuItem, Me.PasteToolStripMenuItem, Me.ToolStripSeparator3, Me.SelectAllToolStripMenuItem})
         Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
-        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
+        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(39, 20)
         Me.EditToolStripMenuItem.Text = "Edit"
         '
         'UndoToolStripMenuItem
@@ -130,7 +136,7 @@ Partial Class NewSmsMessage
         Me.UndoToolStripMenuItem.Image = CType(resources.GetObject("UndoToolStripMenuItem.Image"), System.Drawing.Image)
         Me.UndoToolStripMenuItem.Name = "UndoToolStripMenuItem"
         Me.UndoToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Z), System.Windows.Forms.Keys)
-        Me.UndoToolStripMenuItem.Size = New System.Drawing.Size(167, 22)
+        Me.UndoToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
         Me.UndoToolStripMenuItem.Text = "Undo"
         '
         'RedoToolStripMenuItem
@@ -138,20 +144,20 @@ Partial Class NewSmsMessage
         Me.RedoToolStripMenuItem.Image = CType(resources.GetObject("RedoToolStripMenuItem.Image"), System.Drawing.Image)
         Me.RedoToolStripMenuItem.Name = "RedoToolStripMenuItem"
         Me.RedoToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Y), System.Windows.Forms.Keys)
-        Me.RedoToolStripMenuItem.Size = New System.Drawing.Size(167, 22)
+        Me.RedoToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
         Me.RedoToolStripMenuItem.Text = "Redo"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(164, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(161, 6)
         '
         'CutToolStripMenuItem
         '
         Me.CutToolStripMenuItem.Image = CType(resources.GetObject("CutToolStripMenuItem.Image"), System.Drawing.Image)
         Me.CutToolStripMenuItem.Name = "CutToolStripMenuItem"
         Me.CutToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.X), System.Windows.Forms.Keys)
-        Me.CutToolStripMenuItem.Size = New System.Drawing.Size(167, 22)
+        Me.CutToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
         Me.CutToolStripMenuItem.Text = "Cut"
         '
         'CopyToolStripMenuItem
@@ -159,7 +165,7 @@ Partial Class NewSmsMessage
         Me.CopyToolStripMenuItem.Image = CType(resources.GetObject("CopyToolStripMenuItem.Image"), System.Drawing.Image)
         Me.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem"
         Me.CopyToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
-        Me.CopyToolStripMenuItem.Size = New System.Drawing.Size(167, 22)
+        Me.CopyToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
         Me.CopyToolStripMenuItem.Text = "Copy"
         '
         'PasteToolStripMenuItem
@@ -167,61 +173,63 @@ Partial Class NewSmsMessage
         Me.PasteToolStripMenuItem.Image = CType(resources.GetObject("PasteToolStripMenuItem.Image"), System.Drawing.Image)
         Me.PasteToolStripMenuItem.Name = "PasteToolStripMenuItem"
         Me.PasteToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.V), System.Windows.Forms.Keys)
-        Me.PasteToolStripMenuItem.Size = New System.Drawing.Size(167, 22)
+        Me.PasteToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
         Me.PasteToolStripMenuItem.Text = "Paste"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(164, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(161, 6)
         '
         'SelectAllToolStripMenuItem
         '
         Me.SelectAllToolStripMenuItem.Name = "SelectAllToolStripMenuItem"
         Me.SelectAllToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
-        Me.SelectAllToolStripMenuItem.Size = New System.Drawing.Size(167, 22)
+        Me.SelectAllToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
         Me.SelectAllToolStripMenuItem.Text = "Select All"
         '
         'ToolsToolStripMenuItem
         '
         Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SmsAccountManagerToolStripMenuItem})
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
-        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
+        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(48, 20)
         Me.ToolsToolStripMenuItem.Text = "Tools"
         '
         'SmsAccountManagerToolStripMenuItem
         '
         Me.SmsAccountManagerToolStripMenuItem.Name = "SmsAccountManagerToolStripMenuItem"
-        Me.SmsAccountManagerToolStripMenuItem.Size = New System.Drawing.Size(191, 22)
+        Me.SmsAccountManagerToolStripMenuItem.Size = New System.Drawing.Size(194, 22)
         Me.SmsAccountManagerToolStripMenuItem.Text = "Sms Account Manager"
         '
         'HelpToolStripMenuItem
         '
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HelpFormToolStripMenuItem, Me.ToolStripSeparator1, Me.AboutToolStripMenuItem})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(40, 20)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
         Me.HelpToolStripMenuItem.Text = "Help"
         '
         'HelpFormToolStripMenuItem
         '
         Me.HelpFormToolStripMenuItem.Name = "HelpFormToolStripMenuItem"
         Me.HelpFormToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1
-        Me.HelpFormToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.HelpFormToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
         Me.HelpFormToolStripMenuItem.Text = "Help Form"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(149, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(146, 6)
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'SmsSendTo_tb
         '
+        Me.SmsSendTo_tb.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.SmsSendTo_tb.Enabled = False
         Me.SmsSendTo_tb.Location = New System.Drawing.Point(87, 61)
         Me.SmsSendTo_tb.Name = "SmsSendTo_tb"
@@ -247,7 +255,6 @@ Partial Class NewSmsMessage
         Me.SmsSearchAccount_btn.TabIndex = 17
         Me.SmsSearchAccount_btn.Text = "..."
         Me.SmsSearchAccount_btn.UseVisualStyleBackColor = True
-        Me.SmsSearchAccount_btn.Visible = False
         '
         'SmsRichTextBox
         '
@@ -310,6 +317,61 @@ Partial Class NewSmsMessage
         Me.SmsSendToLabel.TabIndex = 18
         Me.SmsSendToLabel.Text = "Send To:"
         '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.BackColor = System.Drawing.Color.LightCyan
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.charCount_lb, Me.ToolStripStatusLabel2, Me.smsCount_lb})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 463)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.ShowItemToolTips = True
+        Me.StatusStrip1.Size = New System.Drawing.Size(568, 33)
+        Me.StatusStrip1.TabIndex = 22
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'ToolStripStatusLabel1
+        '
+        Me.ToolStripStatusLabel1.Font = New System.Drawing.Font("Segoe Print", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(140, 28)
+        Me.ToolStripStatusLabel1.Text = "Sum of characters: "
+        Me.ToolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.ToolStripStatusLabel1.ToolTipText = "The max size is 1224 characters"
+        '
+        'charCount_lb
+        '
+        Me.charCount_lb.AutoSize = False
+        Me.charCount_lb.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.charCount_lb.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
+                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
+                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
+        Me.charCount_lb.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner
+        Me.charCount_lb.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.charCount_lb.ForeColor = System.Drawing.Color.Black
+        Me.charCount_lb.Name = "charCount_lb"
+        Me.charCount_lb.Size = New System.Drawing.Size(80, 28)
+        Me.charCount_lb.Text = "0"
+        '
+        'ToolStripStatusLabel2
+        '
+        Me.ToolStripStatusLabel2.Font = New System.Drawing.Font("Segoe Print", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(117, 28)
+        Me.ToolStripStatusLabel2.Text = "Number of SMS:"
+        Me.ToolStripStatusLabel2.ToolTipText = "the maximum sms count  is 8 messages"
+        '
+        'smsCount_lb
+        '
+        Me.smsCount_lb.AutoSize = False
+        Me.smsCount_lb.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.smsCount_lb.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
+                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
+                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
+        Me.smsCount_lb.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner
+        Me.smsCount_lb.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.smsCount_lb.Name = "smsCount_lb"
+        Me.smsCount_lb.Size = New System.Drawing.Size(30, 28)
+        Me.smsCount_lb.Text = "1"
+        '
         'NewSmsMessage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -317,6 +379,7 @@ Partial Class NewSmsMessage
         Me.BackColor = System.Drawing.Color.DodgerBlue
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(568, 496)
+        Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.SmsSendTo_tb)
         Me.Controls.Add(Me.SmsSearchGroupBtn)
         Me.Controls.Add(Me.SmsSearchAccount_btn)
@@ -333,6 +396,8 @@ Partial Class NewSmsMessage
         Me.Text = "New Sms Message"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
+        Me.StatusStrip1.ResumeLayout(False)
+        Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -369,4 +434,9 @@ Partial Class NewSmsMessage
     Friend WithEvents SmsSubjectLabel As System.Windows.Forms.Label
     Friend WithEvents SmsFromLabel As System.Windows.Forms.Label
     Friend WithEvents SmsSendToLabel As System.Windows.Forms.Label
+    Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
+    Friend WithEvents ToolStripStatusLabel1 As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents charCount_lb As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents ToolStripStatusLabel2 As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents smsCount_lb As System.Windows.Forms.ToolStripStatusLabel
 End Class
