@@ -66,30 +66,37 @@ Public Class MainForm
         ChooseTypeGroupVar.ShowDialog()
         ChooseTypeGroupVar = Nothing
     End Sub
-
+    'Η μεθοδος αυτη καλειται οταν πατησουμε στο treeview την επιλογη Drafts
+    Public Sub Drafts()
+        Sent_Panel.Visible = False
+        Draft_Panel.Visible = True
+        Create_Panel.Visible = False
+        ShowEmailGroups_Panel.Visible = False
+        EditEmailGroup_Panel.Visible = False
+        'Γεμίζει το ListBox των DraftEmails
+        Me.DraftemailsTableAdapter.Fill(Me.TestDataSet1.draftemails)
+        DraftListBox.SelectedIndex = -1
+    End Sub
+    'Η μεθοδος αυτη καλειται οταν πατησουμε στο treeview την επιλογη SentMessages
+    Public Sub SentMessages()
+        Sent_Panel.Visible = True
+        Draft_Panel.Visible = False
+        Create_Panel.Visible = False
+        ShowEmailGroups_Panel.Visible = False
+        EditEmailGroup_Panel.Visible = False
+        'Γεμίζει το ListBox των SentEmails
+        Me.SentemailsTableAdapter.Fill(Me.TestDataSet2.sentemails)
+        SentListBox.SelectedIndex = -1
+    End Sub
     'Επιλέγουμε στοιχείο από το TreeView
     Private Sub TreeView1_AfterSelect(ByVal sender As System.Object, ByVal e As System.Windows.Forms.TreeViewEventArgs) Handles TreeView1.AfterSelect
         'Εμφανίζει το Draft Panel και αποκρύπτει τα υπόλοιπα Panels
         If (TreeView1.SelectedNode.Text = "Drafts") Then
-            Sent_Panel.Visible = False
-            Draft_Panel.Visible = True
-            Create_Panel.Visible = False
-            ShowEmailGroups_Panel.Visible = False
-            EditEmailGroup_Panel.Visible = False
-            'Γεμίζει το ListBox των DraftEmails
-            Me.DraftemailsTableAdapter.Fill(Me.TestDataSet1.draftemails)
-            DraftListBox.SelectedIndex = -1
+            Drafts()
         End If
         'Εμφανίζει το Sent Panel και αποκρύπτει τα υπόλοιπα Panels
         If (TreeView1.SelectedNode.Text = "Sent Messages") Then
-            Sent_Panel.Visible = True
-            Draft_Panel.Visible = False
-            Create_Panel.Visible = False
-            ShowEmailGroups_Panel.Visible = False
-            EditEmailGroup_Panel.Visible = False
-            'Γεμίζει το ListBox των SentEmails
-            Me.SentemailsTableAdapter.Fill(Me.TestDataSet2.sentemails)
-            SentListBox.SelectedIndex = -1
+            SentMessages()
         End If
         If (TreeView1.SelectedNode.Text = "Add Group") Then
             Create_Panel.Visible = True
@@ -484,5 +491,33 @@ Public Class MainForm
         AddSmsGroupVar.StartPosition = FormStartPosition.CenterParent
         AddSmsGroupVar.ShowDialog()
         AddSmsGroupVar = Nothing
+    End Sub
+
+    Private Sub MessagesBtn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MessagesBtn.Click
+        Draft_Panel.Visible = False
+        Sent_Panel.Visible = False
+        Create_Panel.Visible = False
+        ShowEmailGroups_Panel.Visible = False
+        EditEmailGroup_Panel.Visible = False
+
+        Dim ChooseTypeEmailMessagesVar As ChooseTypeEmailMessagesForm
+        ChooseTypeEmailMessagesVar = New ChooseTypeEmailMessagesForm()
+        ChooseTypeEmailMessagesVar.StartPosition = FormStartPosition.CenterParent
+        ChooseTypeEmailMessagesVar.ShowDialog()
+        ChooseTypeEmailMessagesVar = Nothing
+    End Sub
+
+    Private Sub AccountsBtn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AccountsBtn.Click
+        Draft_Panel.Visible = False
+        Sent_Panel.Visible = False
+        Create_Panel.Visible = False
+        ShowEmailGroups_Panel.Visible = False
+        EditEmailGroup_Panel.Visible = False
+
+        Dim ChooseTypeAccountsVar As ChooseTypeAccountsForm
+        ChooseTypeAccountsVar = New ChooseTypeAccountsForm()
+        ChooseTypeAccountsVar.StartPosition = FormStartPosition.CenterParent
+        ChooseTypeAccountsVar.ShowDialog()
+        ChooseTypeAccountsVar = Nothing
     End Sub
 End Class

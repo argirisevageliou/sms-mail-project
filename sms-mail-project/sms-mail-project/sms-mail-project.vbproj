@@ -73,11 +73,11 @@
   <ItemGroup>
     <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Internet Downloads\HtmlAgilityPack.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Desktop\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Win32.TaskScheduler, Version=1.9.1.24371, Culture=neutral, PublicKeyToken=0d013ddd5178a2ae, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Internet Downloads\Microsoft.Win32.TaskScheduler.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Desktop\Microsoft.Win32.TaskScheduler.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -131,6 +131,18 @@
       <DependentUpon>ChooseReceivers_Form.vb</DependentUpon>
     </Compile>
     <Compile Include="ChooseReceivers_Form.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChooseTypeAccountsForm.Designer.vb">
+      <DependentUpon>ChooseTypeAccountsForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ChooseTypeAccountsForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChooseTypeEmailMessagesForm.Designer.vb">
+      <DependentUpon>ChooseTypeEmailMessagesForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ChooseTypeEmailMessagesForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ChooseTypeGroupForm.Designer.vb">
@@ -286,6 +298,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ChooseReceivers_Form.resx">
       <DependentUpon>ChooseReceivers_Form.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChooseTypeAccountsForm.resx">
+      <DependentUpon>ChooseTypeAccountsForm.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChooseTypeEmailMessagesForm.resx">
+      <DependentUpon>ChooseTypeEmailMessagesForm.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ChooseTypeGroupForm.resx">
