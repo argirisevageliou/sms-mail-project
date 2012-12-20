@@ -24,7 +24,7 @@ Partial Class EditEmailGroupForm
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EditEmailGroupForm))
         Me.ContactsGrid = New System.Windows.Forms.DataGridView
-        Me.Label1 = New System.Windows.Forms.Label
+        Me.InfoLabel = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
         Me.Label4 = New System.Windows.Forms.Label
@@ -53,17 +53,17 @@ Partial Class EditEmailGroupForm
         Me.ContactsGrid.Size = New System.Drawing.Size(394, 150)
         Me.ContactsGrid.TabIndex = 0
         '
-        'Label1
+        'InfoLabel
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.BackColor = System.Drawing.Color.DodgerBlue
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.Label1.Location = New System.Drawing.Point(39, 259)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(410, 15)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Complete all texts and press add to add a new contact to group"
+        Me.InfoLabel.AutoSize = True
+        Me.InfoLabel.BackColor = System.Drawing.Color.DodgerBlue
+        Me.InfoLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.InfoLabel.ForeColor = System.Drawing.SystemColors.ControlLight
+        Me.InfoLabel.Location = New System.Drawing.Point(39, 259)
+        Me.InfoLabel.Name = "InfoLabel"
+        Me.InfoLabel.Size = New System.Drawing.Size(410, 15)
+        Me.InfoLabel.TabIndex = 1
+        Me.InfoLabel.Text = "Complete all texts and press add to add a new contact to group"
         '
         'Label2
         '
@@ -191,7 +191,7 @@ Partial Class EditEmailGroupForm
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.InfoLabel)
         Me.Controls.Add(Me.ContactsGrid)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "EditEmailGroupForm"
@@ -202,7 +202,7 @@ Partial Class EditEmailGroupForm
 
     End Sub
     Friend WithEvents ContactsGrid As System.Windows.Forms.DataGridView
-    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents InfoLabel As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label

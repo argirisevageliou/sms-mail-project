@@ -5,14 +5,13 @@ Imports System.Data.OleDb
 Imports System.Data.Common
 Imports System.Text.RegularExpressions
 
-
-
-
 Public Class MainForm
     'Χρησιμοποιούμε αυτές τις δύο public μεταβλητές για να κρατήσουμε μόνιμα αποθηκευμένα δεδομένα
     'που θα χειριστούμε σε κάποιες φόρμες όπως η EditEmailGroupForm, η AddEmailGroupForm κτλ
     Public selectemailgroup As String
     Public selectemail As String
+    Public selectsmsgroup As String
+    Public selectsms As String
 
 
     Private Sub ExitToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExitToolStripMenuItem.Click
@@ -52,7 +51,7 @@ Public Class MainForm
 
     'Εμφανίζει την ShowEmailGroupsForm
     Private Sub GroupsBtn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GroupsBtn.Click
-        ShowEmailGroupsForm.Show()
+        ChooseTypeGroupForm.Show()
     End Sub
 
     'Επιλέγουμε στοιχείο από το TreeView
@@ -421,9 +420,6 @@ Public Class MainForm
         End If
     End Sub
 
-    Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
-    End Sub
 
     Private Sub SMSAccountManager_menu_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SMSAccountManager_menu.Click
 

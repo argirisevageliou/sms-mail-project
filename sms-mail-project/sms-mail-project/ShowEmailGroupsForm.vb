@@ -35,7 +35,7 @@ Public Class ShowEmailGroupsForm
     End Sub
 
     Private Sub EditGroupBtn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EditGroupBtn.Click
-        'Σε αυτή την public μεταβλητή που έχουμε ορίσει στην Form1 αποθηκεύουμε ποιο γκρουπ έχουμε
+        'Σε αυτή την public μεταβλητή που έχουμε ορίσει στην MainForm αποθηκεύουμε ποιο γκρουπ έχουμε
         'επιλέξει να επεξεργαστούμε από το datagridview(θα το χρειαστούμε στην EditEmailGroupForm)
         MainForm.selectemailgroup = EmailGroupsGrid.CurrentRow.Cells("name").Value
         'Εμφανίζεται η EditEmailGroupForm και αυτή η φόρμα κλέινει
@@ -49,7 +49,7 @@ Public Class ShowEmailGroupsForm
         'και αφετέρου τον αντίστοιχο πίνακα με τις εγγραφές
         Dim connection As OleDbConnection
         Dim command As OleDbCommand
-        'Αυτή η public μεταβλητή που έχουμε ορίσει στην Form1 αποθηκεύει το γκρουπ που 
+        'Αυτή η public μεταβλητή που έχουμε ορίσει στην MainForm αποθηκεύει το γκρουπ που 
         'έχουμε επιλέξει από το datagridview το οποίο θα την χρειαστούμε στο query
         MainForm.selectemailgroup = EmailGroupsGrid.CurrentRow.Cells("name").Value
         Dim deletequery As String = "DELETE * FROM emailgroups where name='" & MainForm.selectemailgroup & "';"

@@ -23,33 +23,33 @@ Partial Class AddEmailGroupForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AddEmailGroupForm))
-        Me.Button1 = New System.Windows.Forms.Button
-        Me.Label1 = New System.Windows.Forms.Label
+        Me.CreateGroupBtn = New System.Windows.Forms.Button
+        Me.GroupNameLabel = New System.Windows.Forms.Label
         Me.GroupNameTextBox = New System.Windows.Forms.TextBox
-        Me.Alertlabel = New System.Windows.Forms.Label
+        Me.AlertLabel = New System.Windows.Forms.Label
         Me.SuspendLayout()
         '
-        'Button1
+        'CreateGroupBtn
         '
-        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
-        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.Button1.Location = New System.Drawing.Point(231, 189)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(100, 78)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Create Email Group"
-        Me.Button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.CreateGroupBtn.Image = CType(resources.GetObject("CreateGroupBtn.Image"), System.Drawing.Image)
+        Me.CreateGroupBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.CreateGroupBtn.Location = New System.Drawing.Point(231, 189)
+        Me.CreateGroupBtn.Name = "CreateGroupBtn"
+        Me.CreateGroupBtn.Size = New System.Drawing.Size(100, 78)
+        Me.CreateGroupBtn.TabIndex = 0
+        Me.CreateGroupBtn.Text = "Create Email Group"
+        Me.CreateGroupBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.CreateGroupBtn.UseVisualStyleBackColor = True
         '
-        'Label1
+        'GroupNameLabel
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(137, 166)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(88, 15)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Group Name"
+        Me.GroupNameLabel.AutoSize = True
+        Me.GroupNameLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupNameLabel.Location = New System.Drawing.Point(137, 166)
+        Me.GroupNameLabel.Name = "GroupNameLabel"
+        Me.GroupNameLabel.Size = New System.Drawing.Size(88, 15)
+        Me.GroupNameLabel.TabIndex = 1
+        Me.GroupNameLabel.Text = "Group Name"
         '
         'GroupNameTextBox
         '
@@ -58,17 +58,17 @@ Partial Class AddEmailGroupForm
         Me.GroupNameTextBox.Size = New System.Drawing.Size(100, 20)
         Me.GroupNameTextBox.TabIndex = 2
         '
-        'Alertlabel
+        'AlertLabel
         '
-        Me.Alertlabel.AutoSize = True
-        Me.Alertlabel.BackColor = System.Drawing.Color.AliceBlue
-        Me.Alertlabel.ForeColor = System.Drawing.Color.Red
-        Me.Alertlabel.Location = New System.Drawing.Point(222, 312)
-        Me.Alertlabel.Name = "Alertlabel"
-        Me.Alertlabel.Size = New System.Drawing.Size(126, 13)
-        Me.Alertlabel.TabIndex = 3
-        Me.Alertlabel.Text = "You have to give a name"
-        Me.Alertlabel.Visible = False
+        Me.AlertLabel.AutoSize = True
+        Me.AlertLabel.BackColor = System.Drawing.Color.AliceBlue
+        Me.AlertLabel.ForeColor = System.Drawing.Color.Red
+        Me.AlertLabel.Location = New System.Drawing.Point(222, 312)
+        Me.AlertLabel.Name = "AlertLabel"
+        Me.AlertLabel.Size = New System.Drawing.Size(126, 13)
+        Me.AlertLabel.TabIndex = 3
+        Me.AlertLabel.Text = "You have to give a name"
+        Me.AlertLabel.Visible = False
         '
         'AddEmailGroupForm
         '
@@ -78,10 +78,10 @@ Partial Class AddEmailGroupForm
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(502, 368)
-        Me.Controls.Add(Me.Alertlabel)
+        Me.Controls.Add(Me.AlertLabel)
         Me.Controls.Add(Me.GroupNameTextBox)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.GroupNameLabel)
+        Me.Controls.Add(Me.CreateGroupBtn)
         Me.DoubleBuffered = True
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "AddEmailGroupForm"
@@ -90,8 +90,8 @@ Partial Class AddEmailGroupForm
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents CreateGroupBtn As System.Windows.Forms.Button
+    Friend WithEvents GroupNameLabel As System.Windows.Forms.Label
     Friend WithEvents GroupNameTextBox As System.Windows.Forms.TextBox
-    Friend WithEvents Alertlabel As System.Windows.Forms.Label
+    Friend WithEvents AlertLabel As System.Windows.Forms.Label
 End Class

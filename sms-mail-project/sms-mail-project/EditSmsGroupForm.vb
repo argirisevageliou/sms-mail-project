@@ -1,22 +1,18 @@
-﻿Imports System.IO
-Imports System.Data.SqlClient
-Imports System.Data.OleDb
-Imports System.Data.Common
+﻿Imports System.Data.OleDb
 Imports System.Text.RegularExpressions
 
-Public Class EditEmailGroupForm
+Public Class EditSmsGroupForm
 
-    Private Sub EditEmailGroupForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub EditSmsGroupForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Μόλις ανοίξει αυτή η φόρμα καλεί την ΄μέθοδο DataSetFromOleDb
         DataSetFromOleDb()
     End Sub
-
     Private Sub DataSetFromOleDb()
         'Η μέθοδος αυτή χρησιμοποιεί ένα query για να εμφανίσει όλες τις επαφές του γκρουπ που 
         'επιλέξαμε στην ShowEmailGroupsForm και γεμίζει ένα datagridview με αυτές
         'Η MainForm.selectemailgroup είναι μια public μεταβλητή που την ορίσαμε στην MainForm
         'και πήρε τιμή στην ShowEmailGroupsForm
-        Dim selectquery As String = "SELECT * FROM " & MainForm.selectemailgroup & ";"
+        Dim selectquery As String = "SELECT * FROM " & MainForm.selectsmsgroup & ";"
         Try
             Dim connection = New OleDbConnection(My.Settings.testConnectionString)
             Dim command = New OleDbDataAdapter(selectquery, connection)
@@ -31,10 +27,11 @@ Public Class EditEmailGroupForm
         End Try
     End Sub
 
+
     Private Sub AddContactBtn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AddContactBtn.Click
         'Η μέθοδος αυτή καλείται μόλις πατήσουμε το addcontact button και προσθέτει μια νέα επαφή
-        'στο γκρουπ που επιλέξαμε στην ShowEmailGroupsForm με τα στοιχεία των textboxes
-        If FirstNameTextBox.Text = "" Or LastNameTextBox.Text = "" Or EmailTextBox.Text = "" Then
+        'στο γκρουπ που επιλέξαμε στην ShowSmsGroupsForm με τα στοιχεία των textboxes
+        If FirstNameTextBox.Text = "" Or LastNameTextBox.Text = "" Or NumberTextBox.Text = "" Then
             'αν κάποιο από τα labels δεν έχει συμπληρωθεί τότε εμφανίζει error message
             AlertEmail.Visible = False
             Alertlabel.Visible = True
@@ -42,7 +39,7 @@ Public Class EditEmailGroupForm
             'Αλλιώς εκτελεί το query και προστίθεται η επαφή
             Dim con As OleDbConnection
             Dim com As OleDbCommand
-            Dim strSQL As String = "INSERT INTO " & MainForm.selectemailgroup & "(Email,FirstName,LastName) VALUES('" & EmailTextBox.Text & _
+            Dim strSQL As String = "INSERT INTO " & MainForm.selectsmsgroup & "(PhoneNumber,FirstName,LastName) VALUES('" & NumberTextBox.Text & _
             "','" & FirstNameTextBox.Text & "','" & LastNameTextBox.Text & "');"
 
             Try
@@ -60,10 +57,24 @@ Public Class EditEmailGroupForm
             End Try
         End If
         'Μόλις γίνει η προσθήκη ξαναφορτώνει την φόρμα ενημερωμένη
-        EditEmailGroupForm_Load(Me, New System.EventArgs)
+        EditSmsGroupForm_Load(Me, New System.EventArgs)
         FirstNameTextBox.Text = ""
         LastNameTextBox.Text = ""
-        EmailTextBox.Text = ""
+        NumberTextBox.Text = ""
+
+    End Sub
+
+    Private Sub NumberTextBox_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NumberTextBox.Leave
+        'Η μέθοδος αυτή καλείται όταν κάνουμε unfocus το textbox του number και δεν έχουμε βάλει 
+        'τον αριθμό στην κατάλληλη μορφή
+        Dim correct_mail_Format As Boolean = Regex.IsMatch(NumberTextBox.Text, "^[6][9][0|3|4|5|7|8|9]{1}[0-9]{7}$")
+        If correct_mail_Format Then
+            AlertEmail.Visible = False
+            AddContactBtn.Enabled = True
+        Else
+            AlertEmail.Visible = True
+            AddContactBtn.Enabled = False
+        End If
     End Sub
 
     Private Sub DeleteContactBtn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DeleteContactBtn.Click
@@ -75,9 +86,9 @@ Public Class EditEmailGroupForm
         'Σε αυτήν την public μεταβλητή που έχουμε ορίσει στην MainForm αποθηκεύουμε 
         'την επαφή που έχουμε επιλέξει από το datagridview την οποία θα την χρειαστούμε στο query
 
-        MainForm.selectemail = ContactsGrid.CurrentRow.Cells("Email").Value
-        Dim strSQL As String = "DELETE * FROM " & MainForm.selectemailgroup _
-        & "where Email='" & MainForm.selectemail & "';"
+        MainForm.selectsms = ContactsGrid.CurrentRow.Cells("PhoneNumber").Value
+        Dim strSQL As String = "DELETE * FROM " & MainForm.selectsmsgroup _
+        & "where PhoneNumber='" & MainForm.selectsms & "';"
 
         Try
 
@@ -95,20 +106,6 @@ Public Class EditEmailGroupForm
 
         End Try
         'Μόλις γίνει η διαγραφή ξαναφορτώνει την φόρμα ενημερωμένη
-        EditEmailGroupForm_Load(Me, New System.EventArgs)
+        EditSmsGroupForm_Load(Me, New System.EventArgs)
     End Sub
-    Private Sub EmailTextBox_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EmailTextBox.Leave
-        'Η μέθοδος αυτή καλείται όταν κάνουμε unfocus το textbox του email και δεν έχουμε βάλει 
-        'τη διεύθυνση στην κατάλληλη μορφή
-        Dim correct_mail_Format As Boolean = Regex.IsMatch(EmailTextBox.Text, "^([0-9a-zA-Z]([-\.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$")
-        If correct_mail_Format Then
-            AlertEmail.Visible = False
-            AddContactBtn.Enabled = True
-        Else
-            AlertEmail.Visible = True
-            AddContactBtn.Enabled = False
-        End If
-    End Sub
-
-
 End Class

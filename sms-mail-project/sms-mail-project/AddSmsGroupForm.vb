@@ -1,12 +1,10 @@
-﻿Imports System.IO
-Imports System.Data.SqlClient
-Imports System.Data.OleDb
-Imports System.Data.Common
-Public Class AddEmailGroupForm
+﻿Imports System.Data.OleDb
 
-    'Σε αυτή τη μέθοδο προσθέτουμε ένα νέο γκρουπ με email διευθύνσεις
-    'Αφενός προστίθεται σαν εγγραφή στον πίνακα emailgroups και 
-    'Αφετέρου δημιουργείται ο αντίστοιχος πίνακας με τις επαφέ(email,όνομα, επώνυμο)
+Public Class AddSmsGroupForm
+
+    'Σε αυτή τη μέθοδο προσθέτουμε ένα νέο γκρουπ με επαφές sms
+    'Αφενός προστίθεται σαν εγγραφή στον πίνακα smsgroups και 
+    'Αφετέρου δημιουργείται ο αντίστοιχος πίνακας με τις επαφές(αριθμός,όνομα, επώνυμο)
     Private Sub CreateGroupBtn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CreateGroupBtn.Click
         'Σε περίπτωση που το GroupNameTextBox είναι κενό, θα εμφανίζεται μια προειδοποίηση 
         If GroupNameTextBox.Text = "" Then
@@ -17,9 +15,9 @@ Public Class AddEmailGroupForm
             Dim connection As OleDbConnection
             Dim command As OleDbCommand
 
-            Dim insertquery As String = "INSERT INTO emailgroups(name) VALUES('" & GroupNameTextBox.Text & "');"
+            Dim insertquery As String = "INSERT INTO smsgroups(name) VALUES('" & GroupNameTextBox.Text & "');"
             Dim createquery As String = "CREATE TABLE " & GroupNameTextBox.Text _
-            & "(Email char(30) PRIMARY KEY,FirstName char(30), LastName char(30));"
+            & "(PhoneNumber char(10) PRIMARY KEY,FirstName char(30), LastName char(30));"
 
             Try
                 connection = New OleDbConnection(My.Settings.testConnectionString)
@@ -39,9 +37,9 @@ Public Class AddEmailGroupForm
                 MessageBox.Show(ex.Message)
             End Try
             Me.Close()
-            'Μόλις προστεθεί με επιτυχία το νέο γκρουπ, τότε εμφανίζεται η φόρμα ShowEmailGroupsForm
+            'Μόλις προστεθεί με επιτυχία το νέο γκρουπ, τότε εμφανίζεται η φόρμα ShowSmsGroupsForm
             'που περιέχει όλα μας τα γκρουπ
-            ShowEmailGroupsForm.Show()
+            ShowSmsGroupsForm.Show()
         End If
     End Sub
 End Class
