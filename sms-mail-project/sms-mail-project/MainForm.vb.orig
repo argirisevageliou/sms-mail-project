@@ -5,9 +5,6 @@ Imports System.Data.OleDb
 Imports System.Data.Common
 Imports System.Text.RegularExpressions
 
-
-
-
 Public Class MainForm
     'Χρησιμοποιούμε αυτές τις δύο public μεταβλητές για να κρατήσουμε μόνιμα αποθηκευμένα δεδομένα
     'που θα χειριστούμε σε κάποιες φόρμες όπως η EditEmailGroupForm, η AddEmailGroupForm κτλ
@@ -423,7 +420,10 @@ Public Class MainForm
         End If
     End Sub
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/Implement_SMS(2)
     Private Sub SMSAccountManager_menu_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SMSAccountManager_menu.Click
 
         Dim sms_account_manager As SMS_Account_Manager

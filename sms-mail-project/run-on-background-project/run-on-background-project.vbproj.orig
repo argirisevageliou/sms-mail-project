@@ -58,7 +58,11 @@
   <ItemGroup>
     <Reference Include="Microsoft.Win32.TaskScheduler, Version=1.9.1.24371, Culture=neutral, PublicKeyToken=0d013ddd5178a2ae, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
+<<<<<<< HEAD
       <HintPath>..\..\..\..\..\..\Desktop\teithe(12-13)\adopse\sms-email-project\sms-mail-project(17-12-12)\sms-mail-project\sms-mail-project\bin\x86\Debug\Microsoft.Win32.TaskScheduler.dll</HintPath>
+=======
+      <HintPath>..\..\..\..\..\..\..\Desktop\Microsoft.Win32.TaskScheduler.dll</HintPath>
+>>>>>>> origin/Designing_SmsMessageForm_other_remaining_forms_and_panels
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

@@ -99,9 +99,9 @@ Partial Class ResultsForm
         Me.Label1.ForeColor = System.Drawing.SystemColors.HotTrack
         Me.Label1.Location = New System.Drawing.Point(128, 15)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(209, 16)
+        Me.Label1.Size = New System.Drawing.Size(208, 16)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Status: Send Mail Finished"
+        Me.Label1.Text = "Status:Sending Email Over"
         '
         'more_less_btn
         '

@@ -73,11 +73,11 @@
   <ItemGroup>
     <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\sms-mail-project\sms-mail-project\sms-mail-project\bin\Debug\HtmlAgilityPack.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Desktop\teithe(12-13)\adopse\sms-email-project\sms-mail-project(17-12-12)\sms-mail-project\sms-mail-project\bin\x86\Debug\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Win32.TaskScheduler, Version=1.9.1.24371, Culture=neutral, PublicKeyToken=0d013ddd5178a2ae, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Desktop\TaskScheduler\Microsoft.Win32.TaskScheduler.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Desktop\teithe(12-13)\adopse\sms-email-project\sms-mail-project(17-12-12)\sms-mail-project\sms-mail-project\bin\x86\Debug\Microsoft.Win32.TaskScheduler.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -89,6 +89,7 @@
     <Reference Include="System.ServiceModel">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core">
@@ -114,6 +115,12 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddSmsGroupForm.Designer.vb">
+      <DependentUpon>AddSmsGroupForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AddSmsGroupForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ChooseDraftEmail.Designer.vb">
       <DependentUpon>ChooseDraftEmail.vb</DependentUpon>
     </Compile>
@@ -124,6 +131,19 @@
       <DependentUpon>ChooseReceivers_Form.vb</DependentUpon>
     </Compile>
     <Compile Include="ChooseReceivers_Form.vb">
+      <SubType>Form</SubType>
+    </Compile>
+<<<<<<< HEAD
+    <Compile Include="ChooseTypeGroupForm.Designer.vb">
+      <DependentUpon>ChooseTypeGroupForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ChooseTypeGroupForm.vb">
+=======
+    <Compile Include="ChooseSMSReceivers_Form.Designer.vb">
+      <DependentUpon>ChooseSMSReceivers_Form.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ChooseSMSReceivers_Form.vb">
+>>>>>>> origin/Implement_SMS(2)
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="EditEmailGroupForm.Designer.vb">
@@ -141,10 +161,29 @@
     <Compile Include="CueBanner.vb">
       <SubType>Component</SubType>
     </Compile>
+<<<<<<< HEAD
+    <Compile Include="EditSmsGroupForm.Designer.vb">
+      <DependentUpon>EditSmsGroupForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EditSmsGroupForm.vb">
+=======
+    <Compile Include="NewSmsMessage.Designer.vb">
+      <DependentUpon>NewSmsMessage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="NewSmsMessage.vb">
+>>>>>>> origin/Implement_SMS(2)
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ResultsForm.Designer.vb">
       <DependentUpon>ResultsForm.vb</DependentUpon>
     </Compile>
     <Compile Include="ResultsForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScheduleSMSForm.Designer.vb">
+      <DependentUpon>ScheduleSMSForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ScheduleSMSForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Schedule_SendingForm.Designer.vb">
@@ -164,11 +203,11 @@
     <Compile Include="ShowEmailGroupsForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.vb">
+    <Compile Include="MainForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="MainForm.Designer.vb">
+      <DependentUpon>MainForm.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AddEmailGroupForm.Designer.vb">
@@ -197,6 +236,19 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+<<<<<<< HEAD
+    <Compile Include="ShowSmsGroupsForm.Designer.vb">
+      <DependentUpon>ShowSmsGroupsForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ShowSmsGroupsForm.vb">
+=======
+    <Compile Include="SMSResultsForm.Designer.vb">
+      <DependentUpon>SMSResultsForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SMSResultsForm.vb">
+>>>>>>> origin/Implement_SMS(2)
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="SMS_Account_Manager.Designer.vb">
       <DependentUpon>SMS_Account_Manager.vb</DependentUpon>
@@ -227,6 +279,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AddSmsGroupForm.resx">
+      <DependentUpon>AddSmsGroupForm.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="ChooseDraftEmail.resx">
       <DependentUpon>ChooseDraftEmail.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -234,6 +290,15 @@
     <EmbeddedResource Include="ChooseReceivers_Form.resx">
       <DependentUpon>ChooseReceivers_Form.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+<<<<<<< HEAD
+    <EmbeddedResource Include="ChooseTypeGroupForm.resx">
+      <DependentUpon>ChooseTypeGroupForm.vb</DependentUpon>
+      <SubType>Designer</SubType>
+=======
+    <EmbeddedResource Include="ChooseSMSReceivers_Form.resx">
+      <DependentUpon>ChooseSMSReceivers_Form.vb</DependentUpon>
+>>>>>>> origin/Implement_SMS(2)
     </EmbeddedResource>
     <EmbeddedResource Include="EditEmailGroupForm.resx">
       <DependentUpon>EditEmailGroupForm.vb</DependentUpon>
@@ -243,12 +308,25 @@
       <DependentUpon>Account_Manager.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+<<<<<<< HEAD
+    <EmbeddedResource Include="EditSmsGroupForm.resx">
+      <DependentUpon>EditSmsGroupForm.vb</DependentUpon>
+=======
+    <EmbeddedResource Include="NewSmsMessage.resx">
+      <DependentUpon>NewSmsMessage.vb</DependentUpon>
+>>>>>>> origin/Implement_SMS(2)
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="ResultsForm.resx">
       <DependentUpon>ResultsForm.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="ScheduleSMSForm.resx">
+      <DependentUpon>ScheduleSMSForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Schedule_SendingForm.resx">
       <DependentUpon>Schedule_SendingForm.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowEmailGroupsForm.resx">
       <DependentUpon>ShowEmailGroupsForm.vb</DependentUpon>
@@ -258,8 +336,8 @@
       <DependentUpon>confirm_box.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="AddEmailGroupForm.resx">
@@ -276,8 +354,18 @@
       <DependentUpon>NewMessage.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+<<<<<<< HEAD
+    <EmbeddedResource Include="ShowSmsGroupsForm.resx">
+      <DependentUpon>ShowSmsGroupsForm.vb</DependentUpon>
+      <SubType>Designer</SubType>
+=======
+    <EmbeddedResource Include="SMSResultsForm.resx">
+      <DependentUpon>SMSResultsForm.vb</DependentUpon>
+>>>>>>> origin/Implement_SMS(2)
+    </EmbeddedResource>
     <EmbeddedResource Include="SMS_Account_Manager.resx">
       <DependentUpon>SMS_Account_Manager.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -307,16 +395,13 @@
   <ItemGroup>
     <None Include="Resources\messages.jpg" />
     <None Include="Resources\groups.jpg" />
-<<<<<<< HEAD
-    <None Include="Resources\add-button.gif" />
-=======
     <None Include="Service References\SMS_Service\configuration91.svcinfo" />
+    <None Include="Resources\add-button.gif" />
     <None Include="Service References\SMS_Service\configuration.svcinfo" />
     <None Include="Service References\SMS_Service\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.vb</LastGenOutput>
     </None>
->>>>>>> origin/message_scheduler
     <Content Include="test.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -358,7 +443,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\wheel1.gif" />
-<<<<<<< HEAD
     <None Include="testDataSet1.xsc">
       <DependentUpon>testDataSet1.xsd</DependentUpon>
     </None>
@@ -370,6 +454,16 @@
     <None Include="testDataSet1.xss">
       <DependentUpon>testDataSet1.xsd</DependentUpon>
     </None>
+    <None Include="Service References\SMS_Service\sms.wsdl" />
+    <None Include="Service References\SMS_Service\sms_mail_project.SMS_Service.recipientStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\SMS_Service\" />
     <None Include="testDataSet2.xsc">
       <DependentUpon>testDataSet2.xsd</DependentUpon>
     </None>
@@ -381,18 +475,6 @@
     <None Include="testDataSet2.xss">
       <DependentUpon>testDataSet2.xsd</DependentUpon>
     </None>
-=======
-    <None Include="Service References\SMS_Service\sms.wsdl" />
-    <None Include="Service References\SMS_Service\sms_mail_project.SMS_Service.recipientStatus.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\SMS_Service\" />
->>>>>>> origin/message_scheduler
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

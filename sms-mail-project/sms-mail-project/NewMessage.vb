@@ -5,7 +5,10 @@ Imports System.Threading
 Imports System.ComponentModel
 
 Public Class NewMessage
-    
+
+    ' έλεγος για σύνδεση στο internet
+    Private Declare Function InternetGetConnectedState Lib "wininet" _
+    (ByRef conn As Long, ByVal val As Long) As Boolean
 
     Dim close_flag As Boolean 'φλαγκ μεταβλητη για την εμφανιση η οχι του μηνυματος dialog box στο κλεισιμο της φορμας
 
@@ -18,12 +21,11 @@ Public Class NewMessage
     Public Shared isScheduled As Boolean 'αν η αποστολή έχει γίνει τώρα ή έχει προγραμματιστεί για αργότερα.
     Public Shared sendto_content As String 'μεταφορά του περιεχομένου του sendTo tb στη φόρμα schedule_sendingform
     Public Shared subject_content As String 'μεταφορά του περιεχομένου του subject tb στη φόρμα schedule_sendingform
-    Public Shared body_content As String ''μεταφορά του περιεχομένου του body tb στη φόρμα schedule_sendingform
+    Public Shared body_content As String 'μεταφορά του περιεχομένου του body tb στη φόρμα schedule_sendingform
 
     Public Shared contacts As String 'χρησιμοποιείτε από την ChooseReceivers_Form για ενημέρωση του SendTo tb.
 
-    'Τις χρησιμοποιούμε για να κάνουμε load ένα draft και τα στοιχεία του να φορτωθούν στα πεδία του
-    'NewMessage
+    'Τις χρησιμοποιούμε για να κάνουμε load ένα draft και τα στοιχεία του να φορτωθούν στα πεδία του NewMessage
     Public Shared send As String
     Public Shared subj As String
     Public Shared mail As String
@@ -60,24 +62,6 @@ Public Class NewMessage
 
     End Sub
 
-    'Μενου tools Που εχει να κανει απευθειας με το manageraccount του ευθυμη
-    Private Sub AccountSetupToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AccountSetupToolStripMenuItem.Click
-        'ManagerAccount.Show()  Με το κουμπι διπλα απο το from == Εδώ μολις πατησει ο χρηστης αυτο το κουμπι καλώ την φόρμα του ευθύμη την ManagerAccount
-    End Sub
-
-    'Μενου insert σε συνεργασια με τον αργυρη
-    Private Sub GroupToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GroupToolStripMenuItem.Click
-        ' Εδω θα παιρνω τα γκρουπ απο τον αργυρη
-    End Sub
-
-    'Μενου Help Που περιλαμβανει τα παρακατω
-    Private Sub AboutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AboutToolStripMenuItem.Click
-        ' Εδω θα ανοιγω την φορμα που εφτιαξε η φανη για το about του προγραμματος μας
-    End Sub
-    Private Sub HelpFormToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles HelpFormToolStripMenuItem.Click
-        ' επισης Εδω θα ανοιγω την φορμα που εφτιαξε η φανη για το about του προγραμματος μας
-    End Sub
-
     Private Sub SaveToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveToolStripMenuItem.Click
         SaveDraftEmail()
     End Sub
@@ -86,18 +70,23 @@ Public Class NewMessage
     Private Sub UndoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles UndoToolStripMenuItem.Click
         MessageRichTextBox.Undo()
     End Sub
+
     Private Sub RedoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RedoToolStripMenuItem.Click
         MessageRichTextBox.Redo()
     End Sub
+
     Private Sub CutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CutToolStripMenuItem.Click
         MessageRichTextBox.Cut()
     End Sub
+
     Private Sub CopyToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CopyToolStripMenuItem.Click
         MessageRichTextBox.Copy()
     End Sub
+
     Private Sub PasteToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PasteToolStripMenuItem.Click
         MessageRichTextBox.Paste()
     End Sub
+
     Private Sub SelectAllToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SelectAllToolStripMenuItem.Click
         MessageRichTextBox.SelectAll()
     End Sub
@@ -112,7 +101,7 @@ Public Class NewMessage
                 If SendTo_tb.Text <> "" Or Subject.Text <> "" Or MessageRichTextBox.Text <> "" Then
                     SaveDraftEmail()
                 End If
-                
+
             Else
                 e.Cancel = True
             End If
@@ -148,12 +137,10 @@ Public Class NewMessage
         MessageRichTextBox.Paste()
     End Sub
 
-    ' έλεγος για σύνδεση στο internet
-    Private Declare Function InternetGetConnectedState Lib "wininet" _
-    (ByRef conn As Long, ByVal val As Long) As Boolean
     Private Sub SaveStripButton2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveStripButton2.Click
         SaveDraftEmail()
     End Sub
+
     ' SearchGroupBtn_Click (Εισαγωγή emails από τη φόρμα ChooseReceivers)
     Private Sub SearchGroupBtn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SearchGroupBtn.Click
 
@@ -171,25 +158,60 @@ Public Class NewMessage
     'SendTool_btn_Click (Από το toolbar)
     Private Sub SendTool_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SendTool_btn.Click
 
-        Dim sch As New Schedule_SendingForm()
-        sch.StartPosition = FormStartPosition.CenterParent
+        ' αν δεν έχει ρυθμιστεί ο λογαριασμός εμφανίζω το dialog για ρύθμηση του λογαριασμού.
+        If (My.Settings.email = "" Or My.Settings.name = "" Or My.Settings.password = "" Or _
+        My.Settings.port = "" Or My.Settings.server = "" Or My.Settings.security = "" Or From_tb.Text = "") Then
 
-        sendto_content = SendTo_tb.Text
-        subject_content = Subject.Text
-        body_content = MessageRichTextBox.Text
+            Dim manager As Account_Manager
+            manager = New Account_Manager
+            manager.StartPosition = FormStartPosition.CenterParent
+            manager.ShowDialog()
+            manager = Nothing
 
-        sch.ShowDialog()
-        sch = Nothing
-        If (isScheduled) Then
-            Me.Close()
-        Else
+            If (My.Settings.email <> "" And My.Settings.name <> "" And My.Settings.password <> "" And _
+            My.Settings.port <> "" And My.Settings.server <> "" And My.Settings.security <> "") Then
+                From_tb.Text = My.Settings.email
+                From_tb.ReadOnly = True
+                SearchAccount_btn.Visible = False
+                From_tb.ReadOnly = True
+            End If
 
-            Dim check As Boolean = PreSendingCheck()
+            ' αν το πεδίο με τους παραλείπτες είναι κενό, εμφανίζω το dialog για εισαγωγή παραληπτών.
+        ElseIf (SendTo_tb.Text = "") Then
 
-            If (check) Then
-                startSending()
-                SendTool_btn.Enabled = False
-                SendToolStripMenuItem.Enabled = False
+            Dim choose As New ChooseReceivers_Form()
+            choose.StartPosition = FormStartPosition.CenterParent
+            contacts = SendTo_tb.Text
+            choose.ShowDialog()
+            SendTo_tb.Text = contacts ' βάζω στο SendTo tb, τα εμαιλ χωρισμένα με ';'.
+            contacts = ""
+            choose = Nothing
+
+            ' αν έχει ρυθμιστεί λογαριασμός, εμφανίζω το dialog για άμεση αποστολή ή προγραμματισμό της αποστολής.
+        ElseIf (My.Settings.email <> "" And My.Settings.name <> "" And My.Settings.password <> "" And _
+         My.Settings.port <> "" And My.Settings.server <> "" And My.Settings.security <> "" And From_tb.Text <> "") Then
+
+            Dim sch As New Schedule_SendingForm()
+            sch.StartPosition = FormStartPosition.CenterParent
+
+            sendto_content = SendTo_tb.Text
+            subject_content = Subject.Text
+            body_content = MessageRichTextBox.Text
+
+            sch.ShowDialog()
+            sch = Nothing
+            If (isScheduled) Then
+                Me.Close()
+            Else
+
+                Dim check As Boolean = PreSendingCheck()
+
+                If (check) Then
+                    startSending()
+                    SendTool_btn.Enabled = False
+                    SendToolStripMenuItem.Enabled = False
+                End If
+
             End If
 
         End If
@@ -199,25 +221,60 @@ Public Class NewMessage
     'SendToolStripMenuItem_Click (από το menu file)
     Private Sub SendToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SendToolStripMenuItem.Click
 
-        Dim sch As New Schedule_SendingForm()
-        sch.StartPosition = FormStartPosition.CenterParent
+        ' αν δεν έχει ρυθμιστεί ο λογαριασμός εμφανίζω το dialog για ρύθμηση του λογαριασμού.
+        If (My.Settings.email = "" Or My.Settings.name = "" Or My.Settings.password = "" Or _
+        My.Settings.port = "" Or My.Settings.server = "" Or My.Settings.security = "" Or From_tb.Text = "") Then
 
-        sendto_content = SendTo_tb.Text
-        subject_content = Subject.Text
-        body_content = MessageRichTextBox.Text
+            Dim manager As Account_Manager
+            manager = New Account_Manager
+            manager.StartPosition = FormStartPosition.CenterParent
+            manager.ShowDialog()
+            manager = Nothing
 
-        sch.ShowDialog()
-        sch = Nothing
-        If (isScheduled) Then
-            Me.Close()
-        Else
+            If (My.Settings.email <> "" And My.Settings.name <> "" And My.Settings.password <> "" And _
+            My.Settings.port <> "" And My.Settings.server <> "" And My.Settings.security <> "") Then
+                From_tb.Text = My.Settings.email
+                From_tb.ReadOnly = True
+                SearchAccount_btn.Visible = False
+                From_tb.ReadOnly = True
+            End If
 
-            Dim check As Boolean = PreSendingCheck()
+            ' αν το πεδίο με τους παραλείπτες είναι κενό, εμφανίζω το dialog για εισαγωγή παραληπτών.
+        ElseIf (SendTo_tb.Text = "") Then
 
-            If (check) Then
-                startSending()
-                SendTool_btn.Enabled = False
-                SendToolStripMenuItem.Enabled = False
+            Dim choose As New ChooseReceivers_Form()
+            choose.StartPosition = FormStartPosition.CenterParent
+            contacts = SendTo_tb.Text
+            choose.ShowDialog()
+            SendTo_tb.Text = contacts ' βάζω στο SendTo tb, τα εμαιλ χωρισμένα με ';'.
+            contacts = ""
+            choose = Nothing
+
+            ' αν έχει ρυθμιστεί λογαριασμός, εμφανίζω το dialog για άμεση αποστολή ή προγραμματισμό της αποστολής.
+        ElseIf (My.Settings.email <> "" And My.Settings.name <> "" And My.Settings.password <> "" And _
+         My.Settings.port <> "" And My.Settings.server <> "" And My.Settings.security <> "" And From_tb.Text <> "") Then
+
+            Dim sch As New Schedule_SendingForm()
+            sch.StartPosition = FormStartPosition.CenterParent
+
+            sendto_content = SendTo_tb.Text
+            subject_content = Subject.Text
+            body_content = MessageRichTextBox.Text
+
+            sch.ShowDialog()
+            sch = Nothing
+            If (isScheduled) Then
+                Me.Close()
+            Else
+
+                Dim check As Boolean = PreSendingCheck()
+
+                If (check) Then
+                    startSending()
+                    SendTool_btn.Enabled = False
+                    SendToolStripMenuItem.Enabled = False
+                End If
+
             End If
 
         End If
@@ -249,7 +306,6 @@ Public Class NewMessage
         Return False 'return false αν δεν έχει ρυθμιστεί λογαριασμός.
 
     End Function
-
 
 #Region "SendingMail_Multithreading"
 
@@ -319,7 +375,7 @@ Public Class NewMessage
                 success += 1
 
                 isSent = True
-                
+
 
 
             Catch ex As SmtpException
@@ -471,4 +527,45 @@ Public Class NewMessage
         send = ""
         choose = Nothing
     End Sub
+
+    ' άνοιγμα account manager από το menu-tools.
+    Private Sub AccountManagerToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AccountManagerToolStripMenuItem.Click
+
+        Dim manager As Account_Manager
+        manager = New Account_Manager
+        manager.StartPosition = FormStartPosition.CenterParent
+        manager.ShowDialog()
+        manager = Nothing
+
+        ' αν μετά το κλείσιμο του dialog έχει ρυθμιστεί λογαριασμός τον εμφανίζουμε στο From text box.
+        If (My.Settings.email <> "" And My.Settings.name <> "" And My.Settings.password <> "" And _
+        My.Settings.port <> "" And My.Settings.server <> "" And My.Settings.security <> "") Then
+            From_tb.Text = My.Settings.email
+            From_tb.ReadOnly = True
+            SearchAccount_btn.Visible = False
+            From_tb.ReadOnly = True
+        Else ' αν έχει διαγραφεί - δεν έχει ρυθμιστεί ο λογαριασμός 'αδειάζω' το from text box.
+            From_tb.Text = ""
+            SearchAccount_btn.Visible = True
+        End If
+
+    End Sub
+
+    ' εκτελείτε όταν η φόρμα ενεργοποιείτε (gain focus).
+    Private Sub NewMessage_Activated(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Activated
+
+        ' αν μετά το κλείσιμο του dialog έχει ρυθμιστεί λογαριασμός τον εμφανίζουμε στο From text box.
+        If (My.Settings.email <> "" And My.Settings.name <> "" And My.Settings.password <> "" And _
+        My.Settings.port <> "" And My.Settings.server <> "" And My.Settings.security <> "") Then
+            From_tb.Text = My.Settings.email
+            From_tb.ReadOnly = True
+            SearchAccount_btn.Visible = False
+            From_tb.ReadOnly = True
+        Else ' αν έχει διαγραφεί - δεν έχει ρυθμιστεί ο λογαριασμός 'αδειάζω' το from text box.
+            From_tb.Text = ""
+            SearchAccount_btn.Visible = True
+        End If
+
+    End Sub
+
 End Class

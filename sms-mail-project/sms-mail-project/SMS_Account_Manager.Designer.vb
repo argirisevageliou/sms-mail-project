@@ -23,6 +23,7 @@ Partial Class SMS_Account_Manager
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SMS_Account_Manager))
         Me.Label1 = New System.Windows.Forms.Label
         Me.senderID_tb = New System.Windows.Forms.TextBox
         Me.Label2 = New System.Windows.Forms.Label
@@ -59,7 +60,7 @@ Partial Class SMS_Account_Manager
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
-        Me.Label2.Location = New System.Drawing.Point(10, 81)
+        Me.Label2.Location = New System.Drawing.Point(12, 78)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(97, 13)
         Me.Label2.TabIndex = 2
@@ -69,7 +70,7 @@ Partial Class SMS_Account_Manager
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
-        Me.Label3.Location = New System.Drawing.Point(12, 138)
+        Me.Label3.Location = New System.Drawing.Point(14, 124)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(95, 13)
         Me.Label3.TabIndex = 3
@@ -77,7 +78,7 @@ Partial Class SMS_Account_Manager
         '
         'user_tb
         '
-        Me.user_tb.Location = New System.Drawing.Point(139, 78)
+        Me.user_tb.Location = New System.Drawing.Point(139, 75)
         Me.user_tb.Name = "user_tb"
         Me.user_tb.Size = New System.Drawing.Size(182, 20)
         Me.user_tb.TabIndex = 4
@@ -85,7 +86,7 @@ Partial Class SMS_Account_Manager
         '
         'pass_tb
         '
-        Me.pass_tb.Location = New System.Drawing.Point(139, 135)
+        Me.pass_tb.Location = New System.Drawing.Point(139, 124)
         Me.pass_tb.Name = "pass_tb"
         Me.pass_tb.PasswordChar = Global.Microsoft.VisualBasic.ChrW(46)
         Me.pass_tb.Size = New System.Drawing.Size(182, 20)
@@ -112,19 +113,22 @@ Partial Class SMS_Account_Manager
         '
         'delete_btn
         '
-        Me.delete_btn.Location = New System.Drawing.Point(15, 184)
+        Me.delete_btn.BackgroundImage = CType(resources.GetObject("delete_btn.BackgroundImage"), System.Drawing.Image)
+        Me.delete_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.delete_btn.Location = New System.Drawing.Point(15, 154)
         Me.delete_btn.Name = "delete_btn"
-        Me.delete_btn.Size = New System.Drawing.Size(92, 23)
+        Me.delete_btn.Size = New System.Drawing.Size(92, 73)
         Me.delete_btn.TabIndex = 7
         Me.delete_btn.Text = "Delete Account"
+        Me.delete_btn.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.delete_btn.UseVisualStyleBackColor = True
         Me.delete_btn.Visible = False
         '
         'test_btn
         '
-        Me.test_btn.Location = New System.Drawing.Point(139, 185)
+        Me.test_btn.Location = New System.Drawing.Point(139, 173)
         Me.test_btn.Name = "test_btn"
-        Me.test_btn.Size = New System.Drawing.Size(182, 21)
+        Me.test_btn.Size = New System.Drawing.Size(182, 33)
         Me.test_btn.TabIndex = 6
         Me.test_btn.Text = "Test Account!!"
         Me.test_btn.UseVisualStyleBackColor = True
@@ -133,6 +137,7 @@ Partial Class SMS_Account_Manager
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.DodgerBlue
         Me.ClientSize = New System.Drawing.Size(385, 283)
         Me.Controls.Add(Me.delete_btn)
         Me.Controls.Add(Me.test_btn)
@@ -144,6 +149,7 @@ Partial Class SMS_Account_Manager
         Me.Controls.Add(Me.senderID_tb)
         Me.Controls.Add(Me.Label1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "SMS_Account_Manager"
