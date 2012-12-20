@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{577AE984-C5A1-4C51-B9DC-4C7ADE85D2FB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -73,11 +73,11 @@
   <ItemGroup>
     <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Desktop\teithe(12-13)\adopse\sms-email-project\sms-mail-project(17-12-12)\sms-mail-project\sms-mail-project\bin\x86\Debug\HtmlAgilityPack.dll</HintPath>
+      <HintPath>..\..\..\..\Internet Downloads\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Win32.TaskScheduler, Version=1.9.1.24371, Culture=neutral, PublicKeyToken=0d013ddd5178a2ae, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Desktop\teithe(12-13)\adopse\sms-email-project\sms-mail-project(17-12-12)\sms-mail-project\sms-mail-project\bin\x86\Debug\Microsoft.Win32.TaskScheduler.dll</HintPath>
+      <HintPath>..\..\..\..\Internet Downloads\Microsoft.Win32.TaskScheduler.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -135,13 +135,14 @@
     </Compile>
     <Compile Include="ChooseTypeGroupForm.Designer.vb">
       <DependentUpon>ChooseTypeGroupForm.vb</DependentUpon>
+    </Compile>
     <Compile Include="ChooseSMSReceivers_Form.Designer.vb">
       <DependentUpon>ChooseSMSReceivers_Form.vb</DependentUpon>
     </Compile>
     <Compile Include="ChooseTypeGroupForm.vb">
-    <Compile Include="ChooseSMSReceivers_Form.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ChooseSMSReceivers_Form.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="EditEmailGroupForm.Designer.vb">
@@ -161,14 +162,14 @@
     </Compile>
     <Compile Include="EditSmsGroupForm.Designer.vb">
       <DependentUpon>EditSmsGroupForm.vb</DependentUpon>
+    </Compile>
     <Compile Include="NewSmsMessage.Designer.vb">
       <DependentUpon>NewSmsMessage.vb</DependentUpon>
     </Compile>
-    </Compile>
     <Compile Include="EditSmsGroupForm.vb">
-    <Compile Include="NewSmsMessage.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="NewSmsMessage.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ResultsForm.Designer.vb">
@@ -236,14 +237,14 @@
     </Compile>
     <Compile Include="ShowSmsGroupsForm.Designer.vb">
       <DependentUpon>ShowSmsGroupsForm.vb</DependentUpon>
+    </Compile>
     <Compile Include="SMSResultsForm.Designer.vb">
       <DependentUpon>SMSResultsForm.vb</DependentUpon>
     </Compile>
-    </Compile>
     <Compile Include="ShowSmsGroupsForm.vb">
-    <Compile Include="SMSResultsForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SMSResultsForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SMS_Account_Manager.Designer.vb">
@@ -290,9 +291,10 @@
     <EmbeddedResource Include="ChooseTypeGroupForm.resx">
       <DependentUpon>ChooseTypeGroupForm.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="ChooseSMSReceivers_Form.resx">
       <DependentUpon>ChooseSMSReceivers_Form.vb</DependentUpon>
-    </EmbeddedResource>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="EditEmailGroupForm.resx">
       <DependentUpon>EditEmailGroupForm.vb</DependentUpon>
@@ -304,10 +306,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditSmsGroupForm.resx">
       <DependentUpon>EditSmsGroupForm.vb</DependentUpon>
-    <EmbeddedResource Include="NewSmsMessage.resx">
-      <DependentUpon>NewSmsMessage.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="NewSmsMessage.resx">
+      <DependentUpon>NewSmsMessage.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ResultsForm.resx">
@@ -316,6 +318,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ScheduleSMSForm.resx">
       <DependentUpon>ScheduleSMSForm.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Schedule_SendingForm.resx">
       <DependentUpon>Schedule_SendingForm.vb</DependentUpon>
@@ -353,6 +356,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SMSResultsForm.resx">
       <DependentUpon>SMSResultsForm.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SMS_Account_Manager.resx">
       <DependentUpon>SMS_Account_Manager.vb</DependentUpon>
