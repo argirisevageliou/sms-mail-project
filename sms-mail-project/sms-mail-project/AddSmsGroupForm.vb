@@ -39,7 +39,11 @@ Public Class AddSmsGroupForm
             Me.Close()
             'Μόλις προστεθεί με επιτυχία το νέο γκρουπ, τότε εμφανίζεται η φόρμα ShowSmsGroupsForm
             'που περιέχει όλα μας τα γκρουπ
-            ShowSmsGroupsForm.Show()
+            Dim ShowSmsGroupsFormVar As ShowSmsGroupsForm
+            ShowSmsGroupsFormVar = New ShowSmsGroupsForm()
+            ShowSmsGroupsFormVar.StartPosition = FormStartPosition.CenterParent
+            ShowSmsGroupsFormVar.ShowDialog()
+            ShowSmsGroupsFormVar = Nothing
         End If
     End Sub
 End Class

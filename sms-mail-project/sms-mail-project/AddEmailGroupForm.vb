@@ -41,7 +41,11 @@ Public Class AddEmailGroupForm
             Me.Close()
             'Μόλις προστεθεί με επιτυχία το νέο γκρουπ, τότε εμφανίζεται η φόρμα ShowEmailGroupsForm
             'που περιέχει όλα μας τα γκρουπ
-            ShowEmailGroupsForm.Show()
+            Dim ShowEmailGroupsFormVar As ShowEmailGroupsForm
+            ShowEmailGroupsFormVar = New ShowEmailGroupsForm()
+            ShowEmailGroupsFormVar.StartPosition = FormStartPosition.CenterParent
+            ShowEmailGroupsFormVar.ShowDialog()
+            ShowEmailGroupsFormVar = Nothing
         End If
     End Sub
 End Class

@@ -29,7 +29,11 @@ Public Class ShowEmailGroupsForm
     Private Sub CreateGroupBtn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CreateGroupBtn.Click
         'H μέθοδος αυτή καλείται όταν πατήσουμε το createGroup button 
         'η οποία μας μεταφέρει στην AddEmailGroupForm(ο χρήστης μπορεί να προσθέσει νέο γκρουπ)
-        AddEmailGroupForm.Show()
+        Dim AddEmailGroupFormVar As AddEmailGroupForm
+        AddEmailGroupFormVar = New AddEmailGroupForm()
+        AddEmailGroupFormVar.StartPosition = FormStartPosition.CenterParent
+        AddEmailGroupFormVar.ShowDialog()
+        AddEmailGroupFormVar = Nothing
         'Μετά αυτή η φόρμα κλείνει
         Me.Close()
     End Sub
@@ -39,7 +43,11 @@ Public Class ShowEmailGroupsForm
         'επιλέξει να επεξεργαστούμε από το datagridview(θα το χρειαστούμε στην EditEmailGroupForm)
         MainForm.selectemailgroup = EmailGroupsGrid.CurrentRow.Cells("name").Value
         'Εμφανίζεται η EditEmailGroupForm και αυτή η φόρμα κλέινει
-        EditEmailGroupForm.Show()
+        Dim EditEmailGroupFormVar As EditEmailGroupForm
+        EditEmailGroupFormVar = New EditEmailGroupForm()
+        EditEmailGroupFormVar.StartPosition = FormStartPosition.CenterParent
+        EditEmailGroupFormVar.ShowDialog()
+        EditEmailGroupFormVar = Nothing
         Me.Close()
     End Sub
 

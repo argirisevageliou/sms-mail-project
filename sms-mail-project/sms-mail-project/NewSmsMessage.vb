@@ -1,4 +1,5 @@
 ﻿Imports System.Web.HttpUtility
+Imports System.Data.OleDb
 
 Public Class NewSmsMessage
 
@@ -205,7 +206,7 @@ Public Class NewSmsMessage
         Try
             ID = client.send(UrlEncode(My.Settings.SMSusername), UrlEncode(My.Settings.SMSpassword), _
             UrlEncode(My.Settings.SMSsenderID), _to, UrlEncode(SmsRichTextBox.Text), "GSM", False, "", "")
-
+            SaveSentSms()
         Catch ex As Exception
 
             MsgBox(ex.Message)
@@ -338,6 +339,25 @@ Public Class NewSmsMessage
             smsCount_lb.Text = smsCounter
         End If
 
+    End Sub
+
+    Private Sub SaveSentSms()
+        Dim connection As OleDbConnection
+        Dim command As OleDbCommand
+        Dim timeStamp As DateTime = DateTime.Now
+        Dim insertquery As String = "INSERT INTO sentsms(subject,senders,sms,hmer_wra) VALUES('" & SmsSubjectTb.Text & _
+            "','" & SmsSendTo_tb.Text & "','" & SmsRichTextBox.Text & "','" & timeStamp & "');"
+
+        Try
+            connection = New OleDbConnection(My.Settings.testConnectionString)
+            command = New OleDbCommand(insertquery, connection)
+            connection.Open()
+            command.ExecuteNonQuery()
+            connection.Close()
+
+        Catch ex1 As Exception
+            MessageBox.Show(ex1.Message)
+        End Try
     End Sub
 
 End Class

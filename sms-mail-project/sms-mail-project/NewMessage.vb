@@ -406,31 +406,20 @@ Public Class NewMessage
         Me.status_pb.Value = Me.status_pb.Value + 1
 
         If (isSent) Then
-
-            '''''''''''''''''''''''''''''''''''''''''''''''''''''
-            'Δεν μπορεί να αποθηκεύσει στα sent σε αυτό το σημείο
             SaveSentEmail()
-
             'Τα μηδενίζουμε για να μην αποθηκευτεί το mail στα drafts
             SendTo_tb.Text = ""
             From_tb.Text = ""
             Subject.Text = ""
             MessageRichTextBox.Text = ""
-            ''''''''''''''''''''''''''''''''''''''''
 
         Else
-
-            ''''''''''''''''''''''''''''''''''''''''
-            'Δεν μπορεί να αποθηκεύσει στα drafts σε αυτό το σημείο
             SaveDraftEmail()
-
             'Τα μηδενίζουμε για να μην αποθηκευτεί ξανά το mail στα drafts
             SendTo_tb.Text = ""
             From_tb.Text = ""
             Subject.Text = ""
             MessageRichTextBox.Text = ""
-            ''''''''''''''''''''''''''''''''''''''''''
-
         End If
 
         isSent = False

@@ -24,12 +24,12 @@ Partial Class MainForm
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
-        Dim TreeNode55 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Sent Messages")
-        Dim TreeNode56 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Drafts")
-        Dim TreeNode57 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Messages", New System.Windows.Forms.TreeNode() {TreeNode55, TreeNode56})
-        Dim TreeNode58 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Add Group")
-        Dim TreeNode59 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("View Groups")
-        Dim TreeNode60 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Groups", New System.Windows.Forms.TreeNode() {TreeNode58, TreeNode59})
+        Dim TreeNode13 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Sent Messages")
+        Dim TreeNode14 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Drafts")
+        Dim TreeNode15 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Messages", New System.Windows.Forms.TreeNode() {TreeNode13, TreeNode14})
+        Dim TreeNode16 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Add Group")
+        Dim TreeNode17 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("View Groups")
+        Dim TreeNode18 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Groups", New System.Windows.Forms.TreeNode() {TreeNode16, TreeNode17})
         Me.HomeBtn = New System.Windows.Forms.Button
         Me.MessagesBtn = New System.Windows.Forms.Button
         Me.GroupsBtn = New System.Windows.Forms.Button
@@ -41,6 +41,13 @@ Partial Class MainForm
         Me.DraftSendTo_TxtBox = New System.Windows.Forms.TextBox
         Me.DraftSubject_TxtBox = New System.Windows.Forms.TextBox
         Me.Date_Label1 = New System.Windows.Forms.Label
+        Me.SendTo_Label1 = New System.Windows.Forms.Label
+        Me.Subject_Label1 = New System.Windows.Forms.Label
+        Me.DraftMailTextBox = New System.Windows.Forms.RichTextBox
+        Me.Drafts_Label = New System.Windows.Forms.Label
+        Me.DraftListBox = New System.Windows.Forms.ListBox
+        Me.DraftemailsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.TestDataSet1 = New sms_mail_project.testDataSet1
         Me.Sent_Panel = New System.Windows.Forms.Panel
         Me.SentDate_TxtBox = New System.Windows.Forms.TextBox
         Me.SentSendTo_TxtBox = New System.Windows.Forms.TextBox
@@ -53,13 +60,6 @@ Partial Class MainForm
         Me.SentListBox = New System.Windows.Forms.ListBox
         Me.SentemailsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TestDataSet2 = New sms_mail_project.testDataSet2
-        Me.SendTo_Label1 = New System.Windows.Forms.Label
-        Me.Subject_Label1 = New System.Windows.Forms.Label
-        Me.DraftMailTextBox = New System.Windows.Forms.RichTextBox
-        Me.Drafts_Label = New System.Windows.Forms.Label
-        Me.DraftListBox = New System.Windows.Forms.ListBox
-        Me.DraftemailsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.TestDataSet1 = New sms_mail_project.testDataSet1
         Me.ShowEmailGroups_Panel = New System.Windows.Forms.Panel
         Me.DeleteGroupBtn = New System.Windows.Forms.Button
         Me.EmailGroupsGrid = New System.Windows.Forms.DataGridView
@@ -68,6 +68,7 @@ Partial Class MainForm
         Me.Button1 = New System.Windows.Forms.Button
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.GerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.NewSmsGroupToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.NewMessageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.NewSmsMessageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator
@@ -104,11 +105,11 @@ Partial Class MainForm
         Me.Label11 = New System.Windows.Forms.Label
         Me.ContactsGrid = New System.Windows.Forms.DataGridView
         Me.Draft_Panel.SuspendLayout()
+        CType(Me.DraftemailsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TestDataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Sent_Panel.SuspendLayout()
         CType(Me.SentemailsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TestDataSet2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DraftemailsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TestDataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ShowEmailGroups_Panel.SuspendLayout()
         CType(Me.EmailGroupsGrid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
@@ -177,27 +178,27 @@ Partial Class MainForm
         Me.TreeView1.LineColor = System.Drawing.Color.DeepSkyBlue
         Me.TreeView1.Location = New System.Drawing.Point(0, 150)
         Me.TreeView1.Name = "TreeView1"
-        TreeNode55.BackColor = System.Drawing.Color.Chartreuse
-        TreeNode55.Name = "Node1"
-        TreeNode55.Text = "Sent Messages"
-        TreeNode56.BackColor = System.Drawing.Color.Chartreuse
-        TreeNode56.Name = "Node2"
-        TreeNode56.Text = "Drafts"
-        TreeNode57.BackColor = System.Drawing.Color.BlueViolet
-        TreeNode57.Name = "Node0"
-        TreeNode57.NodeFont = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        TreeNode57.Text = "Messages"
-        TreeNode58.BackColor = System.Drawing.Color.Chartreuse
-        TreeNode58.Name = "Node4"
-        TreeNode58.Text = "Add Group"
-        TreeNode59.BackColor = System.Drawing.Color.Chartreuse
-        TreeNode59.Name = "Node5"
-        TreeNode59.Text = "View Groups"
-        TreeNode60.BackColor = System.Drawing.Color.BlueViolet
-        TreeNode60.Name = "Node3"
-        TreeNode60.NodeFont = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        TreeNode60.Text = "Groups"
-        Me.TreeView1.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode57, TreeNode60})
+        TreeNode13.BackColor = System.Drawing.Color.Chartreuse
+        TreeNode13.Name = "Node1"
+        TreeNode13.Text = "Sent Messages"
+        TreeNode14.BackColor = System.Drawing.Color.Chartreuse
+        TreeNode14.Name = "Node2"
+        TreeNode14.Text = "Drafts"
+        TreeNode15.BackColor = System.Drawing.Color.BlueViolet
+        TreeNode15.Name = "Node0"
+        TreeNode15.NodeFont = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        TreeNode15.Text = "Messages"
+        TreeNode16.BackColor = System.Drawing.Color.Chartreuse
+        TreeNode16.Name = "Node4"
+        TreeNode16.Text = "Add Group"
+        TreeNode17.BackColor = System.Drawing.Color.Chartreuse
+        TreeNode17.Name = "Node5"
+        TreeNode17.Text = "View Groups"
+        TreeNode18.BackColor = System.Drawing.Color.BlueViolet
+        TreeNode18.Name = "Node3"
+        TreeNode18.NodeFont = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        TreeNode18.Text = "Groups"
+        Me.TreeView1.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode15, TreeNode18})
         Me.TreeView1.Scrollable = False
         Me.TreeView1.Size = New System.Drawing.Size(135, 223)
         Me.TreeView1.TabIndex = 5
@@ -277,6 +278,76 @@ Partial Class MainForm
         Me.Date_Label1.Size = New System.Drawing.Size(63, 25)
         Me.Date_Label1.TabIndex = 5
         Me.Date_Label1.Text = "Date:"
+        '
+        'SendTo_Label1
+        '
+        Me.SendTo_Label1.AutoSize = True
+        Me.SendTo_Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.SendTo_Label1.Location = New System.Drawing.Point(180, 36)
+        Me.SendTo_Label1.Name = "SendTo_Label1"
+        Me.SendTo_Label1.Size = New System.Drawing.Size(99, 25)
+        Me.SendTo_Label1.TabIndex = 4
+        Me.SendTo_Label1.Text = "Send To:"
+        '
+        'Subject_Label1
+        '
+        Me.Subject_Label1.AutoSize = True
+        Me.Subject_Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.Subject_Label1.Location = New System.Drawing.Point(180, 8)
+        Me.Subject_Label1.Name = "Subject_Label1"
+        Me.Subject_Label1.Size = New System.Drawing.Size(90, 25)
+        Me.Subject_Label1.TabIndex = 3
+        Me.Subject_Label1.Text = "Subject:"
+        '
+        'DraftMailTextBox
+        '
+        Me.DraftMailTextBox.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DraftMailTextBox.Enabled = False
+        Me.DraftMailTextBox.Location = New System.Drawing.Point(173, 112)
+        Me.DraftMailTextBox.Name = "DraftMailTextBox"
+        Me.DraftMailTextBox.Size = New System.Drawing.Size(501, 270)
+        Me.DraftMailTextBox.TabIndex = 2
+        Me.DraftMailTextBox.Text = ""
+        '
+        'Drafts_Label
+        '
+        Me.Drafts_Label.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Drafts_Label.AutoSize = True
+        Me.Drafts_Label.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.Drafts_Label.ForeColor = System.Drawing.Color.Blue
+        Me.Drafts_Label.Location = New System.Drawing.Point(35, 9)
+        Me.Drafts_Label.Name = "Drafts_Label"
+        Me.Drafts_Label.Size = New System.Drawing.Size(88, 31)
+        Me.Drafts_Label.TabIndex = 1
+        Me.Drafts_Label.Text = "Drafts"
+        '
+        'DraftListBox
+        '
+        Me.DraftListBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.DraftListBox.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DraftListBox.DataSource = Me.DraftemailsBindingSource
+        Me.DraftListBox.DisplayMember = "subject"
+        Me.DraftListBox.FormattingEnabled = True
+        Me.DraftListBox.Location = New System.Drawing.Point(3, 56)
+        Me.DraftListBox.Name = "DraftListBox"
+        Me.DraftListBox.Size = New System.Drawing.Size(151, 316)
+        Me.DraftListBox.TabIndex = 0
+        Me.DraftListBox.ValueMember = "subject"
+        '
+        'DraftemailsBindingSource
+        '
+        Me.DraftemailsBindingSource.DataMember = "draftemails"
+        Me.DraftemailsBindingSource.DataSource = Me.TestDataSet1
+        '
+        'TestDataSet1
+        '
+        Me.TestDataSet1.DataSetName = "testDataSet1"
+        Me.TestDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Sent_Panel
         '
@@ -411,76 +482,6 @@ Partial Class MainForm
         Me.TestDataSet2.DataSetName = "testDataSet2"
         Me.TestDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'SendTo_Label1
-        '
-        Me.SendTo_Label1.AutoSize = True
-        Me.SendTo_Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
-        Me.SendTo_Label1.Location = New System.Drawing.Point(180, 36)
-        Me.SendTo_Label1.Name = "SendTo_Label1"
-        Me.SendTo_Label1.Size = New System.Drawing.Size(99, 25)
-        Me.SendTo_Label1.TabIndex = 4
-        Me.SendTo_Label1.Text = "Send To:"
-        '
-        'Subject_Label1
-        '
-        Me.Subject_Label1.AutoSize = True
-        Me.Subject_Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
-        Me.Subject_Label1.Location = New System.Drawing.Point(180, 8)
-        Me.Subject_Label1.Name = "Subject_Label1"
-        Me.Subject_Label1.Size = New System.Drawing.Size(90, 25)
-        Me.Subject_Label1.TabIndex = 3
-        Me.Subject_Label1.Text = "Subject:"
-        '
-        'DraftMailTextBox
-        '
-        Me.DraftMailTextBox.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DraftMailTextBox.Enabled = False
-        Me.DraftMailTextBox.Location = New System.Drawing.Point(173, 112)
-        Me.DraftMailTextBox.Name = "DraftMailTextBox"
-        Me.DraftMailTextBox.Size = New System.Drawing.Size(501, 270)
-        Me.DraftMailTextBox.TabIndex = 2
-        Me.DraftMailTextBox.Text = ""
-        '
-        'Drafts_Label
-        '
-        Me.Drafts_Label.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Drafts_Label.AutoSize = True
-        Me.Drafts_Label.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
-        Me.Drafts_Label.ForeColor = System.Drawing.Color.Blue
-        Me.Drafts_Label.Location = New System.Drawing.Point(35, 9)
-        Me.Drafts_Label.Name = "Drafts_Label"
-        Me.Drafts_Label.Size = New System.Drawing.Size(88, 31)
-        Me.Drafts_Label.TabIndex = 1
-        Me.Drafts_Label.Text = "Drafts"
-        '
-        'DraftListBox
-        '
-        Me.DraftListBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.DraftListBox.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.DraftListBox.DataSource = Me.DraftemailsBindingSource
-        Me.DraftListBox.DisplayMember = "subject"
-        Me.DraftListBox.FormattingEnabled = True
-        Me.DraftListBox.Location = New System.Drawing.Point(3, 56)
-        Me.DraftListBox.Name = "DraftListBox"
-        Me.DraftListBox.Size = New System.Drawing.Size(151, 316)
-        Me.DraftListBox.TabIndex = 0
-        Me.DraftListBox.ValueMember = "subject"
-        '
-        'DraftemailsBindingSource
-        '
-        Me.DraftemailsBindingSource.DataMember = "draftemails"
-        Me.DraftemailsBindingSource.DataSource = Me.TestDataSet1
-        '
-        'TestDataSet1
-        '
-        Me.TestDataSet1.DataSetName = "testDataSet1"
-        Me.TestDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'ShowEmailGroups_Panel
         '
         Me.ShowEmailGroups_Panel.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -560,7 +561,7 @@ Partial Class MainForm
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GerToolStripMenuItem, Me.NewMessageToolStripMenuItem, Me.NewSmsMessageToolStripMenuItem, Me.ToolStripSeparator1, Me.ExitToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GerToolStripMenuItem, Me.NewSmsGroupToolStripMenuItem, Me.NewMessageToolStripMenuItem, Me.NewSmsMessageToolStripMenuItem, Me.ToolStripSeparator1, Me.ExitToolStripMenuItem})
         Me.FileToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.FileToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
@@ -570,32 +571,38 @@ Partial Class MainForm
         'GerToolStripMenuItem
         '
         Me.GerToolStripMenuItem.Name = "GerToolStripMenuItem"
-        Me.GerToolStripMenuItem.Size = New System.Drawing.Size(224, 22)
-        Me.GerToolStripMenuItem.Text = "New Group"
+        Me.GerToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
+        Me.GerToolStripMenuItem.Text = "New Email Group"
+        '
+        'NewSmsGroupToolStripMenuItem
+        '
+        Me.NewSmsGroupToolStripMenuItem.Name = "NewSmsGroupToolStripMenuItem"
+        Me.NewSmsGroupToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
+        Me.NewSmsGroupToolStripMenuItem.Text = "New Sms Group"
         '
         'NewMessageToolStripMenuItem
         '
         Me.NewMessageToolStripMenuItem.Name = "NewMessageToolStripMenuItem"
         Me.NewMessageToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2
-        Me.NewMessageToolStripMenuItem.Size = New System.Drawing.Size(224, 22)
+        Me.NewMessageToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
         Me.NewMessageToolStripMenuItem.Text = "New Email Message"
         '
         'NewSmsMessageToolStripMenuItem
         '
         Me.NewSmsMessageToolStripMenuItem.Name = "NewSmsMessageToolStripMenuItem"
         Me.NewSmsMessageToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3
-        Me.NewSmsMessageToolStripMenuItem.Size = New System.Drawing.Size(224, 22)
+        Me.NewSmsMessageToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
         Me.NewSmsMessageToolStripMenuItem.Text = "New Sms Message"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(221, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(209, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(224, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'ToolsToolStripMenuItem
@@ -609,13 +616,13 @@ Partial Class MainForm
         'ManagerAccountToolStripMenuItem
         '
         Me.ManagerAccountToolStripMenuItem.Name = "ManagerAccountToolStripMenuItem"
-        Me.ManagerAccountToolStripMenuItem.Size = New System.Drawing.Size(225, 22)
+        Me.ManagerAccountToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
         Me.ManagerAccountToolStripMenuItem.Text = "Manager Account"
         '
         'SMSAccountManager_menu
         '
         Me.SMSAccountManager_menu.Name = "SMSAccountManager_menu"
-        Me.SMSAccountManager_menu.Size = New System.Drawing.Size(225, 22)
+        Me.SMSAccountManager_menu.Size = New System.Drawing.Size(213, 22)
         Me.SMSAccountManager_menu.Text = "SMS Account Manager"
         '
         'HelpToolStripMenuItem
@@ -631,13 +638,13 @@ Partial Class MainForm
         Me.HelpContentsToolStripMenuItem.Image = CType(resources.GetObject("HelpContentsToolStripMenuItem.Image"), System.Drawing.Image)
         Me.HelpContentsToolStripMenuItem.Name = "HelpContentsToolStripMenuItem"
         Me.HelpContentsToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1
-        Me.HelpContentsToolStripMenuItem.Size = New System.Drawing.Size(195, 22)
+        Me.HelpContentsToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
         Me.HelpContentsToolStripMenuItem.Text = "Help Contents"
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(195, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'MenuStrip1
@@ -663,14 +670,14 @@ Partial Class MainForm
         '
         Me.Events.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Forward})
         Me.Events.Name = "Events"
-        Me.Events.Size = New System.Drawing.Size(161, 125)
+        Me.Events.Size = New System.Drawing.Size(161, 127)
         '
         'Forward
         '
         Me.Forward.Enabled = False
         Me.Forward.Margin = New System.Windows.Forms.Padding(50)
         Me.Forward.Name = "Forward"
-        Me.Forward.Size = New System.Drawing.Size(100, 21)
+        Me.Forward.Size = New System.Drawing.Size(100, 23)
         Me.Forward.Text = "Forward"
         '
         'Create_Panel
@@ -905,8 +912,8 @@ Partial Class MainForm
         Me.Controls.Add(Me.AccountsBtn)
         Me.Controls.Add(Me.GroupsBtn)
         Me.Controls.Add(Me.MessagesBtn)
-        Me.Controls.Add(Me.EditEmailGroup_Panel)
         Me.Controls.Add(Me.HomeBtn)
+        Me.Controls.Add(Me.EditEmailGroup_Panel)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.Sent_Panel)
         Me.Controls.Add(Me.Create_Panel)
@@ -918,12 +925,12 @@ Partial Class MainForm
         Me.Text = "Sms & Email Application Center -  Free Edition"
         Me.Draft_Panel.ResumeLayout(False)
         Me.Draft_Panel.PerformLayout()
+        CType(Me.DraftemailsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TestDataSet1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Sent_Panel.ResumeLayout(False)
         Me.Sent_Panel.PerformLayout()
         CType(Me.SentemailsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TestDataSet2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DraftemailsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TestDataSet1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ShowEmailGroups_Panel.ResumeLayout(False)
         Me.ShowEmailGroups_Panel.PerformLayout()
         CType(Me.EmailGroupsGrid, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1013,5 +1020,6 @@ Partial Class MainForm
     Friend WithEvents ContactsGrid As System.Windows.Forms.DataGridView
     Friend WithEvents HelpContentsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents NewSmsMessageToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents NewSmsGroupToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

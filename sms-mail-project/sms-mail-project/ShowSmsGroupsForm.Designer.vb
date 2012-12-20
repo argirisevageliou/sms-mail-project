@@ -88,7 +88,7 @@ Partial Class ShowSmsGroupsForm
         Me.CreateGroupBtn.Name = "CreateGroupBtn"
         Me.CreateGroupBtn.Size = New System.Drawing.Size(137, 80)
         Me.CreateGroupBtn.TabIndex = 7
-        Me.CreateGroupBtn.Text = "Create a new email group"
+        Me.CreateGroupBtn.Text = "Create a new sms group"
         Me.CreateGroupBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.CreateGroupBtn.UseVisualStyleBackColor = True
         '

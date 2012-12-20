@@ -54,7 +54,17 @@ Public Class MainForm
 
     'Εμφανίζει την ShowEmailGroupsForm
     Private Sub GroupsBtn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GroupsBtn.Click
-        ChooseTypeGroupForm.Show()
+        Draft_Panel.Visible = False
+        Sent_Panel.Visible = False
+        Create_Panel.Visible = False
+        ShowEmailGroups_Panel.Visible = False
+        EditEmailGroup_Panel.Visible = False
+
+        Dim ChooseTypeGroupVar As ChooseTypeGroupForm
+        ChooseTypeGroupVar = New ChooseTypeGroupForm()
+        ChooseTypeGroupVar.StartPosition = FormStartPosition.CenterParent
+        ChooseTypeGroupVar.ShowDialog()
+        ChooseTypeGroupVar = Nothing
     End Sub
 
     'Επιλέγουμε στοιχείο από το TreeView
@@ -435,10 +445,44 @@ Public Class MainForm
     End Sub
 
     Private Sub NewSmsMessageToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NewSmsMessageToolStripMenuItem.Click
+        Draft_Panel.Visible = False
+        Sent_Panel.Visible = False
+        Create_Panel.Visible = False
+        ShowEmailGroups_Panel.Visible = False
+        EditEmailGroup_Panel.Visible = False
+
         Dim SmsMessage As NewSmsMessage
         SmsMessage = New NewSmsMessage()
         SmsMessage.StartPosition = FormStartPosition.CenterParent
         SmsMessage.ShowDialog()
         SmsMessage = Nothing
+    End Sub
+
+    Private Sub GerToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GerToolStripMenuItem.Click
+        Draft_Panel.Visible = False
+        Sent_Panel.Visible = False
+        Create_Panel.Visible = False
+        ShowEmailGroups_Panel.Visible = False
+        EditEmailGroup_Panel.Visible = False
+
+        Dim AddEmailGroupVar As AddEmailGroupForm
+        AddEmailGroupVar = New AddEmailGroupForm()
+        AddEmailGroupVar.StartPosition = FormStartPosition.CenterParent
+        AddEmailGroupVar.ShowDialog()
+        AddEmailGroupVar = Nothing
+    End Sub
+
+    Private Sub NewSmsGroupToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NewSmsGroupToolStripMenuItem.Click
+        Draft_Panel.Visible = False
+        Sent_Panel.Visible = False
+        Create_Panel.Visible = False
+        ShowEmailGroups_Panel.Visible = False
+        EditEmailGroup_Panel.Visible = False
+
+        Dim AddSmsGroupVar As AddSmsGroupForm
+        AddSmsGroupVar = New AddSmsGroupForm()
+        AddSmsGroupVar.StartPosition = FormStartPosition.CenterParent
+        AddSmsGroupVar.ShowDialog()
+        AddSmsGroupVar = Nothing
     End Sub
 End Class

@@ -22,40 +22,40 @@ Partial Class ChooseTypeGroupForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Button1 = New System.Windows.Forms.Button
-        Me.Button2 = New System.Windows.Forms.Button
+        Me.EmailGroupsBtn = New System.Windows.Forms.Button
+        Me.SmsGroupsBtn = New System.Windows.Forms.Button
         Me.SuspendLayout()
         '
-        'Button1
+        'EmailGroupsBtn
         '
-        Me.Button1.Location = New System.Drawing.Point(82, 73)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(103, 32)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Email Groups"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.EmailGroupsBtn.Location = New System.Drawing.Point(82, 73)
+        Me.EmailGroupsBtn.Name = "EmailGroupsBtn"
+        Me.EmailGroupsBtn.Size = New System.Drawing.Size(103, 32)
+        Me.EmailGroupsBtn.TabIndex = 0
+        Me.EmailGroupsBtn.Text = "Email Groups"
+        Me.EmailGroupsBtn.UseVisualStyleBackColor = True
         '
-        'Button2
+        'SmsGroupsBtn
         '
-        Me.Button2.Location = New System.Drawing.Point(82, 140)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(103, 32)
-        Me.Button2.TabIndex = 1
-        Me.Button2.Text = "Sms Groups"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.SmsGroupsBtn.Location = New System.Drawing.Point(82, 140)
+        Me.SmsGroupsBtn.Name = "SmsGroupsBtn"
+        Me.SmsGroupsBtn.Size = New System.Drawing.Size(103, 32)
+        Me.SmsGroupsBtn.TabIndex = 1
+        Me.SmsGroupsBtn.Text = "Sms Groups"
+        Me.SmsGroupsBtn.UseVisualStyleBackColor = True
         '
         'ChooseTypeGroupForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(288, 266)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.SmsGroupsBtn)
+        Me.Controls.Add(Me.EmailGroupsBtn)
         Me.Name = "ChooseTypeGroupForm"
         Me.Text = "ChooseTypeGroupForm"
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents EmailGroupsBtn As System.Windows.Forms.Button
+    Friend WithEvents SmsGroupsBtn As System.Windows.Forms.Button
 End Class

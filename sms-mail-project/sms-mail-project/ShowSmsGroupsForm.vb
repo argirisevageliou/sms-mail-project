@@ -5,7 +5,11 @@ Public Class ShowSmsGroupsForm
     Private Sub CreateGroupBtn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CreateGroupBtn.Click
         'H μέθοδος αυτή καλείται όταν πατήσουμε το createGroup button 
         'η οποία μας μεταφέρει στην AddSmsGroupForm(ο χρήστης μπορεί να προσθέσει νέο γκρουπ)
-        AddSmsGroupForm.Show()
+        Dim AddSmsGroupFormVar As AddSmsGroupForm
+        AddSmsGroupFormVar = New AddSmsGroupForm()
+        AddSmsGroupFormVar.StartPosition = FormStartPosition.CenterParent
+        AddSmsGroupFormVar.ShowDialog()
+        AddSmsGroupFormVar = Nothing
         'Μετά αυτή η φόρμα κλείνει
         Me.Close()
     End Sub
@@ -68,7 +72,12 @@ Public Class ShowSmsGroupsForm
         'επιλέξει να επεξεργαστούμε από το datagridview(θα το χρειαστούμε στην EditSmsGroupForm)
         MainForm.selectsmsgroup = SmsGroupsGrid.CurrentRow.Cells("name").Value
         'Εμφανίζεται η EditSmsGroupForm και αυτή η φόρμα κλέινει
-        EditSmsGroupForm.Show()
+
+        Dim EditSmsGroupFormVar As EditSmsGroupForm
+        EditSmsGroupFormVar = New EditSmsGroupForm()
+        EditSmsGroupFormVar.StartPosition = FormStartPosition.CenterParent
+        EditSmsGroupFormVar.ShowDialog()
+        EditSmsGroupFormVar = Nothing
         Me.Close()
     End Sub
 End Class
