@@ -24,6 +24,7 @@ Partial Class Schedule_SendingForm
     Private Sub InitializeComponent()
         Me.groupBox = New System.Windows.Forms.GroupBox
         Me.choose_panel = New System.Windows.Forms.Panel
+        Me.battery_cb = New System.Windows.Forms.CheckBox
         Me.warning_lb = New System.Windows.Forms.Label
         Me.wake_cb = New System.Windows.Forms.CheckBox
         Me.Label2 = New System.Windows.Forms.Label
@@ -33,7 +34,6 @@ Partial Class Schedule_SendingForm
         Me.sendLater_rbtn = New System.Windows.Forms.RadioButton
         Me.sendNow_rbtn = New System.Windows.Forms.RadioButton
         Me.ok_btn = New System.Windows.Forms.Button
-        Me.battery_cb = New System.Windows.Forms.CheckBox
         Me.groupBox.SuspendLayout()
         Me.choose_panel.SuspendLayout()
         Me.SuspendLayout()
@@ -68,6 +68,16 @@ Partial Class Schedule_SendingForm
         Me.choose_panel.Name = "choose_panel"
         Me.choose_panel.Size = New System.Drawing.Size(509, 191)
         Me.choose_panel.TabIndex = 2
+        '
+        'battery_cb
+        '
+        Me.battery_cb.AutoSize = True
+        Me.battery_cb.Location = New System.Drawing.Point(300, 135)
+        Me.battery_cb.Name = "battery_cb"
+        Me.battery_cb.Size = New System.Drawing.Size(187, 36)
+        Me.battery_cb.TabIndex = 6
+        Me.battery_cb.Text = "Disallow start if the computer" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " is running on battery power"
+        Me.battery_cb.UseVisualStyleBackColor = True
         '
         'warning_lb
         '
@@ -169,16 +179,6 @@ Partial Class Schedule_SendingForm
         Me.ok_btn.Text = "OK!!"
         Me.ok_btn.UseVisualStyleBackColor = False
         '
-        'battery_cb
-        '
-        Me.battery_cb.AutoSize = True
-        Me.battery_cb.Location = New System.Drawing.Point(300, 135)
-        Me.battery_cb.Name = "battery_cb"
-        Me.battery_cb.Size = New System.Drawing.Size(187, 36)
-        Me.battery_cb.TabIndex = 6
-        Me.battery_cb.Text = "Disallow start if the computer" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " is running on battery power"
-        Me.battery_cb.UseVisualStyleBackColor = True
-        '
         'Schedule_SendingForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -193,7 +193,7 @@ Partial Class Schedule_SendingForm
         Me.Name = "Schedule_SendingForm"
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
-        Me.Text = "Schedule Sending"
+        Me.Text = "Schedule Email"
         Me.groupBox.ResumeLayout(False)
         Me.groupBox.PerformLayout()
         Me.choose_panel.ResumeLayout(False)

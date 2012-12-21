@@ -77,9 +77,11 @@ Partial Class ScheduleSMSForm
         'timePicker
         '
         Me.timePicker.CustomFormat = ""
+        Me.timePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time
         Me.timePicker.Location = New System.Drawing.Point(219, 52)
         Me.timePicker.MinDate = New Date(2012, 12, 19, 0, 0, 0, 0)
         Me.timePicker.Name = "timePicker"
+        Me.timePicker.ShowUpDown = True
         Me.timePicker.Size = New System.Drawing.Size(149, 23)
         Me.timePicker.TabIndex = 2
         Me.timePicker.Value = New Date(2012, 12, 19, 14, 53, 35, 0)
@@ -98,7 +100,7 @@ Partial Class ScheduleSMSForm
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Lucida Handwriting", 12.0!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.Label1.Location = New System.Drawing.Point(133, 13)
+        Me.Label1.Location = New System.Drawing.Point(131, 13)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(135, 21)
         Me.Label1.TabIndex = 0
@@ -153,7 +155,7 @@ Partial Class ScheduleSMSForm
         Me.Name = "ScheduleSMSForm"
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
-        Me.Text = "ScheduleSMSForm"
+        Me.Text = "Schedule SMS"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.choose_panel.ResumeLayout(False)

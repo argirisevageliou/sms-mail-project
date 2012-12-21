@@ -1,7 +1,12 @@
 ﻿Imports System.Web.HttpUtility
 Imports System.Data.OleDb
+Imports System.Threading
 
 Public Class NewSmsMessage
+
+    ' έλεγχος σύνδεσης στο internet (δήλωση).
+    Private Declare Function InternetGetConnectedState Lib "wininet" _
+  (ByRef conn As Long, ByVal val As Long) As Boolean
 
     Private charCounter As Integer = 0 ' πλήθος χαρακτήρων στο rich text box.
     Private smsCounter As Integer = 1 ' αριθμός sms, ανάλογα με τον αριθμό των χαρακτήρων.
@@ -18,23 +23,30 @@ Public Class NewSmsMessage
     Public Shared isScheduled As Boolean 'αν η αποστολή έχει γίνει τώρα ή έχει προγραμματιστεί για αργότερα.
     Public Shared sendDate As String ' η ημερομηνία αποστολής του προγραμματισμένου SMS.
 
+    Private isSent As Boolean = False ' αν το sms στάλθηκε, στην onComplete του backgroundWorker, γίνεται αποθήκευση.
+    Private errorOccured As Boolean = False ' αν συμβεί exception στην do_work δεν εκτελώ τον κώδικα στην nComplete.
 
     'μενου Edit που περιλαμβανει τα παρακατω
     Private Sub UndoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles UndoToolStripMenuItem.Click
         SmsRichTextBox.Undo()
     End Sub
+
     Private Sub RedoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RedoToolStripMenuItem.Click
         SmsRichTextBox.Redo()
     End Sub
+
     Private Sub CutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CutToolStripMenuItem.Click
         SmsRichTextBox.Cut()
     End Sub
+
     Private Sub CopyToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CopyToolStripMenuItem.Click
         SmsRichTextBox.Copy()
     End Sub
+
     Private Sub PasteToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PasteToolStripMenuItem.Click
         SmsRichTextBox.Paste()
     End Sub
+
     Private Sub SelectAllToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SelectAllToolStripMenuItem.Click
         SmsRichTextBox.SelectAll()
     End Sub
@@ -63,10 +75,9 @@ Public Class NewSmsMessage
 
         ' αν ρυθμιστεί ο λογαριασμός, βάζω στο SmsFrom_tb το senderID
         If (My.Settings.SMSsenderID <> "" And My.Settings.SMSusername <> "" And My.Settings.SMSpassword <> "") Then
-            SmsFrom_tb.Text = My.Settings.email
-            SmsFrom_tb.ReadOnly = True
+            SmSFrom_tb.Text = My.Settings.SMSsenderID
+            SmSFrom_tb.ReadOnly = True
             SmsSearchAccount_btn.Visible = False
-            SmsFrom_tb.ReadOnly = True
         End If
 
     End Sub
@@ -75,8 +86,9 @@ Public Class NewSmsMessage
     Private Sub NewSmsMessage_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         If (My.Settings.SMSsenderID <> "" And My.Settings.SMSusername <> "" And My.Settings.SMSpassword <> "") Then
-            SmsFrom_tb.Text = My.Settings.email
-            SmsFrom_tb.ReadOnly = True
+            SmSFrom_tb.Text = My.Settings.SMSsenderID
+            SmSFrom_tb.ReadOnly = True
+            balance_btn.Enabled = True
         Else
             SmsSearchAccount_btn.Visible = True
         End If
@@ -94,12 +106,11 @@ Public Class NewSmsMessage
 
         ' αν μετά το κλείσιμο του dialog έχει ρυθμιστεί λογαριασμός τον εμφανίζουμε στο From text box.
         If (My.Settings.SMSsenderID <> "" And My.Settings.SMSusername <> "" And My.Settings.SMSpassword <> "") Then
-            SmsFrom_tb.Text = My.Settings.email
-            SmsFrom_tb.ReadOnly = True
+            SmSFrom_tb.Text = My.Settings.SMSsenderID
+            SmSFrom_tb.ReadOnly = True
             SmsSearchAccount_btn.Visible = False
-            SmsFrom_tb.ReadOnly = True
         Else ' αν έχει διαγραφεί - δεν έχει ρυθμιστεί ο λογαριασμός 'αδειάζω' το from text box.
-            SmsFrom_tb.Text = ""
+            SmSFrom_tb.Text = ""
             SmsSearchAccount_btn.Visible = True
         End If
 
@@ -110,21 +121,23 @@ Public Class NewSmsMessage
 
         ' αν μετά το κλείσιμο του dialog έχει ρυθμιστεί λογαριασμός τον εμφανίζουμε στο From text box.
         If (My.Settings.SMSsenderID <> "" And My.Settings.SMSusername <> "" And My.Settings.SMSpassword <> "") Then
-            SmsFrom_tb.Text = My.Settings.email
-            SmsFrom_tb.ReadOnly = True
+            SmSFrom_tb.Text = My.Settings.SMSsenderID
+            SmSFrom_tb.ReadOnly = True
             SmsSearchAccount_btn.Visible = False
-            SmsFrom_tb.ReadOnly = True
+            balance_btn.Enabled = True
         Else ' αν έχει διαγραφεί - δεν έχει ρυθμιστεί ο λογαριασμός 'αδειάζω' το from text box.
-            SmsFrom_tb.Text = ""
+            SmSFrom_tb.Text = ""
             SmsSearchAccount_btn.Visible = True
+            balance_btn.Enabled = False
         End If
 
     End Sub
 
+    ' Click event του κουμιού Send.
     Private Sub SendToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SendToolStripMenuItem.Click
 
         ' αν δεν έχει ρυθμιστεί ο λογαριασμός εμφανίζω το dialog για ρύθμηση του λογαριασμού.
-        If (My.Settings.SMSsenderID = "" Or My.Settings.SMSpassword = "" Or My.Settings.SMSpassword = "" Or SmsFrom_tb.Text = "") Then
+        If (My.Settings.SMSsenderID = "" Or My.Settings.SMSpassword = "" Or My.Settings.SMSpassword = "" Or SmSFrom_tb.Text = "") Then
 
             Dim manager As SMS_Account_Manager
             manager = New SMS_Account_Manager
@@ -134,10 +147,9 @@ Public Class NewSmsMessage
 
             ' αν ρυθμιστεί ο λογαριασμός, βάζω στο SmsFrom_tb το senderID
             If (My.Settings.SMSsenderID <> "" And My.Settings.SMSusername <> "" And My.Settings.SMSpassword <> "") Then
-                SmsFrom_tb.Text = My.Settings.email
-                SmsFrom_tb.ReadOnly = True
+                SmSFrom_tb.Text = My.Settings.SMSsenderID
+                SmSFrom_tb.ReadOnly = True
                 SmsSearchAccount_btn.Visible = False
-                SmsFrom_tb.ReadOnly = True
             End If
 
             ' αν το πεδίο με τους παραλείπτες είναι κενό, εμφανίζω το dialog για εισαγωγή παραληπτών.
@@ -152,7 +164,7 @@ Public Class NewSmsMessage
             choose = Nothing
 
             ' αν έχει ρυθμιστεί λογαριασμός, εμφανίζω το dialog για άμεση αποστολή ή προγραμματισμό της αποστολής.
-        ElseIf (My.Settings.SMSsenderID <> "" And My.Settings.SMSpassword <> "" And My.Settings.SMSpassword <> "" And SmsFrom_tb.Text <> "") Then
+        ElseIf (My.Settings.SMSsenderID <> "" And My.Settings.SMSpassword <> "" And My.Settings.SMSpassword <> "" And SmSFrom_tb.Text <> "") Then
 
             ' εμφανίζω την φόρμα για επιλογή προγραμματισμού ή όχι της αποστολής.
             Dim sch As New ScheduleSMSForm()
@@ -164,22 +176,24 @@ Public Class NewSmsMessage
             ' αν ο χρήστης ζήτησε προγραμματισμό της αποστολής.
             If (isScheduled) Then
 
-                ' δημιουργία ενώς αντικειμένου τύπου SMS_Service.smsPortTypeClient για να ελέγξω το λογαριασμό.
-                Dim client As New SMS_Service.smsPortTypeClient()
-                Dim _to As String()
-                'χωρίζω το string με delimeter character το ; και βάζω τα phone numbers στο πίνακα.
-                _to = SmsSendTo_tb.Text.Split(";")
-                Dim ID As String = ""
+                'έλεγχος σύνδεσης στο internet.
+                Dim Out As Integer
+                If InternetGetConnectedState(Out, 0) = True Then
+                    Me.Text += " (Sending....)" ' Αρχίζει η διαδικασία της αποστολής και βάζω το (Sending....) στον τίτλο της φόρμας για ενημέρωση του χρήστη.
+                    SendToolStripMenuItem.Enabled = False
 
-                ' προσπάθεια αποστολής.
-                Try
-                    ID = client.send(UrlEncode(My.Settings.SMSusername), UrlEncode(My.Settings.SMSpassword), _
-                    UrlEncode(My.Settings.SMSsenderID), _to, UrlEncode(SmsRichTextBox.Text), "GSM", False, UrlEncode(sendDate), "")
-                Catch ex As Exception
-                    MsgBox(ex.Message)
-                End Try
+                    Dim _to As String()
+                    'χωρίζω το string με delimeter character το ; και βάζω τα phone numbers στο πίνακα.
+                    _to = SmsSendTo_tb.Text.Split(";")
 
-                Me.Close()
+                    Dim parameter_obj = New With {Key .recipents = _to, .text = SmsRichTextBox.Text} ' αποθήκευση αντικειμένου στη λίστα (χρησιμοποιείτε από τη SMSresults form).
+                    worker.RunWorkerAsync(parameter_obj)
+
+                    ' Αν δεν υπάρχει σύνδεση στο internet.
+                Else
+                    MsgBox("Internet connection error!!")
+                End If
+
                 ' αν δεν έχει επιλεγεί προγραμματισμός αποστολής καλώ τη μέθοδο startSending() για άμεση αποστολή.
             Else
 
@@ -194,77 +208,22 @@ Public Class NewSmsMessage
     'send sms method
     Private Sub startSending()
 
-        ' δημιουργία ενώς αντικειμένου τύπου SMS_Service.smsPortTypeClient για να ελέγξω το λογαριασμό.
-        Dim client As New SMS_Service.smsPortTypeClient()
+        ' έλεγχος σύνδεσης στο internet.
+        Dim Out As Integer
+        If InternetGetConnectedState(Out, 0) = True Then
+            Me.Text += " (Sending....)" ' Αρχίζει η διαδικασία της αποστολής και βάζω το (Sending....) στον τίτλο της φόρμας για ενημέρωση του χρήστη.
+            Dim _to As String()
+            'χωρίζω το string με delimeter character το ; και βάζω τα phone numbers στο πίνακα.
+            _to = SmsSendTo_tb.Text.Split(";")
 
-        Dim _to As String()
-        'χωρίζω το string με delimeter character το ; και βάζω τα phone numbers στο πίνακα.
-        _to = SmsSendTo_tb.Text.Split(";")
-        Dim ID As String = ""
+            Dim parameter_obj = New With {Key .recipents = _to, .text = SmsRichTextBox.Text} ' αποθήκευση αντικειμένου στη λίστα (χρησιμοποιείτε από τη SMSresults form).
 
-        ' προσπάθεια αποστολής.
-        Try
-            ID = client.send(UrlEncode(My.Settings.SMSusername), UrlEncode(My.Settings.SMSpassword), _
-            UrlEncode(My.Settings.SMSsenderID), _to, UrlEncode(SmsRichTextBox.Text), "GSM", False, "", "")
-            SaveSentSms()
-        Catch ex As Exception
+            worker.RunWorkerAsync(parameter_obj)
 
-            MsgBox(ex.Message)
-
-        End Try
-
-        ' κάνω αίτηση στο web sevice, για να πάρω το status της αποστολής.
-        Try
-            Dim status As SMS_Service.recipientStatus() = client.multiple_query(UrlEncode(My.Settings.SMSusername), UrlEncode(My.Settings.SMSpassword), UrlEncode(ID), _to)
-
-            ' για κάθε παραλήπτη(phone number) , εμφανίζει το status(Queued,Failed,Delivered,Pending,Error)
-            For Each stat As SMS_Service.recipientStatus In status
-
-                ' για κάθε παραλήπτη δημιουργώ ένα αντικείμενο με το phone number,status και την τωρινή ημερομηνία.
-                ' Επίσης αυξάνεται ο εκάστοτε counter.
-                If (stat.status = "Queued") Then
-                    Dim stutus_obj = New With {Key .number = stat.recipient, .time = Date.Now, .result = "Queued"} ' αποθήκευση αντικειμένου στη λίστα (χρησιμοποιείτε από τη SMSresults form).
-                    sms_status_lst.Add(stutus_obj)
-                    queued += 1
-                ElseIf (stat.status = "Failed") Then
-                    Dim stutus_obj = New With {Key .number = stat.recipient, .time = Date.Now, .result = "Failed"} ' αποθήκευση αντικειμένου στη λίστα (χρησιμοποιείτε από τη SMSresults form).
-                    sms_status_lst.Add(stutus_obj)
-                    failed += 1
-                ElseIf (stat.status = "Delivered") Then
-                    Dim stutus_obj = New With {Key .number = stat.recipient, .time = Date.Now, .result = "Delivered"} ' αποθήκευση αντικειμένου στη λίστα (χρησιμοποιείτε από τη SMSresults form).
-                    sms_status_lst.Add(stutus_obj)
-                    delivered += 1
-                ElseIf (stat.status = "Pending") Then
-                    Dim stutus_obj = New With {Key .number = stat.recipient, .time = Date.Now, .result = "Pending"} ' αποθήκευση αντικειμένου στη λίστα (χρησιμοποιείτε από τη SMSresults form).
-                    sms_status_lst.Add(stutus_obj)
-                    pending += 1
-                ElseIf (stat.status = "Error") Then
-                    Dim stutus_obj = New With {Key .number = stat.recipient, .time = Date.Now, .result = "Error"} ' αποθήκευση αντικειμένου στη λίστα (χρησιμοποιείτε από τη SMSresults form).
-                    sms_status_lst.Add(stutus_obj)
-                    _error += 1
-                End If
-            Next
-
-            ' εμφανίζω τη φόρμα SMSResultsForm, που περιέχει τα αποτελέσματα της αποστολής. Μετά κλείνει η φόρμα.
-            Dim results As New SMSResultsForm()
-            results.StartPosition = FormStartPosition.CenterParent
-            results.ShowDialog()
-            results = Nothing
-
-            delivered = 0
-            failed = 0
-            queued = 0
-            pending = 0
-            _error = 0
-            sms_status_lst.Clear()
-
-            Me.Close()
-
-        Catch ex As Exception
-
-            MsgBox(ex.Message)
-
-        End Try
+            ' Αν δεν υπάρχει σύνδεση στο internet.
+        Else
+            MsgBox("Internet connection error!!")
+        End If
 
     End Sub
 
@@ -345,7 +304,7 @@ Public Class NewSmsMessage
         Dim connection As OleDbConnection
         Dim command As OleDbCommand
         Dim timeStamp As DateTime = DateTime.Now
-        Dim insertquery As String = "INSERT INTO sentsms(subject,senders,sms,hmer_wra) VALUES('" & SmsSubjectTb.Text & _
+        Dim insertquery As String = "INSERT INTO sentsms(subject,senders,sms,hmer_wra) VALUES('" & "" & _
             "','" & SmsSendTo_tb.Text & "','" & SmsRichTextBox.Text & "','" & timeStamp & "');"
 
         Try
@@ -358,6 +317,167 @@ Public Class NewSmsMessage
         Catch ex1 As Exception
             MessageBox.Show(ex1.Message)
         End Try
+    End Sub
+
+    ' worker (Do_Work)
+    Private Sub worker_DoWork(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles worker.DoWork
+
+        If (isScheduled) Then
+
+            ' δημιουργία ενώς αντικειμένου τύπου SMS_Service.smsPortTypeClient για να ελέγξω το λογαριασμό.
+            Dim client1 As New SMS_Service.smsPortTypeClient()
+            Dim ID1 As String = ""
+
+            Dim par_obj1 As New Object
+            par_obj1 = e.Argument
+
+            Dim _to1 As String() = par_obj1.recipents
+            Dim smsText1 As String = par_obj1.text
+
+            ' προσπάθεια αποστολής.
+            Try
+                ID1 = client1.send(UrlEncode(My.Settings.SMSusername), UrlEncode(My.Settings.SMSpassword), _
+                UrlEncode(My.Settings.SMSsenderID), _to1, UrlEncode(smsText1), "GSM", False, sendDate, "")
+                errorOccured = False
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                errorOccured = True
+            End Try
+
+        Else
+
+            ' δημιουργία ενώς αντικειμένου τύπου SMS_Service.smsPortTypeClient για να ελέγξω το λογαριασμό.
+            Dim client As New SMS_Service.smsPortTypeClient()
+
+            Dim par_obj As New Object
+            par_obj = e.Argument
+
+            Dim _to As String() = par_obj.recipents
+            Dim smsText As String = par_obj.text
+
+            Dim ID As String = ""
+
+            ' προσπάθεια αποστολής.
+            Try
+                ID = client.send(UrlEncode(My.Settings.SMSusername), UrlEncode(My.Settings.SMSpassword), _
+                UrlEncode(My.Settings.SMSsenderID), _to, UrlEncode(smsText), "GSM", False, "", "")
+
+                isSent = True
+                errorOccured = False
+
+            Catch ex As Exception
+
+                MsgBox(ex.Message)
+                errorOccured = True
+
+            End Try
+
+            Thread.Sleep(5000) 'Περιμένω 'κάποιο' χρονικό διάστημα (5 sec) μέχρι να γίνει αποστολή, για να πάρω όσο πιο πολύ αντιπροσωπευτικά αποτελέσματα. 
+
+            ' κάνω αίτηση στο web sevice, για να πάρω το status της αποστολής.
+            Try
+                Dim status As SMS_Service.recipientStatus() = client.multiple_query(UrlEncode(My.Settings.SMSusername), UrlEncode(My.Settings.SMSpassword), UrlEncode(ID), _to)
+
+                ' για κάθε παραλήπτη(phone number) , εμφανίζει το status(Queued,Failed,Delivered,Pending,Error)
+                For Each stat As SMS_Service.recipientStatus In status
+
+                    ' για κάθε παραλήπτη δημιουργώ ένα αντικείμενο με το phone number,status και την τωρινή ημερομηνία.
+                    ' Επίσης αυξάνεται ο εκάστοτε counter.
+                    If (stat.status = "Queued") Then
+                        Dim stutus_obj = New With {Key .number = stat.recipient, .time = Date.Now, .result = "Queued"} ' αποθήκευση αντικειμένου στη λίστα (χρησιμοποιείτε από τη SMSresults form).
+                        sms_status_lst.Add(stutus_obj)
+                        queued += 1
+                    ElseIf (stat.status = "Failed") Then
+                        Dim stutus_obj = New With {Key .number = stat.recipient, .time = Date.Now, .result = "Failed"} ' αποθήκευση αντικειμένου στη λίστα (χρησιμοποιείτε από τη SMSresults form).
+                        sms_status_lst.Add(stutus_obj)
+                        failed += 1
+                    ElseIf (stat.status = "Delivered") Then
+                        Dim stutus_obj = New With {Key .number = stat.recipient, .time = Date.Now, .result = "Delivered"} ' αποθήκευση αντικειμένου στη λίστα (χρησιμοποιείτε από τη SMSresults form).
+                        sms_status_lst.Add(stutus_obj)
+                        delivered += 1
+                    ElseIf (stat.status = "Pending") Then
+                        Dim stutus_obj = New With {Key .number = stat.recipient, .time = Date.Now, .result = "Pending"} ' αποθήκευση αντικειμένου στη λίστα (χρησιμοποιείτε από τη SMSresults form).
+                        sms_status_lst.Add(stutus_obj)
+                        pending += 1
+                    ElseIf (stat.status = "Error") Then
+                        Dim stutus_obj = New With {Key .number = stat.recipient, .time = Date.Now, .result = "Error"} ' αποθήκευση αντικειμένου στη λίστα (χρησιμοποιείτε από τη SMSresults form).
+                        sms_status_lst.Add(stutus_obj)
+                        _error += 1
+                    End If
+                Next
+                errorOccured = False
+            Catch ex As Exception
+
+                MsgBox(ex.Message)
+
+                errorOccured = True
+
+            End Try
+
+        End If
+
+    End Sub
+
+    'worker (Completed)
+    Private Sub worker_RunWorkerCompleted(ByVal sender As System.Object, ByVal e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles worker.RunWorkerCompleted
+
+        Me.Text = Me.Text.Replace(" (Sending....)", "") ' Η διαδικασία της αποστολής τελείωσε, βγάζω το (Sending....) από τον τίτλο της φόρμας.
+
+        If (isScheduled) Then
+            If (Not errorOccured) Then
+                Me.Close()
+            Else
+                SendToolStripMenuItem.Enabled = True
+            End If
+        Else
+
+            If (Not errorOccured) Then
+
+                If (isSent) Then
+                    SaveSentSms() ' αποθήκευση στα sent.
+                    isSent = False
+                End If
+
+                ' εμφανίζω τη φόρμα SMSResultsForm, που περιέχει τα αποτελέσματα της αποστολής. Μετά κλείνει η φόρμα.
+                Dim results As New SMSResultsForm()
+                results.StartPosition = FormStartPosition.CenterParent
+                results.ShowDialog()
+                results = Nothing
+
+                delivered = 0
+                failed = 0
+                queued = 0
+                pending = 0
+                _error = 0
+                sms_status_lst.Clear()
+
+                Me.Close()
+
+            Else
+
+                SendToolStripMenuItem.Enabled = True
+
+            End If
+        End If
+
+    End Sub
+
+    ' balance_btn_Click, έλεγχος του λογαριασμού.
+    Private Sub balance_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles balance_btn.Click
+
+        ' δημιουργία ενώς αντικειμένου τύπου SMS_Service.smsPortTypeClient για να ελέγξω το λογαριασμό.
+        Dim client As New SMS_Service.smsPortTypeClient()
+
+        ' κάνω μια αίτηση στο web service για να μου επιστρέψει το υπόλοιπο του λογαριασμού.
+        Try
+            Dim credits As Decimal = client.credits(UrlEncode(My.Settings.SMSusername), UrlEncode(My.Settings.SMSpassword))
+            MsgBox("You have " & CDbl(credits) & " credits on your account")
+
+            ' αν η αίτηση απτύχει, γράφω το exception message στον error provider.
+        Catch e1 As Exception
+            MsgBox(e1.Message)
+        End Try
+
     End Sub
 
 End Class

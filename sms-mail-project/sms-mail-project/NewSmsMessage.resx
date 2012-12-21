@@ -124,8 +124,8 @@
   <data name="NewToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAALDwAA
-        Cw8BkvkDpQAABYNJREFUWEftl3tM01cUx1EeQ6NOVPA1iG7D6DL3xzAoGhP+2l8jc2aGhxGTZTFbXOI2
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAALDAAA
+        CwwBP0AiyAAABYNJREFUWEftl3tM01cUx1EeQ6NOVPA1iG7D6DL3xzAoGhP+2l8jc2aGhxGTZTFbXOI2
         Z6ZRBB2iIww6hiAqyrOKPCoUhUEFBAqtvBGQV3lTkYe0UB4umu/OudLFDdvI5mKWSPLJ79l7Pvfcc26L
         BQCLV8krDc4Tfy3wOgP/3wwc9/OzYJI8l86A7i+I83FMomeYJvJ57/2rLjAlwMEv73k7hQJOjVybi6ly
         S5aYIsJ/l8+1MMJCL13gafB3pDS4bjDOCpojlhhJs8KE0poldMTP/5nA0+DvxlIQ7WCCDTRHrdH8rTWG
@@ -155,8 +155,8 @@
   <data name="SaveToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAADPmgAA
-        z5oBfZB/DgAABthJREFUSEudVmtQFFcWzt+NSSki8hiGgXl3T8/0Y3p6ZmCGtzyEgA+IrqtGwUq5W5ts
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAADPlQAA
+        z5UBC17RFAAABthJREFUSEudVmtQFFcWzt+NSSki8hiGgXl3T8/0Y3p6ZmCGtzyEgA+IrqtGwUq5W5ts
         qjYxqSRViTGuMSqIKCDBaAkaQEAUXRBRoi5o5I2iPHY1zCAoxiEkGkCr4n4wMaTNr8mpj8Pte+8533fO
         3NvVLzx9+nTQ4YiJjY+MjouLT9qbl1+wf39BgefYX7h3bx4yRMXERUTG1tbVIzPsBfxxHJeQnL76tdcF
         a/hPk0/cC3/AHk1Mma3hy1dkrFj9usVqnyVgWXZp+tpVazeaLHbX+EMs/Oy5Ier7Hx4KFlvq8jVpKzME
@@ -1418,6 +1418,9 @@
   </data>
   <metadata name="StatusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>132, 17</value>
+  </metadata>
+  <metadata name="worker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>249, 17</value>
   </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

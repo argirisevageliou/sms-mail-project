@@ -25,10 +25,13 @@
     ' on load αρχικοποιώ τα datetime picker controls
     Private Sub ScheduleSMSForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        timePicker.Format = DateTimePickerFormat.Time
-        timePicker.ShowUpDown = True
+        'timePicker.Format = DateTimePickerFormat.Time
+        'timePicker.ShowUpDown = True
 
-        datePicker.Format = DateTimePickerFormat.Long
+        'datePicker.Format = DateTimePickerFormat.Long
+
+        timePicker.MinDate = Date.Now
+        datePicker.MinDate = Date.Now
 
         timePicker.Value = Now
         datePicker.Value = Now

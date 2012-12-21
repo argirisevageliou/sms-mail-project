@@ -108,6 +108,7 @@ Public Class SMS_Account_Manager
             delete_btn.Visible = True
 
             test_btn.Text = "Test Account!!"
+            Me.Close()
 
         Else
 
@@ -128,19 +129,19 @@ Public Class SMS_Account_Manager
 
                     ' κάνω μια αίτηση στο web service για να μου επιστρέψει το υπόλοιπο του λογαριασμού.
                     Try
-                        client.credits(UrlEncode(user_tb.Text), UrlEncode(pass_tb.Text))
+                        Dim credits As Decimal = client.credits(UrlEncode(user_tb.Text), UrlEncode(pass_tb.Text))
                         test_btn.Text = "Save Settings!!"
 
                         ' αν η αίτηση απτύχει, γράφω το exception message στον error provider.
                     Catch e1 As Exception
 
                         error_pr.SetError(test_btn, e1.Message)
-
-                    Finally
-
                         user_tb.ReadOnly = False
                         pass_tb.ReadOnly = False
                         senderID_tb.ReadOnly = False
+
+                    Finally
+
                         test_btn.Enabled = True
 
                     End Try
@@ -168,6 +169,11 @@ Public Class SMS_Account_Manager
         user_tb.ReadOnly = False
         pass_tb.ReadOnly = False
         senderID_tb.ReadOnly = False
+
+        user_tb.Text = ""
+        pass_tb.Text = ""
+        senderID_tb.Text = ""
+
         test_btn.Visible = True
         delete_btn.Visible = False
 

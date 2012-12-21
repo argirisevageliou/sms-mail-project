@@ -50,9 +50,6 @@ Partial Class NewSmsMessage
         Me.SmsSearchGroupBtn = New System.Windows.Forms.Button
         Me.SmsSearchAccount_btn = New System.Windows.Forms.Button
         Me.SmsRichTextBox = New System.Windows.Forms.RichTextBox
-        Me.SmsSubjectTb = New System.Windows.Forms.TextBox
-        Me.SmsFrom_tb = New System.Windows.Forms.TextBox
-        Me.SmsSubjectLabel = New System.Windows.Forms.Label
         Me.SmsFromLabel = New System.Windows.Forms.Label
         Me.SmsSendToLabel = New System.Windows.Forms.Label
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip
@@ -60,6 +57,9 @@ Partial Class NewSmsMessage
         Me.charCount_lb = New System.Windows.Forms.ToolStripStatusLabel
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel
         Me.smsCount_lb = New System.Windows.Forms.ToolStripStatusLabel
+        Me.SmSFrom_tb = New System.Windows.Forms.TextBox
+        Me.worker = New System.ComponentModel.BackgroundWorker
+        Me.balance_btn = New System.Windows.Forms.Button
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -269,40 +269,10 @@ Partial Class NewSmsMessage
         Me.SmsRichTextBox.TabIndex = 14
         Me.SmsRichTextBox.Text = ""
         '
-        'SmsSubjectTb
-        '
-        Me.SmsSubjectTb.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.SmsSubjectTb.Location = New System.Drawing.Point(87, 117)
-        Me.SmsSubjectTb.Multiline = True
-        Me.SmsSubjectTb.Name = "SmsSubjectTb"
-        Me.SmsSubjectTb.Size = New System.Drawing.Size(423, 20)
-        Me.SmsSubjectTb.TabIndex = 13
-        '
-        'SmsFrom_tb
-        '
-        Me.SmsFrom_tb.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.SmsFrom_tb.Enabled = False
-        Me.SmsFrom_tb.Location = New System.Drawing.Point(87, 90)
-        Me.SmsFrom_tb.Multiline = True
-        Me.SmsFrom_tb.Name = "SmsFrom_tb"
-        Me.SmsFrom_tb.Size = New System.Drawing.Size(423, 20)
-        Me.SmsFrom_tb.TabIndex = 15
-        '
-        'SmsSubjectLabel
-        '
-        Me.SmsSubjectLabel.AutoSize = True
-        Me.SmsSubjectLabel.Location = New System.Drawing.Point(17, 120)
-        Me.SmsSubjectLabel.Name = "SmsSubjectLabel"
-        Me.SmsSubjectLabel.Size = New System.Drawing.Size(46, 13)
-        Me.SmsSubjectLabel.TabIndex = 20
-        Me.SmsSubjectLabel.Text = "Subject:"
-        '
         'SmsFromLabel
         '
         Me.SmsFromLabel.AutoSize = True
-        Me.SmsFromLabel.Location = New System.Drawing.Point(17, 93)
+        Me.SmsFromLabel.Location = New System.Drawing.Point(17, 94)
         Me.SmsFromLabel.Name = "SmsFromLabel"
         Me.SmsFromLabel.Size = New System.Drawing.Size(33, 13)
         Me.SmsFromLabel.TabIndex = 19
@@ -332,8 +302,8 @@ Partial Class NewSmsMessage
         '
         Me.ToolStripStatusLabel1.Font = New System.Drawing.Font("Segoe Print", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(140, 28)
-        Me.ToolStripStatusLabel1.Text = "Sum of characters: "
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(164, 28)
+        Me.ToolStripStatusLabel1.Text = "Number of characters: "
         Me.ToolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.ToolStripStatusLabel1.ToolTipText = "The max size is 1224 characters"
         '
@@ -372,6 +342,32 @@ Partial Class NewSmsMessage
         Me.smsCount_lb.Size = New System.Drawing.Size(30, 28)
         Me.smsCount_lb.Text = "1"
         '
+        'SmSFrom_tb
+        '
+        Me.SmSFrom_tb.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.SmSFrom_tb.Enabled = False
+        Me.SmSFrom_tb.Location = New System.Drawing.Point(87, 91)
+        Me.SmSFrom_tb.Name = "SmSFrom_tb"
+        Me.SmSFrom_tb.Size = New System.Drawing.Size(423, 20)
+        Me.SmSFrom_tb.TabIndex = 23
+        '
+        'worker
+        '
+        Me.worker.WorkerSupportsCancellation = True
+        '
+        'balance_btn
+        '
+        Me.balance_btn.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.balance_btn.Enabled = False
+        Me.balance_btn.Font = New System.Drawing.Font("Miramonte", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.balance_btn.Location = New System.Drawing.Point(323, 121)
+        Me.balance_btn.Name = "balance_btn"
+        Me.balance_btn.Size = New System.Drawing.Size(187, 33)
+        Me.balance_btn.TabIndex = 24
+        Me.balance_btn.Text = "Check Your Account Balance!"
+        Me.balance_btn.UseVisualStyleBackColor = True
+        '
         'NewSmsMessage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -379,14 +375,13 @@ Partial Class NewSmsMessage
         Me.BackColor = System.Drawing.Color.DodgerBlue
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(568, 496)
+        Me.Controls.Add(Me.balance_btn)
+        Me.Controls.Add(Me.SmSFrom_tb)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.SmsSendTo_tb)
         Me.Controls.Add(Me.SmsSearchGroupBtn)
         Me.Controls.Add(Me.SmsSearchAccount_btn)
         Me.Controls.Add(Me.SmsRichTextBox)
-        Me.Controls.Add(Me.SmsSubjectTb)
-        Me.Controls.Add(Me.SmsFrom_tb)
-        Me.Controls.Add(Me.SmsSubjectLabel)
         Me.Controls.Add(Me.SmsFromLabel)
         Me.Controls.Add(Me.SmsSendToLabel)
         Me.Controls.Add(Me.MenuStrip1)
@@ -429,9 +424,6 @@ Partial Class NewSmsMessage
     Friend WithEvents SmsSearchGroupBtn As System.Windows.Forms.Button
     Friend WithEvents SmsSearchAccount_btn As System.Windows.Forms.Button
     Friend WithEvents SmsRichTextBox As System.Windows.Forms.RichTextBox
-    Friend WithEvents SmsSubjectTb As System.Windows.Forms.TextBox
-    Friend WithEvents SmsFrom_tb As System.Windows.Forms.TextBox
-    Friend WithEvents SmsSubjectLabel As System.Windows.Forms.Label
     Friend WithEvents SmsFromLabel As System.Windows.Forms.Label
     Friend WithEvents SmsSendToLabel As System.Windows.Forms.Label
     Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
@@ -439,4 +431,7 @@ Partial Class NewSmsMessage
     Friend WithEvents charCount_lb As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents ToolStripStatusLabel2 As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents smsCount_lb As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents SmSFrom_tb As System.Windows.Forms.TextBox
+    Friend WithEvents worker As System.ComponentModel.BackgroundWorker
+    Friend WithEvents balance_btn As System.Windows.Forms.Button
 End Class

@@ -55,7 +55,7 @@
         ' για κάθε αντικείμενο στο status list, δημιουργία νέας γραμμής στο gridView.
         For Each obj As Object In sms_mail_project.NewSmsMessage.sms_status_lst
 
-            row = New String() {obj.recipient, obj.time, obj.result}
+            row = New String() {obj.number, obj.time, obj.result}
             results_gv.Rows.Add(row)
 
         Next
