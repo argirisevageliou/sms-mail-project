@@ -20,7 +20,7 @@ Public Class MainForm
     Private Sub ExitToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExitToolStripMenuItem.Click
 
         Dim answer As DialogResult
-        answer = MessageBox.Show("Are you sure you want to exit?", "Form 1", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        answer = MessageBox.Show("Are you sure you want to exit?", "Close Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If answer = vbYes Then
             Application.Exit()
         End If
@@ -519,6 +519,10 @@ Public Class MainForm
         ChooseTypeAccountsVar.StartPosition = FormStartPosition.CenterParent
         ChooseTypeAccountsVar.ShowDialog()
         ChooseTypeAccountsVar = Nothing
+    End Sub
+
+    Private Sub HelpContentsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles HelpContentsToolStripMenuItem.Click
+        System.Windows.Forms.Help.ShowHelp(Me, "ProjectHelp.chm", HelpNavigator.AssociateIndex)
     End Sub
 
 End Class

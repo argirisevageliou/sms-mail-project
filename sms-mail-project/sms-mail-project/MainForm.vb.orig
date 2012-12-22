@@ -5,6 +5,9 @@ Imports System.Data.OleDb
 Imports System.Data.Common
 Imports System.Text.RegularExpressions
 
+
+
+
 Public Class MainForm
     'Χρησιμοποιούμε αυτές τις δύο public μεταβλητές για να κρατήσουμε μόνιμα αποθηκευμένα δεδομένα
     'που θα χειριστούμε σε κάποιες φόρμες όπως η EditEmailGroupForm, η AddEmailGroupForm κτλ
@@ -17,7 +20,7 @@ Public Class MainForm
     Private Sub ExitToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExitToolStripMenuItem.Click
 
         Dim answer As DialogResult
-        answer = MessageBox.Show("Are you sure you want to exit?", "Form 1", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        answer = MessageBox.Show("Are you sure you want to exit?", "Close Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If answer = vbYes Then
             Application.Exit()
         End If
@@ -51,32 +54,49 @@ Public Class MainForm
 
     'Εμφανίζει την ShowEmailGroupsForm
     Private Sub GroupsBtn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GroupsBtn.Click
-        ChooseTypeGroupForm.Show()
-    End Sub
+        Draft_Panel.Visible = False
+        Sent_Panel.Visible = False
+        Create_Panel.Visible = False
+        ShowEmailGroups_Panel.Visible = False
+        EditEmailGroup_Panel.Visible = False
 
+        Dim ChooseTypeGroupVar As ChooseTypeGroupForm
+        ChooseTypeGroupVar = New ChooseTypeGroupForm()
+        ChooseTypeGroupVar.StartPosition = FormStartPosition.CenterParent
+        ChooseTypeGroupVar.ShowDialog()
+        ChooseTypeGroupVar = Nothing
+    End Sub
+    'Η μεθοδος αυτη καλειται οταν πατησουμε στο treeview την επιλογη Drafts
+    Public Sub Drafts()
+        Sent_Panel.Visible = False
+        Draft_Panel.Visible = True
+        Create_Panel.Visible = False
+        ShowEmailGroups_Panel.Visible = False
+        EditEmailGroup_Panel.Visible = False
+        'Γεμίζει το ListBox των DraftEmails
+        Me.DraftemailsTableAdapter.Fill(Me.TestDataSet1.draftemails)
+        DraftListBox.SelectedIndex = -1
+    End Sub
+    'Η μεθοδος αυτη καλειται οταν πατησουμε στο treeview την επιλογη SentMessages
+    Public Sub SentMessages()
+        Sent_Panel.Visible = True
+        Draft_Panel.Visible = False
+        Create_Panel.Visible = False
+        ShowEmailGroups_Panel.Visible = False
+        EditEmailGroup_Panel.Visible = False
+        'Γεμίζει το ListBox των SentEmails
+        Me.SentemailsTableAdapter.Fill(Me.TestDataSet2.sentemails)
+        SentListBox.SelectedIndex = -1
+    End Sub
     'Επιλέγουμε στοιχείο από το TreeView
     Private Sub TreeView1_AfterSelect(ByVal sender As System.Object, ByVal e As System.Windows.Forms.TreeViewEventArgs) Handles TreeView1.AfterSelect
         'Εμφανίζει το Draft Panel και αποκρύπτει τα υπόλοιπα Panels
         If (TreeView1.SelectedNode.Text = "Drafts") Then
-            Sent_Panel.Visible = False
-            Draft_Panel.Visible = True
-            Create_Panel.Visible = False
-            ShowEmailGroups_Panel.Visible = False
-            EditEmailGroup_Panel.Visible = False
-            'Γεμίζει το ListBox των DraftEmails
-            Me.DraftemailsTableAdapter.Fill(Me.TestDataSet1.draftemails)
-            DraftListBox.SelectedIndex = -1
+            Drafts()
         End If
         'Εμφανίζει το Sent Panel και αποκρύπτει τα υπόλοιπα Panels
         If (TreeView1.SelectedNode.Text = "Sent Messages") Then
-            Sent_Panel.Visible = True
-            Draft_Panel.Visible = False
-            Create_Panel.Visible = False
-            ShowEmailGroups_Panel.Visible = False
-            EditEmailGroup_Panel.Visible = False
-            'Γεμίζει το ListBox των SentEmails
-            Me.SentemailsTableAdapter.Fill(Me.TestDataSet2.sentemails)
-            SentListBox.SelectedIndex = -1
+            SentMessages()
         End If
         If (TreeView1.SelectedNode.Text = "Add Group") Then
             Create_Panel.Visible = True
@@ -420,10 +440,7 @@ Public Class MainForm
         End If
     End Sub
 
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/Implement_SMS(2)
     Private Sub SMSAccountManager_menu_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SMSAccountManager_menu.Click
 
         Dim sms_account_manager As SMS_Account_Manager
@@ -435,10 +452,79 @@ Public Class MainForm
     End Sub
 
     Private Sub NewSmsMessageToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NewSmsMessageToolStripMenuItem.Click
+        Draft_Panel.Visible = False
+        Sent_Panel.Visible = False
+        Create_Panel.Visible = False
+        ShowEmailGroups_Panel.Visible = False
+        EditEmailGroup_Panel.Visible = False
+
         Dim SmsMessage As NewSmsMessage
         SmsMessage = New NewSmsMessage()
         SmsMessage.StartPosition = FormStartPosition.CenterParent
         SmsMessage.ShowDialog()
         SmsMessage = Nothing
     End Sub
+
+    Private Sub GerToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GerToolStripMenuItem.Click
+        Draft_Panel.Visible = False
+        Sent_Panel.Visible = False
+        Create_Panel.Visible = False
+        ShowEmailGroups_Panel.Visible = False
+        EditEmailGroup_Panel.Visible = False
+
+        Dim AddEmailGroupVar As AddEmailGroupForm
+        AddEmailGroupVar = New AddEmailGroupForm()
+        AddEmailGroupVar.StartPosition = FormStartPosition.CenterParent
+        AddEmailGroupVar.ShowDialog()
+        AddEmailGroupVar = Nothing
+    End Sub
+
+    Private Sub NewSmsGroupToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NewSmsGroupToolStripMenuItem.Click
+        Draft_Panel.Visible = False
+        Sent_Panel.Visible = False
+        Create_Panel.Visible = False
+        ShowEmailGroups_Panel.Visible = False
+        EditEmailGroup_Panel.Visible = False
+
+        Dim AddSmsGroupVar As AddSmsGroupForm
+        AddSmsGroupVar = New AddSmsGroupForm()
+        AddSmsGroupVar.StartPosition = FormStartPosition.CenterParent
+        AddSmsGroupVar.ShowDialog()
+        AddSmsGroupVar = Nothing
+    End Sub
+
+    Private Sub MessagesBtn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MessagesBtn.Click
+        Draft_Panel.Visible = False
+        Sent_Panel.Visible = False
+        Create_Panel.Visible = False
+        ShowEmailGroups_Panel.Visible = False
+        EditEmailGroup_Panel.Visible = False
+
+        Dim ChooseTypeEmailMessagesVar As ChooseTypeEmailMessagesForm
+        ChooseTypeEmailMessagesVar = New ChooseTypeEmailMessagesForm()
+        ChooseTypeEmailMessagesVar.StartPosition = FormStartPosition.CenterParent
+        ChooseTypeEmailMessagesVar.ShowDialog()
+        ChooseTypeEmailMessagesVar = Nothing
+    End Sub
+
+    Private Sub AccountsBtn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AccountsBtn.Click
+        Draft_Panel.Visible = False
+        Sent_Panel.Visible = False
+        Create_Panel.Visible = False
+        ShowEmailGroups_Panel.Visible = False
+        EditEmailGroup_Panel.Visible = False
+
+        Dim ChooseTypeAccountsVar As ChooseTypeAccountsForm
+        ChooseTypeAccountsVar = New ChooseTypeAccountsForm()
+        ChooseTypeAccountsVar.StartPosition = FormStartPosition.CenterParent
+        ChooseTypeAccountsVar.ShowDialog()
+        ChooseTypeAccountsVar = Nothing
+    End Sub
+
+<<<<<<< HEAD
+=======
+    Private Sub HelpContentsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles HelpContentsToolStripMenuItem.Click
+        System.Windows.Forms.Help.ShowHelp(Me, "ProjectHelp.chm", HelpNavigator.AssociateIndex)
+    End Sub
+>>>>>>> origin/Start_Creating_HelpContentsFile_And_AboutForm
 End Class
