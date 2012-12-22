@@ -525,4 +525,10 @@ Public Class MainForm
         System.Windows.Forms.Help.ShowHelp(Me, "ProjectHelp.chm", HelpNavigator.AssociateIndex)
     End Sub
 
+    Private Sub AboutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AboutToolStripMenuItem.Click
+        Dim AboutBox As AboutBoxForm
+        AboutBox = New AboutBoxForm()
+        AboutBox.StartPosition = FormStartPosition.CenterParent
+        AboutBox.ShowDialog()
+    End Sub
 End Class

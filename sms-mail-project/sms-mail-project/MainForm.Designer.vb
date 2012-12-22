@@ -24,12 +24,12 @@ Partial Class MainForm
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
-        Dim TreeNode7 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Sent Messages")
-        Dim TreeNode8 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Drafts")
-        Dim TreeNode9 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Messages", New System.Windows.Forms.TreeNode() {TreeNode7, TreeNode8})
-        Dim TreeNode10 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Add Group")
-        Dim TreeNode11 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("View Groups")
-        Dim TreeNode12 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Groups", New System.Windows.Forms.TreeNode() {TreeNode10, TreeNode11})
+        Dim TreeNode1 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Sent Messages")
+        Dim TreeNode2 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Drafts")
+        Dim TreeNode3 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Messages", New System.Windows.Forms.TreeNode() {TreeNode1, TreeNode2})
+        Dim TreeNode4 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Add Group")
+        Dim TreeNode5 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("View Groups")
+        Dim TreeNode6 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Groups", New System.Windows.Forms.TreeNode() {TreeNode4, TreeNode5})
         Me.HomeBtn = New System.Windows.Forms.Button
         Me.MessagesBtn = New System.Windows.Forms.Button
         Me.GroupsBtn = New System.Windows.Forms.Button
@@ -178,27 +178,27 @@ Partial Class MainForm
         Me.TreeView1.LineColor = System.Drawing.Color.DeepSkyBlue
         Me.TreeView1.Location = New System.Drawing.Point(0, 150)
         Me.TreeView1.Name = "TreeView1"
-        TreeNode7.BackColor = System.Drawing.Color.Chartreuse
-        TreeNode7.Name = "Node1"
-        TreeNode7.Text = "Sent Messages"
-        TreeNode8.BackColor = System.Drawing.Color.Chartreuse
-        TreeNode8.Name = "Node2"
-        TreeNode8.Text = "Drafts"
-        TreeNode9.BackColor = System.Drawing.Color.BlueViolet
-        TreeNode9.Name = "Node0"
-        TreeNode9.NodeFont = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        TreeNode9.Text = "Messages"
-        TreeNode10.BackColor = System.Drawing.Color.Chartreuse
-        TreeNode10.Name = "Node4"
-        TreeNode10.Text = "Add Group"
-        TreeNode11.BackColor = System.Drawing.Color.Chartreuse
-        TreeNode11.Name = "Node5"
-        TreeNode11.Text = "View Groups"
-        TreeNode12.BackColor = System.Drawing.Color.BlueViolet
-        TreeNode12.Name = "Node3"
-        TreeNode12.NodeFont = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        TreeNode12.Text = "Groups"
-        Me.TreeView1.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode9, TreeNode12})
+        TreeNode1.BackColor = System.Drawing.Color.Chartreuse
+        TreeNode1.Name = "Node1"
+        TreeNode1.Text = "Sent Messages"
+        TreeNode2.BackColor = System.Drawing.Color.Chartreuse
+        TreeNode2.Name = "Node2"
+        TreeNode2.Text = "Drafts"
+        TreeNode3.BackColor = System.Drawing.Color.BlueViolet
+        TreeNode3.Name = "Node0"
+        TreeNode3.NodeFont = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        TreeNode3.Text = "Messages"
+        TreeNode4.BackColor = System.Drawing.Color.Chartreuse
+        TreeNode4.Name = "Node4"
+        TreeNode4.Text = "Add Group"
+        TreeNode5.BackColor = System.Drawing.Color.Chartreuse
+        TreeNode5.Name = "Node5"
+        TreeNode5.Text = "View Groups"
+        TreeNode6.BackColor = System.Drawing.Color.BlueViolet
+        TreeNode6.Name = "Node3"
+        TreeNode6.NodeFont = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        TreeNode6.Text = "Groups"
+        Me.TreeView1.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode3, TreeNode6})
         Me.TreeView1.Scrollable = False
         Me.TreeView1.Size = New System.Drawing.Size(135, 223)
         Me.TreeView1.TabIndex = 5
@@ -571,38 +571,38 @@ Partial Class MainForm
         'GerToolStripMenuItem
         '
         Me.GerToolStripMenuItem.Name = "GerToolStripMenuItem"
-        Me.GerToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
+        Me.GerToolStripMenuItem.Size = New System.Drawing.Size(224, 22)
         Me.GerToolStripMenuItem.Text = "New Email Group"
         '
         'NewSmsGroupToolStripMenuItem
         '
         Me.NewSmsGroupToolStripMenuItem.Name = "NewSmsGroupToolStripMenuItem"
-        Me.NewSmsGroupToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
+        Me.NewSmsGroupToolStripMenuItem.Size = New System.Drawing.Size(224, 22)
         Me.NewSmsGroupToolStripMenuItem.Text = "New Sms Group"
         '
         'NewMessageToolStripMenuItem
         '
         Me.NewMessageToolStripMenuItem.Name = "NewMessageToolStripMenuItem"
         Me.NewMessageToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2
-        Me.NewMessageToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
+        Me.NewMessageToolStripMenuItem.Size = New System.Drawing.Size(224, 22)
         Me.NewMessageToolStripMenuItem.Text = "New Email Message"
         '
         'NewSmsMessageToolStripMenuItem
         '
         Me.NewSmsMessageToolStripMenuItem.Name = "NewSmsMessageToolStripMenuItem"
         Me.NewSmsMessageToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3
-        Me.NewSmsMessageToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
+        Me.NewSmsMessageToolStripMenuItem.Size = New System.Drawing.Size(224, 22)
         Me.NewSmsMessageToolStripMenuItem.Text = "New Sms Message"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(209, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(221, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(224, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'ToolsToolStripMenuItem
@@ -616,13 +616,13 @@ Partial Class MainForm
         'ManagerAccountToolStripMenuItem
         '
         Me.ManagerAccountToolStripMenuItem.Name = "ManagerAccountToolStripMenuItem"
-        Me.ManagerAccountToolStripMenuItem.Size = New System.Drawing.Size(217, 22)
+        Me.ManagerAccountToolStripMenuItem.Size = New System.Drawing.Size(229, 22)
         Me.ManagerAccountToolStripMenuItem.Text = "Email Account Manager"
         '
         'SMSAccountManager_menu
         '
         Me.SMSAccountManager_menu.Name = "SMSAccountManager_menu"
-        Me.SMSAccountManager_menu.Size = New System.Drawing.Size(217, 22)
+        Me.SMSAccountManager_menu.Size = New System.Drawing.Size(229, 22)
         Me.SMSAccountManager_menu.Text = "SMS Account Manager"
         '
         'HelpToolStripMenuItem
@@ -638,13 +638,13 @@ Partial Class MainForm
         Me.HelpContentsToolStripMenuItem.Image = CType(resources.GetObject("HelpContentsToolStripMenuItem.Image"), System.Drawing.Image)
         Me.HelpContentsToolStripMenuItem.Name = "HelpContentsToolStripMenuItem"
         Me.HelpContentsToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1
-        Me.HelpContentsToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
+        Me.HelpContentsToolStripMenuItem.Size = New System.Drawing.Size(195, 22)
         Me.HelpContentsToolStripMenuItem.Text = "Help Contents"
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(195, 22)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'MenuStrip1
@@ -670,14 +670,14 @@ Partial Class MainForm
         '
         Me.Events.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Forward})
         Me.Events.Name = "Events"
-        Me.Events.Size = New System.Drawing.Size(161, 127)
+        Me.Events.Size = New System.Drawing.Size(161, 125)
         '
         'Forward
         '
         Me.Forward.Enabled = False
         Me.Forward.Margin = New System.Windows.Forms.Padding(50)
         Me.Forward.Name = "Forward"
-        Me.Forward.Size = New System.Drawing.Size(100, 23)
+        Me.Forward.Size = New System.Drawing.Size(100, 21)
         Me.Forward.Text = "Forward"
         '
         'Create_Panel

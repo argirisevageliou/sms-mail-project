@@ -8,11 +8,11 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("sms-mail-project")> 
-<Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("HP")> 
-<Assembly: AssemblyProduct("sms-mail-project")> 
-<Assembly: AssemblyCopyright("Copyright © HP 2012")> 
+<Assembly: AssemblyTitle("Sms & Email Application Center -  Free Edition")> 
+<Assembly: AssemblyDescription("This Desktop Application helps you create your own emails or messages and send them to other receivers that may have mobile phones with the sms section or to other devices that can read emails. Also you can send messages(sms & email) with multi threading option that gives you the chance to send more than one message to the other receivers simultaneously.")> 
+<Assembly: AssemblyCompany("Semester Project")> 
+<Assembly: AssemblyProduct("Sms & Email Application Center -  Free Edition")> 
+<Assembly: AssemblyCopyright("Copyright 2012 - 2013 All Rights Reserved")> 
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>
