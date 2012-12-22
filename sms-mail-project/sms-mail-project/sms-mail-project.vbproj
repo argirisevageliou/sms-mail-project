@@ -479,6 +479,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\SMS_Service\" />
+    <None Include="ProjectHelp.chm" />
     <None Include="testDataSet2.xsc">
       <DependentUpon>testDataSet2.xsd</DependentUpon>
     </None>
