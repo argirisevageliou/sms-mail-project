@@ -571,38 +571,38 @@ Partial Class MainForm
         'GerToolStripMenuItem
         '
         Me.GerToolStripMenuItem.Name = "GerToolStripMenuItem"
-        Me.GerToolStripMenuItem.Size = New System.Drawing.Size(224, 22)
+        Me.GerToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
         Me.GerToolStripMenuItem.Text = "New Email Group"
         '
         'NewSmsGroupToolStripMenuItem
         '
         Me.NewSmsGroupToolStripMenuItem.Name = "NewSmsGroupToolStripMenuItem"
-        Me.NewSmsGroupToolStripMenuItem.Size = New System.Drawing.Size(224, 22)
+        Me.NewSmsGroupToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
         Me.NewSmsGroupToolStripMenuItem.Text = "New Sms Group"
         '
         'NewMessageToolStripMenuItem
         '
         Me.NewMessageToolStripMenuItem.Name = "NewMessageToolStripMenuItem"
         Me.NewMessageToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2
-        Me.NewMessageToolStripMenuItem.Size = New System.Drawing.Size(224, 22)
+        Me.NewMessageToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
         Me.NewMessageToolStripMenuItem.Text = "New Email Message"
         '
         'NewSmsMessageToolStripMenuItem
         '
         Me.NewSmsMessageToolStripMenuItem.Name = "NewSmsMessageToolStripMenuItem"
         Me.NewSmsMessageToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3
-        Me.NewSmsMessageToolStripMenuItem.Size = New System.Drawing.Size(224, 22)
+        Me.NewSmsMessageToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
         Me.NewSmsMessageToolStripMenuItem.Text = "New Sms Message"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(221, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(209, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(224, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'ToolsToolStripMenuItem
@@ -616,13 +616,13 @@ Partial Class MainForm
         'ManagerAccountToolStripMenuItem
         '
         Me.ManagerAccountToolStripMenuItem.Name = "ManagerAccountToolStripMenuItem"
-        Me.ManagerAccountToolStripMenuItem.Size = New System.Drawing.Size(229, 22)
+        Me.ManagerAccountToolStripMenuItem.Size = New System.Drawing.Size(217, 22)
         Me.ManagerAccountToolStripMenuItem.Text = "Email Account Manager"
         '
         'SMSAccountManager_menu
         '
         Me.SMSAccountManager_menu.Name = "SMSAccountManager_menu"
-        Me.SMSAccountManager_menu.Size = New System.Drawing.Size(229, 22)
+        Me.SMSAccountManager_menu.Size = New System.Drawing.Size(217, 22)
         Me.SMSAccountManager_menu.Text = "SMS Account Manager"
         '
         'HelpToolStripMenuItem
@@ -638,13 +638,13 @@ Partial Class MainForm
         Me.HelpContentsToolStripMenuItem.Image = CType(resources.GetObject("HelpContentsToolStripMenuItem.Image"), System.Drawing.Image)
         Me.HelpContentsToolStripMenuItem.Name = "HelpContentsToolStripMenuItem"
         Me.HelpContentsToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1
-        Me.HelpContentsToolStripMenuItem.Size = New System.Drawing.Size(195, 22)
+        Me.HelpContentsToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
         Me.HelpContentsToolStripMenuItem.Text = "Help Contents"
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(195, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'MenuStrip1
@@ -670,14 +670,14 @@ Partial Class MainForm
         '
         Me.Events.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Forward})
         Me.Events.Name = "Events"
-        Me.Events.Size = New System.Drawing.Size(161, 125)
+        Me.Events.Size = New System.Drawing.Size(161, 127)
         '
         'Forward
         '
         Me.Forward.Enabled = False
         Me.Forward.Margin = New System.Windows.Forms.Padding(50)
         Me.Forward.Name = "Forward"
-        Me.Forward.Size = New System.Drawing.Size(100, 21)
+        Me.Forward.Size = New System.Drawing.Size(100, 23)
         Me.Forward.Text = "Forward"
         '
         'Create_Panel

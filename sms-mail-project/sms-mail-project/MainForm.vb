@@ -520,4 +520,5 @@ Public Class MainForm
         ChooseTypeAccountsVar.ShowDialog()
         ChooseTypeAccountsVar = Nothing
     End Sub
+
 End Class

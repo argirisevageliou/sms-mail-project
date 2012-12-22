@@ -336,8 +336,8 @@ Public Class NewSmsMessage
 
             ' προσπάθεια αποστολής.
             Try
-                ID1 = client1.send(UrlEncode(My.Settings.SMSusername), UrlEncode(My.Settings.SMSpassword), _
-                UrlEncode(My.Settings.SMSsenderID), _to1, UrlEncode(smsText1), "GSM", False, sendDate, "")
+                ID1 = client1.send(My.Settings.SMSusername, My.Settings.SMSpassword, _
+                My.Settings.SMSsenderID, _to1, smsText1, "GSM", False, sendDate, "")
                 errorOccured = False
             Catch ex As Exception
                 MsgBox(ex.Message)
@@ -359,8 +359,8 @@ Public Class NewSmsMessage
 
             ' προσπάθεια αποστολής.
             Try
-                ID = client.send(UrlEncode(My.Settings.SMSusername), UrlEncode(My.Settings.SMSpassword), _
-                UrlEncode(My.Settings.SMSsenderID), _to, UrlEncode(smsText), "GSM", False, "", "")
+                ID = client.send(My.Settings.SMSusername, My.Settings.SMSpassword, _
+                My.Settings.SMSsenderID, _to, smsText, "GSM", False, "", "")
 
                 isSent = True
                 errorOccured = False
@@ -372,11 +372,11 @@ Public Class NewSmsMessage
 
             End Try
 
-            Thread.Sleep(5000) 'Περιμένω 'κάποιο' χρονικό διάστημα (5 sec) μέχρι να γίνει αποστολή, για να πάρω όσο πιο πολύ αντιπροσωπευτικά αποτελέσματα. 
+            Thread.Sleep(7500) 'Περιμένω 'κάποιο' χρονικό διάστημα (7.5 sec) μέχρι να γίνει αποστολή, για να πάρω όσο το δυνατόν πιο πολύ αντιπροσωπευτικά αποτελέσματα. 
 
             ' κάνω αίτηση στο web sevice, για να πάρω το status της αποστολής.
             Try
-                Dim status As SMS_Service.recipientStatus() = client.multiple_query(UrlEncode(My.Settings.SMSusername), UrlEncode(My.Settings.SMSpassword), UrlEncode(ID), _to)
+                Dim status As SMS_Service.recipientStatus() = client.multiple_query(My.Settings.SMSusername, My.Settings.SMSpassword, ID, _to)
 
                 ' για κάθε παραλήπτη(phone number) , εμφανίζει το status(Queued,Failed,Delivered,Pending,Error)
                 For Each stat As SMS_Service.recipientStatus In status
@@ -470,7 +470,7 @@ Public Class NewSmsMessage
 
         ' κάνω μια αίτηση στο web service για να μου επιστρέψει το υπόλοιπο του λογαριασμού.
         Try
-            Dim credits As Decimal = client.credits(UrlEncode(My.Settings.SMSusername), UrlEncode(My.Settings.SMSpassword))
+            Dim credits As Decimal = client.credits(My.Settings.SMSusername, My.Settings.SMSpassword)
             MsgBox("You have " & CDbl(credits) & " credits on your account")
 
             ' αν η αίτηση απτύχει, γράφω το exception message στον error provider.

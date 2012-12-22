@@ -50,33 +50,33 @@ Partial Class ChooseSMSReceivers_Form
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Miramonte", 14.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Miramonte", 14.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.HotTrack
         Me.Label1.Location = New System.Drawing.Point(33, 27)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(154, 24)
+        Me.Label1.Size = New System.Drawing.Size(162, 24)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Available Groups:"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Miramonte", 14.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Miramonte", 14.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.SystemColors.HotTrack
         Me.Label2.Location = New System.Drawing.Point(389, 27)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(85, 24)
+        Me.Label2.Size = New System.Drawing.Size(90, 24)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Contacts:"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Miramonte", 14.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Font = New System.Drawing.Font("Miramonte", 14.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.SystemColors.HotTrack
         Me.Label3.Location = New System.Drawing.Point(738, 27)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(159, 24)
+        Me.Label3.Size = New System.Drawing.Size(165, 24)
         Me.Label3.TabIndex = 2
         Me.Label3.Text = "Selected Contacts:"
         '
@@ -138,11 +138,11 @@ Partial Class ChooseSMSReceivers_Form
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Miramonte", 14.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Font = New System.Drawing.Font("Miramonte", 14.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.SystemColors.HotTrack
         Me.Label4.Location = New System.Drawing.Point(309, 311)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(251, 24)
+        Me.Label4.Size = New System.Drawing.Size(263, 24)
         Me.Label4.TabIndex = 6
         Me.Label4.Text = "Add Contact (phone number):"
         '
@@ -182,7 +182,7 @@ Partial Class ChooseSMSReceivers_Form
         '
         'submit_btn
         '
-        Me.submit_btn.Location = New System.Drawing.Point(338, 434)
+        Me.submit_btn.Location = New System.Drawing.Point(335, 434)
         Me.submit_btn.Name = "submit_btn"
         Me.submit_btn.Size = New System.Drawing.Size(191, 27)
         Me.submit_btn.TabIndex = 11
@@ -219,7 +219,7 @@ Partial Class ChooseSMSReceivers_Form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(932, 477)
         Me.Controls.Add(Me.delete_btn)
         Me.Controls.Add(Me.select_all_btn)

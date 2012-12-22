@@ -129,7 +129,7 @@ Public Class SMS_Account_Manager
 
                     ' κάνω μια αίτηση στο web service για να μου επιστρέψει το υπόλοιπο του λογαριασμού.
                     Try
-                        Dim credits As Decimal = client.credits(UrlEncode(user_tb.Text), UrlEncode(pass_tb.Text))
+                        Dim credits As Decimal = client.credits(user_tb.Text, pass_tb.Text)
                         test_btn.Text = "Save Settings!!"
 
                         ' αν η αίτηση απτύχει, γράφω το exception message στον error provider.
